@@ -1,0 +1,22 @@
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="515" height="20" uuid="f9e88307-1b41-4fb9-ae62-9f76efa7bfbf"/>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans Mono" size="11" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vLabelEn} + " : " + $V{vValueEn}
+                    + $P{DOT_POOL}.substring(
+                        0,
+                        Math.min(
+                            $P{DOT_POOL}.length(),
+                            Math.max(
+                                3,
+                                $P{LINE_CHARS}.intValue()
+                                  - ($V{vLabelEn}.length() + 3 + $V{vValueEn}.length() + $V{vLabelAr}.length())
+                            )
+                        )
+                      )
+                    + $V{vLabelAr}]]></textFieldExpression>
+			</textField>
