@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Dotted-leader bilingual line (English value + dots + Arabic label).
+  Pure JRXML. No scriptlet, no Java class, no extra jars.
+  Null-safe so JasperStudio Preview works even with no data adapter.
+-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+                                  http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="dotted_leader"
+              pageWidth="595" pageHeight="842"
+              columnWidth="515"
+              leftMargin="40" rightMargin="40"
+              topMargin="40" bottomMargin="40">
+
+    <!-- Tune ONCE for your column width and font size. -->
+    <parameter name="LINE_CHARS" class="java.lang.Integer" isForPrompting="false">
+        <defaultValueExpression><![CDATA[78]]></defaultValueExpression>
+    </parameter>
+
+    <!-- 200 dots; substring as many as needed. -->
+    <parameter name="DOT_POOL" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["........................................................................................................................................................................................................"]]></defaultValueExpression>
+    </parameter>
+
+    <!-- Sample defaults so the report previews even with no data adapter.
+         When you bind real data, the field values override these. -->
+    <parameter name="SAMPLE_LABEL_EN" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["Name"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SAMPLE_VALUE_EN" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["abdelaziz aguenchich"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SAMPLE_LABEL_AR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["الاسم"]]></defaultValueExpression>
+    </parameter>
+
+    <field name="labelEn" class="java.lang.String"/>
+    <field name="valueEn" class="java.lang.String"/>
+    <field name="labelAr" class="java.lang.String"/>
+
+    <!-- Variables fall back to sample values when the field is null,
+         so preview always shows a real line and never the word "null". -->
+    <variable name="vLabelEn" class="java.lang.String">
+        <variableExpression><![CDATA[$F{labelEn} == null ? $P{SAMPLE_LABEL_EN} : $F{labelEn}]]></variableExpression>
+    </variable>
+    <variable name="vValueEn" class="java.lang.String">
+        <variableExpression><![CDATA[$F{valueEn} == null ? $P{SAMPLE_VALUE_EN} : $F{valueEn}]]></variableExpression>
+    </variable>
+    <variable name="vLabelAr" class="java.lang.String">
+        <variableExpression><![CDATA[$F{labelAr} == null ? $P{SAMPLE_LABEL_AR} : $F{labelAr}]]></variableExpression>
+    </variable>
+
+    <detail>
+        <band height="24" splitType="Stretch">
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement x="0" y="0" width="515" height="20"/>
+                <box><pen lineWidth="0"/></box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans Mono" size="11"
+                          pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[
+                    $V{vLabelEn} + " : " + $V{vValueEn}
+                    + $P{DOT_POOL}.substring(
+                        0,
+                        Math.min(
+                            $P{DOT_POOL}.length(),
+                            Math.max(
+                                3,
+                                $P{LINE_CHARS}.intValue()
+                                  - ($V{vLabelEn}.length() + 3 + $V{vValueEn}.length() + $V{vLabelAr}.length())
+                            )
+                        )
+                      )
+                    + $V{vLabelAr}
+                ]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
