@@ -81,7 +81,7 @@
 	<parameter name="customerRib" class="java.lang.String"/>
 	<parameter name="signedIn" class="java.lang.String"/>
 	<parameter name="char_width_ratio" class="java.lang.String">
-		<defaultValueExpression><![CDATA[4.75]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["4.75"]]></defaultValueExpression>
 	</parameter>
 	<field name="customers" class="java.util.Collection"/>
 	<field name="cautionBeneficiaries" class="java.util.Collection"/>
@@ -4210,23 +4210,6 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 					<text><![CDATA[.................................................................................................................................................................................................................]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="69" y="-82" width="438" height="14" forecolor="#A3A2A2" uuid="b947bd10-74ac-42a9-bf29-82487fbd5f0c">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box padding="0">
-						<pen lineWidth="1.0" lineStyle="Dotted"/>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false" isItalic="true" isUnderline="false"/>
-					</textElement>
-					<text><![CDATA[.................................................................................................................................................................................................................]]></text>
-				</staticText>
-				<staticText>
 					<reportElement x="0" y="34" width="276" height="76" uuid="16f7e7bf-d0e9-4921-912c-d0275bc92961">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -4262,7 +4245,7 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["      2.5  ضمانات أخرى"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["      5.2  ضمانات أخرى"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="200" width="273" height="20" uuid="1c3035a5-174c-4913-b85f-38bbabda584c">
@@ -4383,7 +4366,7 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 					</textElement>
-					<text><![CDATA[ ARTICLE 5 : GRANTIES]]></text>
+					<text><![CDATA[ ARTICLE 5 : GARANTIES]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="274" y="1" width="276" height="18" uuid="3ee9cd0b-4aaf-4dfd-88f9-393886161126">
@@ -4414,7 +4397,7 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10"/>
 					</textElement>
-					<textFieldExpression><![CDATA["- Hypothèque en " + ($F{warrantyRang} == 1 ? "1er" : String.format("%dème", $F{warrantyRang})) + " rang"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["- Hypothèque en " + ($F{warrantyRang} != null && $F{warrantyRang}.equals(1) ? "1er" : String.format("%dème", $F{warrantyRang} != null ? $F{warrantyRang} : 1)) + " rang"]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="428" y="110" width="121" height="18" uuid="b3532560-785a-4310-8978-7ad2be9b7bea">
@@ -4588,7 +4571,7 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 								<textElement verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<textFieldExpression><![CDATA["- Hypothèque de "+$F{amount}+" en " + ($F{rang} == 1 ? "1er" : $F{rang} + "ème") + " rang" +" sur le bien "+$F{landCertificate}]]></textFieldExpression>
+								<textFieldExpression><![CDATA["- Hypothèque de "+$F{amount}+" en " + ($F{rang} != null && $F{rang}.equals(1) ? "1er" : ($F{rang} != null ? $F{rang} + "ème" : "")) + " rang" +" sur le bien "+$F{landCertificate}]]></textFieldExpression>
 							</textField>
 							<textField>
 								<reportElement x="430" y="0" width="119" height="18" uuid="a6c2eecd-ea03-4d43-92f8-8f384b9ded72">
@@ -4717,7 +4700,7 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 						<textElement textAlignment="Left" verticalAlignment="Middle">
 							<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 						</textElement>
-						<text><![CDATA[ARTICLE  6 : CONDITIONS SPECIALES]]></text>
+						<text><![CDATA[ARTICLE  6 : CONDITIONS SUSPENSIVES]]></text>
 					</staticText>
 					<staticText>
 						<reportElement x="-1" y="19" width="273" height="30" uuid="996b25cb-10fb-42be-920c-a676b613d3d1">
@@ -4737,23 +4720,6 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 						<text><![CDATA[Le déblocage du Crédit est subordonné à la réalisation par l’Emprunteur des conditions suivantes :]]></text>
 					</staticText>
 				</frame>
-				<staticText>
-					<reportElement x="67" y="-67" width="423" height="14" forecolor="#A3A2A2" uuid="ec2840bf-11c6-4b3e-87a9-d52818f717c8">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<box padding="0">
-						<pen lineWidth="1.0" lineStyle="Dotted"/>
-						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="DejaVu Sans" size="8" isBold="false" isItalic="true" isUnderline="false"/>
-					</textElement>
-					<text><![CDATA[.................................................................................................................................................................................................................]]></text>
-				</staticText>
 			</frame>
 			<frame>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="547" width="560" height="65" uuid="7e807c12-d873-4ab5-9c01-b6eb36d9ced7"/>
