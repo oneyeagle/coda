@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="annexe" pageWidth="535" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="20" uuid="2f1d76dc-039e-42df-9fa7-6ac6e8fb7c2b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Rank" uuid="aaa2d76d-039e-42df-9fa7-6ac6e8fb7c2a">
+		<field name="mt" class="java.lang.String"/>
+		<field name="rang" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="decisionDate" class="java.lang.String"/>
+	<parameter name="loanAmount" class="java.lang.String"/>
+	<parameter name="rate" class="java.lang.String"/>
+	<parameter name="rateNature" class="java.lang.String"/>
+	<parameter name="signedAt" class="java.lang.String"/>
+	<parameter name="customerFullName" class="java.lang.String"/>
+	<parameter name="signedIn" class="java.lang.String"/>
+	<field name="beneficiaryFullName" class="java.lang.String"/>
+	<field name="beneficiaryAddress" class="java.lang.String"/>
+	<field name="beneficiaryCardID" class="java.lang.String"/>
+	<field name="propertyLandCertificate" class="java.lang.String"/>
+	<field name="propertyCity" class="java.lang.String"/>
+	<field name="propertyArea" class="java.lang.String"/>
+	<field name="enrichment" class="java.lang.String"/>
+	<field name="propertyName" class="java.lang.String"/>
+	<field name="propertyRanks" class="java.util.Collection"/>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="a1234567-89ab-cdef-0123-456789abcdef"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="b2345678-9abc-def0-1234-56789abcdef0"/>
+					<staticText>
+						<reportElement x="0" y="0" width="260" height="15" uuid="c3456789-abcd-ef01-2345-6789abcdef01"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ANNEXE AU CONTRAT DE CREDIT]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="e56789ab-cdef-0123-4567-89abcdef0123"/>
+					<staticText>
+						<reportElement x="7" y="0" width="260" height="15" uuid="f6789abc-def0-1234-5678-9abcdef01234"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ ملحق عقد القرض]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="0789abcd-ef01-2345-6789-abcdef012345"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="189abcde-f012-3456-789a-bcdef0123456"/>
+					<staticText>
+						<reportElement x="0" y="0" width="85" height="12" uuid="29abcdef-0123-4567-89ab-cdef01234567"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[EN DATE DU :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="85" y="0" width="175" height="12" uuid="3abcdef0-1234-5678-9abc-def012345678"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{decisionDate}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="5cdef012-3456-789a-bcde-f01234567890"/>
+					<staticText>
+						<reportElement x="182" y="0" width="85" height="12" uuid="6def0123-4567-89ab-cdef-012345678901"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ المؤرخ في:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="7ef01234-5678-9abc-def0-123456789012"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="8f012345-6789-abcd-ef01-234567890123"/>
+					<staticText>
+						<reportElement x="0" y="0" width="90" height="12" uuid="90123456-789a-bcde-f012-345678901234"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[CONCLU AVEC :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="90" y="0" width="175" height="12" uuid="a1234567-89ab-cdef-0123-456789012345"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{customerFullName}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="288" y="0" width="247" height="15" uuid="c3456789-abcd-ef01-2345-678901234567"/>
+					<staticText>
+						<reportElement x="161" y="0" width="85" height="12" uuid="d456789a-bcde-f012-3456-789012345678"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ المبرم مع:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="75" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="105" y="10" width="325" height="60" uuid="e56789ab-cdef-0123-4567-890123456789"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="115" y="15" width="305" height="25" uuid="f6789abc-def0-1234-5678-901234567890"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTE DE CAUTIONNEMENT HYPOTHECAIRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="33" width="305" height="35" uuid="0789abcd-ef01-2345-6789-012345678901"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[عقـــــــد
+كـــفـــــالــــــــة رهنيــــــــــــة
+]]></text>
+			</staticText>
+		</band>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="20" uuid="189abcde-f012-3456-789a-012345678902"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="20" uuid="29abcdef-0123-4567-89ab-012345678903"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="0" y="0" width="185" height="12" uuid="3abcdef0-1234-5678-9abc-012345678904"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Aux présentes intervient]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="20" uuid="5cdef012-3456-789a-bcde-012345678906"/>
+					<staticText>
+						<reportElement x="97" y="0" width="170" height="12" uuid="6def0123-4567-89ab-cdef-012345678907"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ يتدخل بمقتضى هذا العقد:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="7ef01234-5678-9abc-def0-012345678908"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="8f012345-6789-abcd-ef01-012345678909"/>
+					<staticText>
+						<reportElement x="5" y="0" width="50" height="12" uuid="90123456-789a-bcde-f012-012345678910">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[M/Mme :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="50" y="0" width="210" height="12" uuid="a1234567-89ab-cdef-0123-012345678911"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{beneficiaryFullName}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="c3456789-abcd-ef01-2345-012345678913"/>
+					<staticText>
+						<reportElement x="212" y="0" width="55" height="12" uuid="d456789a-bcde-f012-3456-012345678914"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ السيد (ة) :]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="e56789ab-cdef-0123-4567-012345678915"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="f6789abc-def0-1234-5678-012345678916"/>
+					<staticText>
+						<reportElement x="5" y="0" width="70" height="12" uuid="0789abcd-ef01-2345-6789-012345678917">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[Demeurant à :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="77" y="0" width="175" height="12" uuid="189abcde-f012-3456-789a-012345678918"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{beneficiaryAddress}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="3abcdef0-1234-5678-9abc-012345678920"/>
+					<staticText>
+						<reportElement x="192" y="0" width="75" height="12" uuid="4bcdef01-2345-6789-abcd-012345678921"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ القاطن(ة)  ب :]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="5cdef012-3456-789a-bcde-012345678922"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="6def0123-4567-89ab-cdef-012345678923"/>
+					<staticText>
+						<reportElement x="5" y="0" width="45" height="12" uuid="7ef01234-5678-9abc-def0-012345678924">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[CIN n° :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="52" y="0" width="195" height="12" uuid="8f012345-6789-abcd-ef01-012345678925"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{beneficiaryCardID}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="a1234567-89ab-cdef-0123-012345678927"/>
+					<staticText>
+						<reportElement x="97" y="0" width="170" height="12" uuid="b2345678-9abc-def0-1234-012345678928"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ و الحامل للبطاقة الوطنية للتعريف رقم:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="20" uuid="c3456789-abcd-ef01-2345-012345678929"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="20" uuid="d456789a-bcde-f012-3456-012345678930"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="0" y="5" width="200" height="12" uuid="e56789ab-cdef-0123-4567-012345678931"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Appelée ci-après « LA CAUTION »]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="20" uuid="0789abcd-ef01-2345-6789-012345678933"/>
+					<staticText>
+						<reportElement x="11" y="5" width="256" height="12" uuid="189abcde-f012-3456-789a-012345678934"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<text><![CDATA[ وهو الطرف المشار إليه فيما يلي بعبارة "الكفيل"]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="30" uuid="29abcdef-0123-4567-89ab-012345678935"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="30" uuid="3abcdef0-1234-5678-9abc-012345678936"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="0" width="255" height="25" uuid="4bcdef01-2345-6789-abcd-012345678937">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[La Caution, déclare avoir parfaite connaissance du contrat de crédit en date du]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="20" uuid="6def0123-4567-89ab-cdef-012345678939"/>
+					<staticText>
+						<reportElement x="42" y="0" width="225" height="15" uuid="7ef01234-5678-9abc-def0-012345678940"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ يصرح الكفيل أنه أحيط علما بعقد القرض بتاريخ:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="8f012345-6789-abcd-ef01-012345678941"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="90123456-789a-bcde-f012-012345678942"/>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="0" width="255" height="12" uuid="a1234567-89ab-cdef-0123-012345678943"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{decisionDate}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="c3456789-abcd-ef01-2345-012345678945"/>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="d456789a-bcde-f012-3456-012345678946"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="e56789ab-cdef-0123-4567-012345678947"/>
+					<staticText>
+						<reportElement x="5" y="0" width="85" height="12" uuid="f6789abc-def0-1234-5678-012345678948">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[de la somme de]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="93" y="0" width="155" height="12" uuid="0789abcd-ef01-2345-6789-012345678949"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{loanAmount}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="29abcdef-0123-4567-89ab-012345678951"/>
+					<staticText>
+						<reportElement x="217" y="0" width="50" height="12" uuid="3abcdef0-1234-5678-9abc-012345678952"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ للمبلغ:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="4bcdef01-2345-6789-abcd-012345678953"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="5cdef012-3456-789a-bcde-012345678954"/>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="0" width="254" height="12" uuid="7ef01234-5678-9abc-def0-012345678956"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA["consenti au  profit "+$P{customerFullName}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="c3456789-abcd-ef01-2345-012345678961"/>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="d456789a-bcde-f012-3456-012345678962"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="e56789ab-cdef-0123-4567-012345678963"/>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="0" width="255" height="12" uuid="0789abcd-ef01-2345-6789-012345678965"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Au taux d’intérêt de "+$P{rate}+" % TVA en sus"]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="29abcdef-0123-4567-89ab-012345678967"/>
+					<staticText>
+						<reportElement x="10" y="0" width="257" height="12" uuid="3abcdef0-1234-5678-9abc-012345678968"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[بنسبة فائدة........... مع احتساب الضريبة على القيمة المضافة]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="207" y="-14" width="60" height="12" uuid="09125139-f1f7-45ea-80d5-13e793ee99ce">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+							<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[ الممنوح ل]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="80" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="80" uuid="a5b6c7d8-e9f0-4056-2c3d-4e5f6a7b8c9d"/>
+				<componentElement>
+					<reportElement x="0" y="0" width="535" height="80" uuid="b6c7d8e9-f0a1-4057-3d4e-5f6a7b8c9d0e"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="Rank" uuid="c7d8e9f0-a1b2-4058-4e5f-6a7b8c9d0e1f">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{propertyRanks})]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="80" width="535">
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="80" uuid="d8e9f0a1-b2c3-4059-5f6a-7b8c9d0e1f2a"/>
+								<frame>
+									<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="80" uuid="e9f0a1b2-c3d4-4060-6a7b-8c9d0e1f2a3b"/>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textField textAdjust="StretchHeight">
+										<reportElement x="5" y="5" width="255" height="75" uuid="a1b2c3d4-e5f6-4062-8c9d-0e1f2a3b4c5d"/>
+										<textElement>
+											<font fontName="DejaVu Sans" size="9" isBold="false"/>
+										</textElement>
+										<textFieldExpression><![CDATA["La Caution consent, conformément aux dispositions du dahir du 22 novembre 2011, au profit de la BANQUE qui accepte par privilège  et préférence à tous autres créanciers une hypothèque en rang "+$F{rang}+ "à concurrence d’un montant en capital de "+$F{mt}+ " outre les intérêts, commissions, frais est accessoires"]]></textFieldExpression>
+									</textField>
+								</frame>
+								<frame>
+									<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="80" uuid="e5f6a7b8-c9d0-4066-2a3b-4c5d6e7f8a9b"/>
+									<staticText>
+										<reportElement x="6" y="5" width="257" height="65" uuid="f6a7b8c9-d0e1-4067-3b4c-5d6e7f8a9b0c"/>
+										<textElement textAlignment="Right">
+											<font fontName="DejaVu Sans" size="9"/>
+										</textElement>
+										<text><![CDATA[يمنـــــح الكفــــيــــل طبقــــــــا لمقتضيـــــــات ظهيــــــر 22 نوفمبر 2011  لفـــائـــــدة البنـــــك الـــــذي يقبــــــل بالامتيـــــاز وبالأفضليـــــة علــــى جميــــــــع الدائنين الآخرين ، رهنــا رسميــا مــن الدرجـة  ....... فـي حـدود مبلغ أصل الدين  ........ بالإضافـة إلــى الفـوائـــد والعمـــولات والمصاريــف والتوابــع، ]]></text>
+									</staticText>
+								</frame>
+							</frame>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+		</band>
+		<band height="90" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="90" uuid="49d51825-33b5-443d-a840-7a8032471b32"/>
+				<frame>
+					<reportElement x="0" y="0" width="267" height="90" uuid="97ff9037-0a03-423a-b038-a81503eefbd5"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="5" width="255" height="80" uuid="66bad452-6681-4155-836d-a91d98a6b9a9"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[Sur l’(ou les) immeuble(s) désigné(s) ci-après pour garantir tant le remboursement du montant en capital du (ou des) présent(s)
+crédit(s), ainsi que le paiement des intérêts d’une année et de l’année courante en vertu de l’article 168 du Dahir précité.
+]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="268" y="0" width="267" height="90" uuid="4fb91402-7bde-47d8-b4bd-047442185708"/>
+					<staticText>
+						<reportElement x="7" y="0" width="255" height="80" uuid="2fbbf0e0-9a05-40e0-b527-b93668b24fbd">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="10"/>
+						</textElement>
+						<text><![CDATA[على مجمــوع العقــار أو العقــارات المعينــة فيمـا يلــي، مــن أجــل ضمــان تســديــد مبلــغ الرأسمــال هــذا القــرض أو لأي سبــب اخــر، بالإضافـــة إلى تســديــد الفــوائــد لسنــة واحـــدة وللسنـــة الجاريـــة طبقـــا لمقتضيـــات المــادة 168 من الظهيــر السالـــف الذكـــر.]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="215" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="215" uuid="6b360b67-addd-45ec-847c-f009b79cf5ce"/>
+				<frame>
+					<reportElement x="0" y="0" width="267" height="215" uuid="36e8fa8a-38db-47b1-bac0-32ec68a80512"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="0" width="255" height="215" uuid="5213a935-509e-4668-a991-78242d7082c5"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Sont compris dans l’affectation hypothécaire, les biens immobiliers ci-après désignés, tels qu’ils existent, y compris toutes dépendances, toutes les constructions qui seront édifiées, tous droits y attachés, tous immeubles par destination en dépendant ou pouvant en dépendre et toutes améliorations et accroissements que la Caution  pourrait faire.
+La Caution s’engage à maintenir les constructions en bon état et à effectuer toutes les réparations nécessaires à la conservation des immeubles, la BANQUE pourra à toute époque faire constater l’état des biens hypothéqués par les personnes de son choix aux frais de l’EMPRUNTEUR ou de la Caution qui s’y obligent.
+La Caution s’interdit sans l’accord de la Banque d’affecter l’(ou les) immeuble(s) hypothéqué(s) en faveur de la BANQUE  à un usage commercial, de le rattacher à un fonds de commerce, d’y constituer un fonds de commerce ou d’y domicilier toute personnes physique ou morale]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="268" y="0" width="267" height="215" uuid="bcd4ee01-636b-4bdb-a96d-cf1975b2cdf7"/>
+					<staticText>
+						<reportElement x="7" y="0" width="255" height="215" uuid="51746c5b-91e9-4b42-820b-390a2fa68dd0"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[ويدخل ضمن التخصيص الرهني، الملك أو الممتلكات العقارية المعينة فيما يلي، كما هي موجودة، بما فيها جميع المرافق وكل البناءات التي سيتم تشييدها، وكل الحقوق المرتبطة بها، وكل العقارات التابعة لها بالتخصيص أو التي يمكن أن تصبح تابعة لها وكذا جميع التحسينات والإضافات التي يمكن أن يدخلها عليها للمقترض.
+
+
+يلتزم الكفيـــل بالمحافظـــة على البنايات في حالـــة جيدة وبالقيام بكافـة الإصلاحات الضرورية للحفاظ على العقارات، حيث يمكن للبنـــك في أية لحظة القيـــــام بمعاينــــة حالـــة الأملاك المرهونة رسميا بواسطــة أشخاص من اختياره على نفقة للمقترض أو الكفيل  الذين يلتزمون بذلك..
+
+يمتنع الكفيل عن تخصيص العقار أو العقارات المرهونة رسميا لفائدة البنك للاستعمال التجاري، أو إلحاقها بأصل تجاري أو تأسيس أصل تجاري عليها ، أو توطين أي شخص ذاتي أو معنوي  في هذا العقار.
+]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="639" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="639" uuid="b2345678-9abc-def0-1234-012345678976"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="639" uuid="c3456789-abcd-ef01-2345-012345678977"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="5" width="255" height="624" uuid="d456789a-bcde-f012-3456-012345678978"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[La Caution s’interdit de donner en location l’(ou les) immeuble(s) hypothéqué(s) en faveur de la BANQUE sans l’accord préalable et écrit de cette dernière.
+En cas de location dûment autorisée par la BANQUE, la Caution  déclare d’ores et déjà céder, déléguer  et transporter au profit de la BANQUE tous loyers et revenus de l’(ou les) immeubles grevé (s) d’hypothèque
+ en conséquence il subroge la banque dans tous ses droits et actions vis à vis de ses locataires, lesquels sont autorisés à se libérer de tous loyers directement entre les mains de la BANQUE par préférence et antériorité à tous  autres créanciers et à lui-même sur simple quittance de celle-ci  et hors la présence de la Caution.
+Néanmoins, notification de cette délégation et de cette subrogation ne sera faite aux locataires qu’en cas de défaut de paiement de toutes sommes dues et exigibles en capital, intérêts, commission, frais et accessoires, ou en cas d’inexécution de l’une des clauses et conditions du présent contrat.
+La Caution déclare :
+
+- que les immeubles par destination dépendant de la (ou des) propriété(s) désignée(s) ci-après ne sont pas nantis au                          profit d’un autre créancier et il s’engage expressément à ne pas les nantir sans l’autorisation expresse et par écrit de la BANQUE,
+
+-qu’il n’existe sur la (ou les) propriété(s) hypothéquée(s) ni clause de résolution ou de rescision, ni de servitude, ni opposition, ni hypothèque conventionnelle ou forcée, ni aucun droit de nature à porter atteinte à l’hypothèque ci-dessus consentie.
+
+
+LA CAUTION autorise :
+dès à présent la BANQUE, sans qu'il puisse en résulter aucune réduction de ses engagements, à donner son adhésion à tous atermoiements ou prorogations d’échéances et à tous concordats amiables ou judiciaires que la BANQUE pourrait être amenée à consentir, de même la CAUTION ne pourra se prévaloir d'aucune subrogation à l'occasion des paiements qu'elle effectuerait à la BANQUE avant qu’elle n’ait été intégralement remboursée de ses créances  en capital outre les intérêts, commissions, frais et accessoires sur l’EMPRUNTEUR.
+
+Le présent cautionnement ne se confondra pas avec les autres cautionnements et généralement toutes garanties quelconques qui ont pu ou pourront être données par la CAUTION ou tous autres.]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="639" uuid="f6789abc-def0-1234-5678-012345678980"/>
+					<staticText>
+						<reportElement x="7" y="5" width="255" height="623" uuid="0789abcd-ef01-2345-6789-012345678981"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[ يمتنع الكفيل عن منح العقار أو العقارات المرهونة رسميا لفائدة البنك على سبيل الكراء، بدون الموافقة المسبقة والمكتوبة من البنك .
+
+في حالة كراء مرخص به كتابة من طرف البنك، يصرح الكفيل، منذ الآن، بتفويت وإنابة وتحويل جميع أكرية ومداخيل العقار أو العقارات المثقلة بالرهون الرسمية، لفائدة البنك.
+
+ونتيجة لذلك، فإن البنك يحل محله في جميع حقوقه ودعاواه تجاه مكتريه، ويعتبر هؤلاء المكترين مخولين صراحة بمقتضى هذا العقد، بأداء الأكرية مباشرة بين يدي البنك بالأفضلية وبالأسبقية على جميع الدائنين الآخرين بل وبالأسبقية عليه هو نفسه بناء على مجرد وصل من هذا البنك وفي غياب الكفيل.
+
+
+إلا أن تبليغ هذه الإنابة إلى المكترين، وحلول البنك محل المقترض، لن يتم إلا في حالة عدم أداء المبالغ المستحقة والتي حل أجلها رأسمالا وفوائد وعمولات ومصاريف وتوابع،  أو في حالة عدم تنفيذ أحد بنود أو شروط هذا العقد.
+
+يصرح الكفيل:
+
+- بأن البنايات التابعة بالتخصيص للملكية أو الأملاك المعينة أسفله، غير مرهونة لفائدة دائن آخر، ويتعهد صراحة بعدم رهنها بدون موافقة صريحة ومكتوبة من البنك
+
+- أنه لا يوجد على الملكية أو الأملاك المرهونة رسميا أي شرط فاسخ أو مبطل، ولا أي ارتفاقات،  كما لا يوجد أي تعرض  أو رهن رسمي اتفاقي أو إجباري، أو أي حق من شأنه أن يمس بالرهن الرسمي الممنوح أعلاه
+
+و يرخـــص الكفــيــل:
+ من الآن للبنك ودون أن ينتـــج عـــن ذلك أي نقصـــان لإلتزاماتـــــه أن يمنح موافقته على أي إمهـــــال أو تمــديــد للإستحقاقات وكـــذا أي صلــــح ودي أو قضـــائي، يمكن أن يمنحــــه البنــــــك للمقتــــــرض، كمـــــا لا يمكــــــن للكفيـــل أن يستفيـــد مـــن أي حلـــــول بمناسبـــة الأداءات التي سيقــــــوم بها لفائـــــــدة البنــــك، وذلك إلى حين التسديد الكلي لديون  المقترض، كيفما كان نوعها و لأي سبب كانت، بمــــا فيهـــا الأصــــل زيادة على الفــــوائد والمصاريف و العمــــولات و التوابـــع
+
+تستقل هذه الكفالة عن باقي الكفالات الأخرى، و بصفة عامة عن مختلف الضمانات التي يمكن أن يقدمها أو سبق أن قدمها الكفيل أو غيره
+]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="5" width="260" height="12" uuid="b4c5d6e7-f8a9-4135-1d2e-3f4a5b6c7d8e"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Détail du (ou des) titre(s) fonciers: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="5" width="262" height="12" uuid="c5d6e7f8-a9b0-4136-2e3f-4a5b6c7d8e9f"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[مراجع الرسم أو الرسوم العقارية :]]></text>
+			</staticText>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="f8a9b0c1-d2e3-4139-5b6c-7d8e9f0a1b2c"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="a9b0c1d2-e3f4-4140-6c7d-8e9f0a1b2c3d"/>
+					<staticText>
+						<reportElement x="5" y="0" width="95" height="12" uuid="d6e7f8a9-b0c1-4137-3f4a-5b6c7d8e9f0a"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Dénomination :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="100" y="0" width="165" height="12" uuid="e7f8a9b0-c1d2-4138-4a5b-6c7d8e9f0a1b"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="10" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{propertyName}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="c1d2e3f4-a5b6-4142-8e9f-0a1b2c3d4e5f"/>
+					<staticText>
+						<reportElement x="7" y="0" width="260" height="12" uuid="d2e3f4a5-b6c7-4143-9f0a-1b2c3d4e5f6a"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[التسمية :]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="40" uuid="f8a9b0c1-d2e3-4239-5b6c-7d8e9f0a1b2c"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="40" uuid="a9b0c1d2-e3f4-4240-6c7d-8e9f0a1b2c3d"/>
+					<staticText>
+						<reportElement x="5" y="0" width="262" height="25" uuid="b0c1d2e3-f4a5-4241-7d8e-9f0a1b2c3d4e"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[NUMERO(S) DU (OU DES) TITRE(S)FONCIER OU DE LA (OU DES)  REQUISITION(S) :
+]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="25" width="262" height="12" uuid="c1d2e3f4-a5b6-4242-8e9f-0a1b2c3d4e5f"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{propertyLandCertificate}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="40" uuid="e3f4a5b6-c7d8-4244-0a1b-2c3d4e5f6a7b"/>
+					<staticText>
+						<reportElement x="11" y="0" width="255" height="25" uuid="f4a5b6c7-d8e9-4245-1b2c-3d4e5f6a7b8c"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[رقم الرسم أو الرسوم العقارية، أو مطلب أو مطالب التحفيظ:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="a5b6c7d8-e9f0-4146-2c3d-4e5f6a7b8c9d"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="b6c7d8e9-f0a1-4147-3d4e-5f6a7b8c9d0e"/>
+					<staticText>
+						<reportElement x="5" y="0" width="60" height="12" uuid="c7d8e9f0-a1b2-4148-4e5f-6a7b8c9d0e1f"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Situation :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="65" y="0" width="200" height="12" uuid="d8e9f0a1-b2c3-4149-5f6a-7b8c9d0e1f2a"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{propertyCity}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="f0a1b2c3-d4e5-4151-7b8c-9d0e1f2a3b4c"/>
+					<staticText>
+						<reportElement x="7" y="0" width="260" height="12" uuid="a1b2c3d4-e5f6-4152-8c9d-0e1f2a3b4c5d"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[الموقع :]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="b2c3d4e5-f6a7-4153-9d0e-1f2a3b4c5d6e"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="c3d4e5f6-a7b8-4154-0e1f-2a3b4c5d6e7f"/>
+					<staticText>
+						<reportElement x="5" y="0" width="60" height="12" uuid="d4e5f6a7-b8c9-4155-1f2a-3b4c5d6e7f8a"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Superficie :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="65" y="0" width="202" height="12" uuid="e5f6a7b8-c9d0-4156-2a3b-4c5d6e7f8a9b"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{propertyArea}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="a7b8c9d0-e1f2-4158-4c5d-6e7f8a9b0c1d"/>
+				</frame>
+			</frame>
+		</band>
+		<band height="35" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="35" uuid="c9d0e1f2-a3b4-4260-6e7f-8a9b0c1d2e3f"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="35" uuid="d0e1f2a3-b4c5-4261-7f8a-9b0c1d2e3f4a"/>
+					<staticText>
+						<reportElement x="5" y="0" width="262" height="20" uuid="e1f2a3b4-c5d6-4262-8a9b-0c1d2e3f4a5b"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Description des constructions s'il y a lieu :]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="20" width="262" height="12" uuid="f2a3b4c5-d6e7-4263-9b0c-1d2e3f4a5b6c"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{enrichment}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="35" uuid="b4c5d6e7-f8a9-4265-1d2e-3f4a5b6c7d8e"/>
+					<staticText>
+						<reportElement x="10" y="0" width="255" height="20" uuid="c5d6e7f8-a9b0-4266-2e3f-4a5b6c7d8e9f"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[وصف البناءات عند الاقتضاء :]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="60" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="a5b6c7d8-e9f0-4146-2c3d-4e5f6a7b8c9d"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="50" uuid="b6c7d8e9-f0a1-4147-3d4e-5f6a7b8c9d0e"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="5" y="0" width="262" height="50" uuid="d8e9f0a1-b2c3-4149-5f6a-7b8c9d0e1f2a">
+							<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						</reportElement>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Par les présentes, les parties soussignées requièrent de Monsieur le Conservateur de la Propriété Foncière de ville du bien "+$F{propertyCity}+" de bien vouloir :"]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="50" uuid="f0a1b2c3-d4e5-4151-7b8c-9d0e1f2a3b4c"/>
+					<staticText>
+						<reportElement x="6" y="0" width="260" height="40" uuid="a1b2c3d4-e5f6-4152-8c9d-0e1f2a3b4c5d"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[تلتمس الأطراف الموقعة على هذا العقد من السيد المحافظ على الملكية العقارية ب:................................................... بأن يتفضل:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="90" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="90" uuid="49d51825-33b5-443d-a840-7a8032471b32"/>
+				<frame>
+					<reportElement x="0" y="0" width="267" height="90" uuid="97ff9037-0a03-423a-b038-a81503eefbd5"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="5" width="255" height="80" uuid="66bad452-6681-4155-836d-a91d98a6b9a9"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[-Inscrire la présente hypothèque au profit de la BANQUE sur le (ou les) titre(s) foncier(s) ou la (ou les) réquisition(s) ci-après désigné(s), notamment, l’interdiction d’hypothéquer  et d’aliéner sans l’accord préalable et écrit de la banque
+-Délivrer au porteur de l’acte le certificat simple d’inscription hypothécaire.
+]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="268" y="0" width="267" height="90" uuid="4fb91402-7bde-47d8-b4bd-047442185708"/>
+					<staticText>
+						<reportElement x="7" y="0" width="255" height="80" uuid="2fbbf0e0-9a05-40e0-b527-b93668b24fbd">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[ - بتقييــد هــذا الرهــن الرسمــي لفائــدة البنــك علــى الرســم أو الرســـوم العقاريــة، أو مطلـــب أو مطالـــب التحفيــظ المعينــة بعــــده، خاصـــة منـــع الرهـــن الرسمـــي أو التفويـــت دون الموافقة المسبقة و المكتوبة من البنك
+
+- تسليم، حامل هذا العقد، شهادة تقييد الرهن.
+]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="30" uuid="49d51825-33b5-443d-a840-7a8032471b32"/>
+				<frame>
+					<reportElement x="0" y="0" width="267" height="30" uuid="97ff9037-0a03-423a-b038-a81503eefbd5"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="5" width="255" height="15" uuid="66bad452-6681-4155-836d-a91d98a6b9a9"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Mainlevée :]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="268" y="0" width="267" height="15" uuid="4fb91402-7bde-47d8-b4bd-047442185708"/>
+					<staticText>
+						<reportElement x="7" y="0" width="255" height="30" uuid="2fbbf0e0-9a05-40e0-b527-b93668b24fbd">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[رفع اليد عن الضمان]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="220" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="210" uuid="49d51825-33b5-443d-a840-7a8032471b32"/>
+				<frame>
+					<reportElement x="0" y="0" width="267" height="210" uuid="97ff9037-0a03-423a-b038-a81503eefbd5"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="5" y="5" width="255" height="205" uuid="66bad452-6681-4155-836d-a91d98a6b9a9"/>
+						<textElement textAlignment="Justified">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[La mainlevée au titre de la présente garantie sera disponible à l’agence de l’Emprunteur dans les trente « 30 » jours ouvrables à compter du remboursement total du Crédit et acquittement des frais de mainlevées y afférents.
+
+La Caution devra prendre attache avec l’agence de l’Emprunteur pour les modalités de remise de ladite mainlevée.
+
+Les frais de mainlevée seront débités automatiquement par la Banque du compte de la Caution après remboursement total du Crédit, ce que cette dernière autorise sans contestations ni réserves.
+Dans le cas où la Caution ne dispose pas d’un compte ouvert auprès de la Banque, elle s’engage expressément à régler les frais de la mainlevée directement à la Banque pour pouvoir disposer de sa mainlevée
+]]></text>
+					</staticText>
+				</frame>
+				<frame>
+					<reportElement x="268" y="0" width="267" height="90" uuid="4fb91402-7bde-47d8-b4bd-047442185708"/>
+					<staticText>
+						<reportElement x="7" y="0" width="255" height="190" uuid="2fbbf0e0-9a05-40e0-b527-b93668b24fbd">
+							<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[رفع اليد عن هدا الضمان سيكون جاهزا في الوكالة البنكية للمقترض في غضون في غضون "30" يوم عمل من تاريخ التسديد الكامل لالتزاماته اتجاه البنك و كذا المصاريف المتعلقة برفع اليد.
+
+على الكفيل أن يربط الاتصال بوكالة المقترض البنكية من أجل اطلاعه على الإجراءات المتعلقة بتسليم وثيقة رفع اليد.
+
+يبدي الكفيل موافقته التامة بدون شرط أو قيد على الاقتطاع الآلي لمصاريف رفع اليد من حسابه فور التسديد الكامل للدين.
+
+هذا و يلتزم الكفيل، في حالة ما إذا لم يكن يتوفرعلى حساب بنكي مفتوح لدى البنك، بآداء مصاريف رفع اليد مباشرة للبنك لتمكينه من وثيقة رفع اليد
+]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="30" uuid="189abcde-f012-3456-789a-012345678982"/>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="30" uuid="29abcdef-0123-4567-89ab-012345678983"/>
+					<staticText>
+						<reportElement x="5" y="0" width="30" height="12" uuid="3abcdef0-1234-5678-9abc-012345678984"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Fait à]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="35" y="0" width="225" height="12" uuid="4bcdef01-2345-6789-abcd-012345678985"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{signedIn}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="5" y="15" width="15" height="12" uuid="5cdef012-3456-789a-bcde-012345678986"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[Le]]></text>
+					</staticText>
+					<textField textAdjust="StretchHeight">
+						<reportElement x="20" y="15" width="240" height="12" uuid="6def0123-4567-89ab-cdef-012345678987"/>
+						<textElement>
+							<font fontName="DejaVu Sans" size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{signedAt}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="30" uuid="8f012345-6789-abcd-ef01-012345678989"/>
+					<staticText>
+						<reportElement x="197" y="0" width="70" height="12" uuid="90123456-789a-bcde-f012-012345678990"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[حرر ب:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="197" y="15" width="70" height="12" uuid="a1234567-89ab-cdef-0123-012345678991"/>
+						<textElement textAlignment="Right">
+							<font fontName="DejaVu Sans" size="9"/>
+						</textElement>
+						<text><![CDATA[بتاريخ:]]></text>
+					</staticText>
+				</frame>
+			</frame>
+		</band>
+		<band height="150" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="535" height="60" uuid="b2345678-9abc-def0-1234-012345678992"/>
+				<staticText>
+					<reportElement x="30" y="20" width="200" height="30" uuid="d456789a-bcde-f012-3456-012345678994"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LA CAUTION (1)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="305" y="20" width="200" height="30" uuid="3abcdef0-1234-5678-9abc-012345679000"/>
+					<textElement textAlignment="Right">
+						<font fontName="DejaVu Sans" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[الكفيل (1)]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="30" y="78" width="475" height="42" uuid="8b4bcca7-3a6c-40f4-9b9a-44b477c6f937"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<text><![CDATA[(1) Faire précéder la signature par la mention écrite de la main de la Caution : "Lu et approuvé, Bon pour accord »
+يتعيـــن علــــى المــوقــــع أن يسبـــــق تــوقيعـــــه بالبيـانــات التـاليــــــة المكتـوبــــة بخــط اليــــــد
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
