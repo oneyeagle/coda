@@ -66,7 +66,7 @@
                         </textElement>
                         <text><![CDATA[EN DATE DU :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="91" y="0" width="175" height="15" uuid="c9d0e1f2-a3b4-4010-6e7f-8a9b0c1d2e3f"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10"/>
@@ -104,7 +104,7 @@
                         </textElement>
                         <text><![CDATA[CONCLU AVEC :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="92" y="1" width="175" height="15" uuid="e7f8a9b0-c1d2-4018-4a5b-6c7d8e9f0a1b"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10"/>
@@ -200,7 +200,7 @@
                         <textElement>
                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
                         </textElement>
-                        <textFieldExpression><![CDATA["en date du :"+$P{decisionDate}]]></textFieldExpression>
+                        <textFieldExpression><![CDATA["en date du :" + ($P{decisionDate} != null ? $P{decisionDate} : "")]]></textFieldExpression>
                     </textField>
                 </frame>
                 <frame>
@@ -210,7 +210,7 @@
                         <textElement textAlignment="Right">
                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
                         </textElement>
-                        <textFieldExpression><![CDATA["بتاريخ :"]]></textFieldExpression>
+                        <textFieldExpression><![CDATA["بتاريخ :" + ($P{decisionDate} != null ? $P{decisionDate} : "")]]></textFieldExpression>
                     </textField>
                 </frame>
             </frame>
@@ -255,13 +255,11 @@
                 </frame>
                 <frame>
                     <reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="e7f8a9b0-c1d2-4048-4a5b-6c7d8e9f0a1b"/>
-                    <staticText>
+                    <textField textAdjust="StretchHeight" isBlankWhenNull="true">
                         <reportElement x="7" y="0" width="255" height="12" uuid="f8a9b0c1-d2e3-4049-5b6c-7d8e9f0a1b2c"/>
-                        <textElement textAlignment="Right">
-                            <font fontName="DejaVu Sans" size="10"/>
-                        </textElement>
-                        <text><![CDATA[]]></text>
-                    </staticText>
+                        <textElement textAlignment="Right"><font fontName="DejaVu Sans" size="10"/></textElement>
+                        <textFieldExpression><![CDATA["بنسبة فائدة " + ($P{rateType} != null ? $P{rateType} : "") + " قدرها " + ($P{rate} != null ? $P{rate} : "") + " %"]]></textFieldExpression>
+                    </textField>
                 </frame>
             </frame>
         </band>
@@ -292,9 +290,9 @@
         </band>
         <band height="80" splitType="Stretch">
             <frame>
-                <reportElement x="0" y="0" width="535" height="80" uuid="a5b6c7d8-e9f0-4056-2c3d-4e5f6a7b8c9d"/>
+                <reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="80" uuid="a5b6c7d8-e9f0-4056-2c3d-4e5f6a7b8c9d"/>
                 <componentElement>
-                    <reportElement x="0" y="0" width="535" height="80" uuid="b6c7d8e9-f0a1-4057-3d4e-5f6a7b8c9d0e"/>
+                    <reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="80" uuid="b6c7d8e9-f0a1-4057-3d4e-5f6a7b8c9d0e"/>
                     <jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
                         <datasetRun subDataset="TitreFoncierDataset" uuid="c7d8e9f0-a1b2-4058-4e5f-6a7b8c9d0e1f">
                             <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listeTitresFonciers})]]></dataSourceExpression>
@@ -311,7 +309,7 @@
                                         </textElement>
                                         <text><![CDATA[l'Emprunteur, conformément aux dispositions du Dahir du 22 novembre 2011, consent au profit de la Banque, qui accepte par privilège et préférence à tous autres, une hypothèque de]]></text>
                                     </staticText>
-                                    <textField textAdjust="StretchHeight">
+                                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                                         <reportElement x="5" y="50" width="100" height="15" uuid="a1b2c3d4-e5f6-4062-8c9d-0e1f2a3b4c5d"/>
                                         <textElement>
                                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
@@ -325,7 +323,7 @@
                                         </textElement>
                                         <text><![CDATA[rang]]></text>
                                     </staticText>
-                                    <textField textAdjust="StretchHeight">
+                                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                                         <reportElement x="145" y="50" width="115" height="15" uuid="c3d4e5f6-a7b8-4064-0e1f-2a3b4c5d6e7f"/>
                                         <textElement>
                                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
@@ -717,7 +715,7 @@
                         </textElement>
                         <text><![CDATA[Dénomination :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="100" y="0" width="165" height="12" uuid="e7f8a9b0-c1d2-4138-4a5b-6c7d8e9f0a1b"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10"/>
@@ -749,7 +747,7 @@
                         </textElement>
                         <text><![CDATA[Numéro(s) du (ou des) titre(s) foncier(s) ou de la (ou des) réquisition(s) :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="5" y="25" width="255" height="12" uuid="c1d2e3f4-a5b6-4242-8e9f-0a1b2c3d4e5f"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
@@ -781,7 +779,7 @@
                         </textElement>
                         <text><![CDATA[Situation :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="65" y="0" width="195" height="12" uuid="d8e9f0a1-b2c3-4149-5f6a-7b8c9d0e1f2a"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10"/>
@@ -813,7 +811,7 @@
                         </textElement>
                         <text><![CDATA[Superficie :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="65" y="0" width="195" height="12" uuid="e5f6a7b8-c9d0-4156-2a3b-4c5d6e7f8a9b"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10"/>
@@ -845,7 +843,7 @@
                         </textElement>
                         <text><![CDATA[Description des constructions s'il y a lieu :]]></text>
                     </staticText>
-                    <textField textAdjust="StretchHeight">
+                    <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                         <reportElement x="5" y="20" width="255" height="12" uuid="f2a3b4c5-d6e7-4263-9b0c-1d2e3f4a5b6c"/>
                         <textElement>
                             <font fontName="DejaVu Sans" size="10" isBold="false"/>
@@ -976,7 +974,7 @@ Les frais de mainlevée seront débités automatiquement par la Banque du compte
                 </textElement>
                 <text><![CDATA[Fait à]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight">
+            <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                 <reportElement x="30" y="5" width="140" height="12" uuid="e5f6a7b8-c9d0-4186-2a3b-4c5d6e7f8a9b"/>
                 <textElement>
                     <font fontName="DejaVu Sans" size="10"/>
@@ -997,7 +995,7 @@ Les frais de mainlevée seront débités automatiquement par la Banque du compte
                 </textElement>
                 <text><![CDATA[le]]></text>
             </staticText>
-            <textField textAdjust="StretchHeight">
+            <textField isBlankWhenNull="true" textAdjust="StretchHeight">
                 <reportElement x="20" y="20" width="140" height="12" uuid="b8c9d0e1-f2a3-4189-5d6e-7f8a9b0c1d2e"/>
                 <textElement>
                     <font fontName="DejaVu Sans" size="10"/>
