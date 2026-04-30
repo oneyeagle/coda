@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="main-report" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="fe57424d-8596-49be-a0be-c71a845d5142">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="SUBREPORT_DIR_PATH" class="java.lang.String"/>
+	<parameter name="PC_NAME" class="java.lang.String"/>
+	<parameter name="PC_DATA" class="java.lang.Object"/>
+	<parameter name="ATTCH_HYPOTHEC_NAME" class="java.lang.String"/>
+	<parameter name="ATTCH_HYPOTHEC_DATA" class="java.util.List"/>
+	<parameter name="ATTCH_HYPOTHECAIRE_NAME" class="java.lang.String"/>
+	<parameter name="ATTCH_HYPOTHECAIRE_DATA" class="java.util.List"/>
+	<parameter name="ATTCH_SOLIDAIRE_NAME" class="java.lang.String"/>
+	<parameter name="ATTCH_SOLIDAIRE_DATA" class="java.util.List"/>
+	<group name="corp">
+		<groupExpression><![CDATA[""]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="100" height="50" uuid="4f3f4e70-a349-47e5-9055-9882cb42e008"/>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/general_conditions.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="10">
+				<printWhenExpression><![CDATA[$P{PC_DATA} != null]]></printWhenExpression>
+				<break>
+					<reportElement x="0" y="0" width="100" height="1" uuid="8885a065-276a-464a-939a-c9540b616429"/>
+				</break>
+			</band>
+			<band height="50">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="100" height="50" uuid="4f3f4e70-a349-47e5-9055-9882cb42e008"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(java.util.Arrays.asList($P{PC_DATA}))]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/"+ $P{PC_NAME} +".jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="10">
+				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHEC_DATA} != null && !$P{ATTCH_HYPOTHEC_DATA}.isEmpty()]]></printWhenExpression>
+				<break>
+					<reportElement x="0" y="0" width="100" height="1" uuid="2a561175-1033-4f05-8857-7975f782c5a1"/>
+				</break>
+			</band>
+			<band height="50">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827517"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_HYPOTHEC_DATA})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_HYPOTHEC_NAME} + ".jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="10">
+				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHECAIRE_DATA} != null && !$P{ATTCH_HYPOTHECAIRE_DATA}.isEmpty()]]></printWhenExpression>
+				<break>
+					<reportElement x="0" y="0" width="100" height="1" uuid="cbc7d0a4-c6c6-41a0-9163-0c46cb945dac"/>
+				</break>
+			</band>
+			<band height="50">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827518"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_HYPOTHECAIRE_DATA})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_HYPOTHECAIRE_NAME} + ".jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+			<band height="10">
+				<printWhenExpression><![CDATA[$P{ATTCH_SOLIDAIRE_DATA} != null && !$P{ATTCH_SOLIDAIRE_DATA}.isEmpty()]]></printWhenExpression>
+				<break>
+					<reportElement x="0" y="0" width="100" height="1" uuid="8a670355-6677-4c76-963e-63f253816654"/>
+				</break>
+			</band>
+			<band height="50">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827518"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_SOLIDAIRE_DATA})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_SOLIDAIRE_NAME} + ".jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+</jasperReport>
