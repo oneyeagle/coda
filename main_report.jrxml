@@ -23,64 +23,77 @@
 	<group name="corp">
 		<groupExpression><![CDATA[""]]></groupExpression>
 		<groupHeader>
+			<!-- 1. General conditions — always printed first -->
 			<band height="50">
 				<subreport isUsingCache="false">
-					<reportElement x="0" y="0" width="100" height="50" uuid="4f3f4e70-a349-47e5-9055-9882cb42e008"/>
+					<reportElement x="0" y="0" width="535" height="50" uuid="4f3f4e70-a349-47e5-9055-9882cb42e008"/>
 					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/general_conditions.jasper"]]></subreportExpression>
 				</subreport>
 			</band>
+			<!-- 2. Page break before PC subreport (only when PC_DATA is provided) -->
 			<band height="10">
 				<printWhenExpression><![CDATA[$P{PC_DATA} != null]]></printWhenExpression>
 				<break>
-					<reportElement x="0" y="0" width="100" height="1" uuid="8885a065-276a-464a-939a-c9540b616429"/>
+					<reportElement x="0" y="0" width="1" height="1" uuid="8885a065-276a-464a-939a-c9540b616429"/>
 				</break>
 			</band>
+			<!-- 3. Particular conditions subreport (only when PC_DATA is provided) -->
 			<band height="50">
+				<printWhenExpression><![CDATA[$P{PC_DATA} != null]]></printWhenExpression>
 				<subreport isUsingCache="false">
-					<reportElement x="0" y="0" width="100" height="50" uuid="4f3f4e70-a349-47e5-9055-9882cb42e008"/>
+					<reportElement x="0" y="0" width="535" height="50" uuid="5270cb15-5330-49dc-aeea-8950771dde22"/>
 					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(java.util.Arrays.asList($P{PC_DATA}))]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/"+ $P{PC_NAME} +".jasper"]]></subreportExpression>
 				</subreport>
 			</band>
+			<!-- 4. Page break before hypothec attachment (only when data exists) -->
 			<band height="10">
 				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHEC_DATA} != null && !$P{ATTCH_HYPOTHEC_DATA}.isEmpty()]]></printWhenExpression>
 				<break>
-					<reportElement x="0" y="0" width="100" height="1" uuid="2a561175-1033-4f05-8857-7975f782c5a1"/>
+					<reportElement x="0" y="0" width="1" height="1" uuid="2a561175-1033-4f05-8857-7975f782c5a1"/>
 				</break>
 			</band>
+			<!-- 5. Hypothec attachment subreport (only when data exists) -->
 			<band height="50">
+				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHEC_DATA} != null && !$P{ATTCH_HYPOTHEC_DATA}.isEmpty()]]></printWhenExpression>
 				<subreport isUsingCache="false">
-					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827517"/>
+					<reportElement x="0" y="0" width="535" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827517"/>
 					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_HYPOTHEC_DATA})]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_HYPOTHEC_NAME} + ".jasper"]]></subreportExpression>
 				</subreport>
 			</band>
+			<!-- 6. Page break before hypothécaire attachment (only when data exists) -->
 			<band height="10">
 				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHECAIRE_DATA} != null && !$P{ATTCH_HYPOTHECAIRE_DATA}.isEmpty()]]></printWhenExpression>
 				<break>
-					<reportElement x="0" y="0" width="100" height="1" uuid="cbc7d0a4-c6c6-41a0-9163-0c46cb945dac"/>
+					<reportElement x="0" y="0" width="1" height="1" uuid="cbc7d0a4-c6c6-41a0-9163-0c46cb945dac"/>
 				</break>
 			</band>
+			<!-- 7. Hypothécaire attachment subreport (only when data exists) -->
 			<band height="50">
+				<printWhenExpression><![CDATA[$P{ATTCH_HYPOTHECAIRE_DATA} != null && !$P{ATTCH_HYPOTHECAIRE_DATA}.isEmpty()]]></printWhenExpression>
 				<subreport isUsingCache="false">
-					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827518"/>
+					<reportElement x="0" y="0" width="535" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827518"/>
 					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_HYPOTHECAIRE_DATA})]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_HYPOTHECAIRE_NAME} + ".jasper"]]></subreportExpression>
 				</subreport>
 			</band>
+			<!-- 8. Page break before solidaire attachment (only when data exists) -->
 			<band height="10">
 				<printWhenExpression><![CDATA[$P{ATTCH_SOLIDAIRE_DATA} != null && !$P{ATTCH_SOLIDAIRE_DATA}.isEmpty()]]></printWhenExpression>
 				<break>
-					<reportElement x="0" y="0" width="100" height="1" uuid="8a670355-6677-4c76-963e-63f253816654"/>
+					<reportElement x="0" y="0" width="1" height="1" uuid="8a670355-6677-4c76-963e-63f253816654"/>
 				</break>
 			</band>
+			<!-- 9. Solidaire attachment subreport (only when data exists) -->
 			<band height="50">
+				<printWhenExpression><![CDATA[$P{ATTCH_SOLIDAIRE_DATA} != null && !$P{ATTCH_SOLIDAIRE_DATA}.isEmpty()]]></printWhenExpression>
 				<subreport isUsingCache="false">
-					<reportElement x="0" y="0" width="100" height="50" uuid="d18c71ad-4d09-4cf8-b340-2a8905827518"/>
+					<reportElement x="0" y="0" width="535" height="50" uuid="0118b0ef-50ed-431a-a20d-1770aea56e04"/>
 					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
 					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{ATTCH_SOLIDAIRE_DATA})]]></dataSourceExpression>
 					<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PATH} + "/" + $P{ATTCH_SOLIDAIRE_NAME} + ".jasper"]]></subreportExpression>
