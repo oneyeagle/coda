@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conditions-generales" pageWidth="560" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a1f690a3-5977-4467-85f8-6b0bcd5b7210">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="DejaVu Sans" fontSize="26" isBold="true"/>
 	<style name="SubTitle" forecolor="#666666" fontName="DejaVu Sans" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="DejaVu Sans" fontSize="12" isBold="true"/>
@@ -13,24 +10,17 @@
 	</queryString>
 	<detail>
 		<band height="700" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="80" width="276" height="400" uuid="e2d6947e-b9a0-44f3-9798-9247def472ca">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="80" width="276" height="400" uuid="e2d6947e-b9a0-44f3-9798-9247def472ca"/>
 				<box>
 					<pen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="7" y="87" width="272" height="393" uuid="85ca9fb0-afbd-4c2d-9e67-7dbddd9e85f3">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="87" width="272" height="393" uuid="85ca9fb0-afbd-4c2d-9e67-7dbddd9e85f3"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -38,7 +28,7 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[- Considérant le Dahir N° : 1-11-03 du 14 rabii I 1432, la Loi n° 31-08 édictant des mesures de protection du consommateur promulguée et publiée au Bulletin Officiel n° 5932 du 7 avril 2011 ;
@@ -61,11 +51,7 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="40" width="278" height="24" uuid="a1fdd556-d675-47f6-b49d-03b7c8f1e196">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="40" width="278" height="24" uuid="a1fdd556-d675-47f6-b49d-03b7c8f1e196"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -79,9 +65,7 @@
 				<text><![CDATA[CONDITIONS GENERALES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="0" width="400" height="40" uuid="793667fb-b02a-47c1-86cc-ae16453d1965">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="80" y="0" width="400" height="40" uuid="793667fb-b02a-47c1-86cc-ae16453d1965"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -89,7 +73,7 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[OFFRE PREALABLE DE CREDIT IMMOBILIER
@@ -97,26 +81,18 @@
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="40" width="276" height="24" uuid="d43fd9b9-ce34-44fc-9435-8a20efbe759f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="40" width="276" height="24" uuid="d43fd9b9-ce34-44fc-9435-8a20efbe759f"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center">
 					<font size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="80" width="278" height="400" uuid="5914e66a-5ada-4c13-8e08-1f3ad150bf43">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="80" width="278" height="400" uuid="5914e66a-5ada-4c13-8e08-1f3ad150bf43"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -124,16 +100,14 @@
 					<bottomPen lineWidth="0.5" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="89" width="273" height="391" uuid="05a1824a-7458-40f8-a5b8-0bbe4209426b">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="89" width="273" height="391" uuid="05a1824a-7458-40f8-a5b8-0bbe4209426b"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -141,7 +115,7 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[- اعتبارا للظهير رقم1-11-03   الصادر في ربيع الأول 1432 ، قانون رقم 08-31 القاضي بتحديد تدابير لحماية المستهلك، و الذي تم نشره  في الجريدة الرسمية رقم 5932 بتاريخ 7 أبريل 2011 .
@@ -170,11 +144,7 @@
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="64" width="278" height="16" uuid="96b39c97-715b-4a00-8aa1-ff4ee264c568">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="64" width="278" height="16" uuid="96b39c97-715b-4a00-8aa1-ff4ee264c568"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -188,24 +158,17 @@
 				<text><![CDATA[PREAMBULE]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="64" width="276" height="16" uuid="67fb5659-a678-45ac-89f2-4d6def738479">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="64" width="276" height="16" uuid="67fb5659-a678-45ac-89f2-4d6def738479"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center">
 					<font size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="330" y="499" width="205" height="14" uuid="5272186e-2291-426b-bad0-aaa0edd73ef5">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="330" y="499" width="205" height="14" uuid="5272186e-2291-426b-bad0-aaa0edd73ef5"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -213,15 +176,13 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[1.1 نسبة الفائدة الثابتة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="485" width="235" height="14" uuid="80003f6f-7bcc-4a17-bba0-579687561c3d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="300" y="485" width="235" height="14" uuid="80003f6f-7bcc-4a17-bba0-579687561c3d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -229,17 +190,13 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل1 : نسبة فائدة القرض]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="480" width="278" height="33" uuid="51568435-e41d-45c7-9a24-5a0337fb3692">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="480" width="278" height="33" uuid="51568435-e41d-45c7-9a24-5a0337fb3692"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -247,7 +204,7 @@
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 1 : TAUX DU CREDIT
@@ -255,24 +212,18 @@
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="278" y="480" width="275" height="33" uuid="84186ddd-75d6-4484-aa79-32219433fbd7">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="480" width="275" height="33" uuid="84186ddd-75d6-4484-aa79-32219433fbd7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="11" isBold="false" isUnderline="true"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="515" width="272" height="92" uuid="a34f1876-6c6b-4102-bdac-fd660c2e2baa">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="2" y="515" width="272" height="92" uuid="a34f1876-6c6b-4102-bdac-fd660c2e2baa"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -280,7 +231,7 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Si l’Emprunteur opte pour un taux fixe ce taux demeure figé pendant toute la durée du Crédit.
@@ -288,9 +239,7 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="514" width="266" height="87" uuid="256e01d3-6bec-4a5c-b629-a92260bf4cc9">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="514" width="266" height="87" uuid="256e01d3-6bec-4a5c-b629-a92260bf4cc9"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -298,7 +247,7 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[إذا اختار المقترض نسبة فائدة ثابتة، تبقى هذه الفائدة قارة طيلة مدة القرض.
@@ -306,24 +255,16 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="514" width="276" height="94" uuid="ed6ecafb-3797-4046-9aa1-86d1e0eb0e67">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="514" width="276" height="94" uuid="ed6ecafb-3797-4046-9aa1-86d1e0eb0e67"/>
 				<box>
 					<pen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="514" width="278" height="92" uuid="84dba4dd-8868-497f-8455-620f3d03f728">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="514" width="278" height="92" uuid="84dba4dd-8868-497f-8455-620f3d03f728"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -331,18 +272,14 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="608" width="278" height="33" uuid="99341486-ff11-44b7-aaf3-6d307276124f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="608" width="278" height="33" uuid="99341486-ff11-44b7-aaf3-6d307276124f"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -350,17 +287,13 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[1.2 Le taux variable]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="642" width="278" height="58" uuid="e2a6044c-1212-4507-abce-5083ffc2d6d5">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="642" width="278" height="58" uuid="e2a6044c-1212-4507-abce-5083ffc2d6d5"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -368,45 +301,35 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="640" width="276" height="60" uuid="ecc0e5a6-cc75-4681-af64-19158857db28">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="640" width="276" height="60" uuid="ecc0e5a6-cc75-4681-af64-19158857db28"/>
 				<box>
 					<pen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="278" y="608" width="275" height="33" uuid="f9601606-38c9-4d5c-8bbe-2766fca6d05e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="608" width="275" height="33" uuid="f9601606-38c9-4d5c-8bbe-2766fca6d05e"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="11" isBold="false" isUnderline="true"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="282" y="644" width="266" height="56" uuid="af1d0098-78c0-4426-ad9a-5eb15ba48fcd">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="644" width="266" height="56" uuid="af1d0098-78c0-4426-ad9a-5eb15ba48fcd"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -414,15 +337,13 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[اذا كان سعر الفائدة متغير، فإن المقترض يقبل صراحة بمبدأ التغيير، و يعلن انخراطه بدون شرط في معادلة تحديده المبينة على أساس التغير السنوي لمتوسط السعر المرجعي المباين البنوكي كما يحدد خلال دوريات بنك المغرب طبقا لمراسيم وزير ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="641" width="272" height="59" uuid="64afca51-b91f-4d88-8a47-07d53d48ee09">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="641" width="272" height="59" uuid="64afca51-b91f-4d88-8a47-07d53d48ee09"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -430,15 +351,13 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Si le taux d’intérêt est variable, l’Emprunteur accepte expressément le principe de sa variabilité et déclare adhérer sans réserve à la formule de sa détermination sur la base de la variation ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="617" width="235" height="14" uuid="ead71e76-beba-4129-92c9-e1a1bb3b22c7">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="310" y="617" width="235" height="14" uuid="ead71e76-beba-4129-92c9-e1a1bb3b22c7"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -446,15 +365,13 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[2.1 نسبة الفائدة المتغيرة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="299" y="40" width="235" height="24" uuid="66a83428-d551-4734-bbee-9d1614947cc7">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="299" y="40" width="235" height="24" uuid="66a83428-d551-4734-bbee-9d1614947cc7"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -462,15 +379,13 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[شـروط عامـة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="301" y="64" width="235" height="24" uuid="46d3c6ff-fef3-4ccb-9cb5-5f8426a5565a">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="301" y="64" width="235" height="24" uuid="46d3c6ff-fef3-4ccb-9cb5-5f8426a5565a"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -478,18 +393,15 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[تـــذكيــــر:]]></text>
 			</staticText>
 		</band>
 		<band height="722">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="278" y="6" width="273" height="434" uuid="b5cf400f-f494-4bf9-8ae5-9364b86de3e0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="6" width="273" height="434" uuid="b5cf400f-f494-4bf9-8ae5-9364b86de3e0"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -497,7 +409,7 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[ الاقتصاد و المالية المنظمة للفوائد المطبقة على عمليات القرض .
@@ -531,25 +443,17 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="278" y="0" width="276" height="430" uuid="acfdeece-ff52-4b30-8152-c59ca1deaed0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="0" width="276" height="430" uuid="acfdeece-ff52-4b30-8152-c59ca1deaed0"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="0" width="278" height="440" uuid="3e23c446-f1c5-433d-b053-95d80de5a314">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="0" width="278" height="440" uuid="3e23c446-f1c5-433d-b053-95d80de5a314"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -557,16 +461,14 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="9" width="272" height="427" uuid="32ca2059-67d1-4354-b082-728c49b02243">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="9" width="272" height="427" uuid="32ca2059-67d1-4354-b082-728c49b02243"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -574,7 +476,7 @@ Les intérêts seront décomptés à terme échu et payable selon la périodicit
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[annuelle du taux moyen pondéré interbancaire tel que fixé par les circulaires de Bank Al Maghrib prises en application des arrêtés du Ministre de l’Economie et des Finances réglementant les intérêts applicables aux opérations de crédit.
@@ -595,9 +497,7 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="309" y="449" width="235" height="14" uuid="5112507f-629c-4205-9593-7d2fc1d21e5f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="309" y="449" width="235" height="14" uuid="5112507f-629c-4205-9593-7d2fc1d21e5f"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -605,33 +505,25 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ 1.3مقتضيات عامة ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="279" y="430" width="275" height="43" uuid="4ed2094a-81b5-427d-8d87-f4bd6fcb44cd">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="430" width="275" height="43" uuid="4ed2094a-81b5-427d-8d87-f4bd6fcb44cd"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="11" isBold="false" isUnderline="true"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="440" width="278" height="33" uuid="a83086c8-a882-4bc0-99c5-2be1333a5f7d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="440" width="278" height="33" uuid="a83086c8-a882-4bc0-99c5-2be1333a5f7d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -639,30 +531,22 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[1.3 Dispositions communes]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="473" width="277" height="83" uuid="50745f19-0005-4023-844a-f95e374edb48">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="473" width="277" height="83" uuid="50745f19-0005-4023-844a-f95e374edb48"/>
 				<box>
 					<pen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="473" width="278" height="83" uuid="5dcd4b06-ea1e-4d92-ade1-6ba286e17800">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="473" width="278" height="83" uuid="5dcd4b06-ea1e-4d92-ade1-6ba286e17800"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -670,16 +554,14 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="463" width="266" height="77" uuid="7a91719e-46f3-4354-8a30-7460c9b0c0f4">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="284" y="463" width="266" height="77" uuid="7a91719e-46f3-4354-8a30-7460c9b0c0f4"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -687,15 +569,13 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يمكن للمقترض أن يطلب من البنك الإنتقال من نسبة الفائدة الثابتة إلى نسبة الفائدة المتغيرة أو العكس. لا يمكن تغير نسبة الفائدة إلا بعد مرور سنة على عقد القرض الذي يوافق تاريخ الإفراج عن هذا الأخير، و ذلك بدون إمكانية الرجوع إلى نسبة الفائدة المطبقة أصلا و شريطة ألا يكون هناك أي تعثر في أداء الإستحقاقات المتعلقة للقرض.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="464" width="272" height="76" uuid="5da70b14-04f2-4894-87ab-8e7bbe852ef8">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="464" width="272" height="76" uuid="5da70b14-04f2-4894-87ab-8e7bbe852ef8"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -703,17 +583,13 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur peut demander à la Banque le passage du taux fixe au taux variable ou inversement. Le changement du taux d'intérêt ne peut intervenir qu'à la date anniversaire du départ du Crédit, une fois dans la vie du Crédit, sans aucune possibilité de retour au taux initialement appliqué et sous réserve qu’aucun incident de paiement n’ait affecté le déroulement du Crédit.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="574" width="278" height="100" uuid="4f0a1264-94e5-47ca-8e14-a9adc5073af8">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="574" width="278" height="100" uuid="4f0a1264-94e5-47ca-8e14-a9adc5073af8"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -721,29 +597,23 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="277" y="574" width="277" height="99" uuid="787938d8-5e92-43ac-ba34-c18bf1b90ca6">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="574" width="277" height="99" uuid="787938d8-5e92-43ac-ba34-c18bf1b90ca6"/>
 				<box>
 					<pen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="568" width="272" height="100" uuid="8105fb26-5de6-48f1-a2dd-558b071991b4">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="568" width="272" height="100" uuid="8105fb26-5de6-48f1-a2dd-558b071991b4"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -751,7 +621,7 @@ A défaut d’acceptation de l’un des choix précités, l’Emprunteur devra r
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[En outre, l'Emprunteur sera redevable à la Banque de toutes commissions et frais de dossier définis aux conditions particulières du présent contrat.
@@ -759,11 +629,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="548" width="278" height="25" uuid="c70913db-1787-4a4b-9de1-75e9442ae8dd">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="548" width="278" height="25" uuid="c70913db-1787-4a4b-9de1-75e9442ae8dd"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -771,31 +637,25 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[1.4 Commissions]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="279" y="540" width="275" height="33" uuid="a5285418-53c7-45ca-bc7f-d5549fb83b66">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="540" width="275" height="33" uuid="a5285418-53c7-45ca-bc7f-d5549fb83b66"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="11" isBold="false" isUnderline="true"/>
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement x="284" y="573" width="266" height="95" uuid="452d3948-db7e-45dd-b86a-e8a45caecbb1">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="284" y="573" width="266" height="95" uuid="452d3948-db7e-45dd-b86a-e8a45caecbb1"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -803,7 +663,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[بالإضافة إلى ما سبق، سيكون المقترض مدينا للبنك بجميع العمولات و مصاريف الملف المشار إليها في الشروط الخاصة من هذا العقد..
@@ -812,9 +672,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="307" y="544" width="235" height="14" uuid="f78bd765-bf0d-4887-8c7c-60c7ce5b43f0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="307" y="544" width="235" height="14" uuid="f78bd765-bf0d-4887-8c7c-60c7ce5b43f0"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -822,16 +680,13 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[1.4 العمولات]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="664" width="277" height="14" uuid="19e63a2e-2102-47e0-b50f-fae335b8c80a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="664" width="277" height="14" uuid="19e63a2e-2102-47e0-b50f-fae335b8c80a"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -839,17 +694,13 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.75" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 2 : UTILISATION DU CREDIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="680" width="277" height="23" uuid="8a8a379b-6206-4d32-82ef-9f5b8ec873de">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="680" width="277" height="23" uuid="8a8a379b-6206-4d32-82ef-9f5b8ec873de"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -857,17 +708,13 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Le Crédit ne sera mis à la disposition de l’Emprunteur qu'après ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="670" width="277" height="14" uuid="449c57cf-48e9-42a3-b3ce-c86af4b80b09">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="670" width="277" height="14" uuid="449c57cf-48e9-42a3-b3ce-c86af4b80b09"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -875,15 +722,13 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل 2: استعمال مبلغ القرض]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="684" width="276" height="19" uuid="8292ac9b-e8e8-49c9-b49b-13a3fd04ce52">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="684" width="276" height="19" uuid="8292ac9b-e8e8-49c9-b49b-13a3fd04ce52"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -891,32 +736,25 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Justified" verticalAlignment="Top">
+				<textElement textAlignment="Justified">
 					<font fontName="DejaVu Sans" size="8" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[وضع القرض رهن إشارة المقترض يبقى رهينا بالتأسيس الفعلي لجميع الضمانات]]></text>
 			</staticText>
 		</band>
 		<band height="802">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="278" y="0" width="276" height="380" uuid="15a8c9fc-da4e-4e97-a776-cce8f844673e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="0" width="276" height="380" uuid="15a8c9fc-da4e-4e97-a776-cce8f844673e"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="6" width="273" height="374" uuid="291e15e8-5da4-4586-83fd-db49d7b91212">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="6" width="273" height="374" uuid="291e15e8-5da4-4586-83fd-db49d7b91212"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -924,7 +762,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[المنصوص عليها في الشروط الخاصة و تحقيق التمويل الذاتي في حالة النص عليه و كذا تحقيق مجموع الشروط المنصوص عليها ضمن الشروط الخاصة من هذا العقد.
@@ -948,9 +786,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="9" width="272" height="371" uuid="187614be-3d0f-4327-9236-7c4bfc6f044e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="9" width="272" height="371" uuid="187614be-3d0f-4327-9236-7c4bfc6f044e"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -958,7 +794,7 @@ Les commissions versées au début de chaque période, ainsi que les frais de do
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[parfaite constitution des garanties prévues aux conditions particulières, la réalisation de l’autofinancement le cas échéant et/ou l’exécution des conditions spéciales prévues aux conditions particulières des présentes.
@@ -975,11 +811,7 @@ L'Emprunteur autorise expressément la Banque à régler pour son compte par pr�
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="0" width="278" height="380" uuid="8317731a-0ff3-4f42-a2d2-7c1403ea29db">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="0" width="278" height="380" uuid="8317731a-0ff3-4f42-a2d2-7c1403ea29db"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -987,16 +819,14 @@ L'Emprunteur autorise expressément la Banque à régler pour son compte par pr�
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="425" width="272" height="355" uuid="4e754e8c-a047-483e-8182-c8ab57833134">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="6" y="425" width="272" height="355" uuid="4e754e8c-a047-483e-8182-c8ab57833134"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1004,7 +834,7 @@ L'Emprunteur autorise expressément la Banque à régler pour son compte par pr�
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[-Le remboursement des échéances du Crédit sera effectué, conformément au tableau d'amortissement, par prélèvement sur le compte de l’Emprunteur, ouvert sur les livres de la Banque qui doit être suffisamment approvisionné le jour de l'échéance.
@@ -1021,11 +851,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="380" width="278" height="400" uuid="087f141d-96fd-4424-8737-3d3ad4df0b78">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="380" width="278" height="400" uuid="087f141d-96fd-4424-8737-3d3ad4df0b78"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1033,16 +859,14 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="422" width="273" height="358" uuid="16a8c741-0f8e-4b2f-9feb-efac5ce42225">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="422" width="273" height="358" uuid="16a8c741-0f8e-4b2f-9feb-efac5ce42225"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1050,7 +874,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[-  تسديد أقساط القرض، سيتم حسب جدول الإستخماد، عن طريق الإقتطاع من حساب المقترض المفتوح بدفاتر البنك، والذي يجب أن يتوفر على مؤونة كافية بتاريخ الإستحقاق.
@@ -1071,25 +895,15 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="380" width="274" height="400" uuid="b5cd826b-405d-4762-887b-7ea4e2c31650">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="380" width="274" height="400" uuid="b5cd826b-405d-4762-887b-7ea4e2c31650"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="279" y="390" width="269" height="28" uuid="28eaa609-df3d-48d3-81c7-21a13663b1f4">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="390" width="269" height="28" uuid="28eaa609-df3d-48d3-81c7-21a13663b1f4"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1097,7 +911,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل 3 التسديد
@@ -1105,11 +919,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="390" width="272" height="28" uuid="5b49f605-d588-4202-ac17-0ea4ec16794e">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="390" width="272" height="28" uuid="5b49f605-d588-4202-ac17-0ea4ec16794e"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1117,7 +927,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 3 : REMBOURSEMENT DU CREDIT
@@ -1126,13 +936,8 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 			</staticText>
 		</band>
 		<band height="760">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="279" y="68" width="269" height="28" uuid="d61301a4-b15e-452e-814a-205f44ba034d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="68" width="269" height="28" uuid="d61301a4-b15e-452e-814a-205f44ba034d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1140,17 +945,13 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[3.2 - التسديد المبكر قبل حلول الأجل:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="68" width="272" height="28" uuid="844ce0c6-17dd-420a-9371-fff0ea68538a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="68" width="272" height="28" uuid="844ce0c6-17dd-420a-9371-fff0ea68538a"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1158,48 +959,35 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[3.2 REMBOURSEMENT ANTICIPE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="1" width="278" height="330" uuid="dc35f87e-962c-450d-9391-139a328c533d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="1" width="278" height="330" uuid="dc35f87e-962c-450d-9391-139a328c533d"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid"/>
-					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="1" width="274" height="329" uuid="d8dbddab-a8cb-47ad-b08b-1cf1abdcd9e5">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="1" width="274" height="329" uuid="d8dbddab-a8cb-47ad-b08b-1cf1abdcd9e5"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="102" width="273" height="230" uuid="45fecc0d-b3f4-45ff-b87b-721250d65844">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="102" width="273" height="230" uuid="45fecc0d-b3f4-45ff-b87b-721250d65844"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1207,7 +995,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يمكن للمقترض أن يؤدي، بمبادرة منه و قبل حلول الأجل، جزء أو كل المبالغ المستحقة عن القرض موضوع هذا العقد، طبقا لمقتضيات المادة 132 من القانون رقم  08-31-المحدد لتدابير حماية المستهلك.
@@ -1225,9 +1013,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="105" width="272" height="216" uuid="7ad8c8b2-de70-4390-adbf-6b812c91ca55">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="105" width="272" height="216" uuid="7ad8c8b2-de70-4390-adbf-6b812c91ca55"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1235,7 +1021,7 @@ La justification du montant de la créance de la Banque sur l’Emprunteur et le
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur pourra, à son initiative, rembourser par anticipation en totalité ou en partie le présent Crédit et ce, conformément aux dispositions de l’article 132 de la loi n° 31-08 édictant des mesures de protection du consommateur.
@@ -1246,11 +1032,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="337" width="272" height="28" uuid="1694c725-8199-4418-b8c7-314524495907">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="337" width="272" height="28" uuid="1694c725-8199-4418-b8c7-314524495907"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1258,17 +1040,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 4 : RECOUVREMENT DES IMPAYES ET  CONTENTIEUX ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="279" y="337" width="269" height="28" uuid="fb8e48c0-aee8-427f-97cc-7c69ccf0e70d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="337" width="269" height="28" uuid="fb8e48c0-aee8-427f-97cc-7c69ccf0e70d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1276,15 +1054,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل 4: تحصيل الاستحقاقات غير المؤداة  و المنازعات ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="374" width="272" height="106" uuid="9320a59c-d6b9-47e5-bf1b-48aba20b065e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="374" width="272" height="106" uuid="9320a59c-d6b9-47e5-bf1b-48aba20b065e"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1292,17 +1068,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Si la Banque est amené à entamer une quelconque procédure pour l’obtention, soit de la réalisation des garanties qui lui ont été consenties, soit le paiement des sommes qui lui sont dues, l’Emprunteur sera tenu de lui rembourser en sus de la créance en principal et intérêts échus, des intérêts de retard au taux du Crédit majoré des intérêts fixés par le présent contrat ainsi que tous les frais engagés dans le cadre de la déchéance du terme, y compris les frais et honoraires des avocats auxquels elle aura été condamnée. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="331" width="278" height="149" uuid="7ae3c2dc-bc64-430d-bcfd-63dfaa62caf1">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="331" width="278" height="149" uuid="7ae3c2dc-bc64-430d-bcfd-63dfaa62caf1"/>
 				<box>
 					<pen lineWidth="0.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1310,16 +1082,14 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="371" width="273" height="230" uuid="b050361d-59ee-47dc-be4e-97d5c4280ab1">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="371" width="273" height="230" uuid="b050361d-59ee-47dc-be4e-97d5c4280ab1"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1327,29 +1097,22 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[إذا اضطر البنك لاتباع أية مسطرة من أجل تحقيق الضمانات الممنوحة له أو أداء المبالغ المستحقة له سيكون على  المقترض تسديد فوائد التأخير بالإضافة إلى القرض الأصلي و الفوائد المستحقة. و تحتسب فوائد التأخير هذه وفق سعر فائدة القرض إضافة إلى الفوائد المحددة بمقتضى هذا العقد وكذا كافة المصاريف التي تم صرفها في إطار سقوط الأجل بما في ذلك مصاريف و أتعاب المحامين ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="331" width="274" height="149" uuid="45f016e5-1e9c-466e-9c6d-8b8923f0c879">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="331" width="274" height="149" uuid="45f016e5-1e9c-466e-9c6d-8b8923f0c879"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="522" width="273" height="230" uuid="2005b0f5-36f7-4651-a14c-94071a18522f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="522" width="273" height="230" uuid="2005b0f5-36f7-4651-a14c-94071a18522f"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1357,7 +1120,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[
@@ -1376,25 +1139,15 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="480" width="274" height="268" uuid="4adb9ea2-8cd3-40d4-813c-1103b382c013">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="480" width="274" height="268" uuid="4adb9ea2-8cd3-40d4-813c-1103b382c013"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="279" y="488" width="269" height="28" uuid="a8c295f9-ff8d-4838-b807-97aa830bab47">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="488" width="269" height="28" uuid="a8c295f9-ff8d-4838-b807-97aa830bab47"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1402,15 +1155,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل 5: كيفية تحويل القرض إلى شخص آخر]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="525" width="272" height="216" uuid="406203f2-2725-4b3d-943f-d363c02adbf0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="525" width="272" height="216" uuid="406203f2-2725-4b3d-943f-d363c02adbf0"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1418,7 +1169,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur a la possibilité de transférer le présent crédit à une tierce personne déclarée éligible par la Banque, aux conditions citées ci-après à titre indicatif :
@@ -1431,11 +1182,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="480" width="278" height="268" uuid="3252cb53-5c50-40f6-a816-792f5f44116c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="480" width="278" height="268" uuid="3252cb53-5c50-40f6-a816-792f5f44116c"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1443,18 +1190,14 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="488" width="272" height="28" uuid="83ba53da-a8f6-4851-a9b9-bb20df5cd317">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="488" width="272" height="28" uuid="83ba53da-a8f6-4851-a9b9-bb20df5cd317"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1462,7 +1205,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 5 : MODALITES DE TRANSFERT DU CREDIT A UNE TIERCE PERSONNE]]></text>
@@ -1476,27 +1219,17 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 			</textField>
 		</band>
 		<band height="760">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="0" width="274" height="278" uuid="1b9094cb-e8c2-47c7-9e90-f65e918cd59e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="0" width="274" height="278" uuid="1b9094cb-e8c2-47c7-9e90-f65e918cd59e"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="0" width="278" height="279" uuid="500ba916-6726-44f7-9f96-1ed795c5135d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="0" width="278" height="279" uuid="500ba916-6726-44f7-9f96-1ed795c5135d"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1504,16 +1237,14 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="44" width="272" height="236" uuid="e1df5fbf-599a-4619-9930-ec7c9c4a79a1">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="44" width="272" height="236" uuid="e1df5fbf-599a-4619-9930-ec7c9c4a79a1"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1521,7 +1252,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur s'interdit de faire ou de laisser faire l'une quelconque des opérations, ci-après, sans avoir obtenu l'accord préalable et écrit de la Banque :
@@ -1535,9 +1266,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="41" width="273" height="239" uuid="711c2e06-fd7b-4f43-8774-e4b0a4ea8b3c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="41" width="273" height="239" uuid="711c2e06-fd7b-4f43-8774-e4b0a4ea8b3c"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1545,7 +1274,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يمتنع المقترض عن القيام أوالسماح بالقيام، بدون موافقة مسبقة و مكتوبة من البنك المقرض، بأي من العمليات التالية :
@@ -1562,11 +1291,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="279" y="2" width="269" height="40" uuid="3ef98e91-5551-4e10-9350-b67e6806d1f9">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="2" width="269" height="40" uuid="3ef98e91-5551-4e10-9350-b67e6806d1f9"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1574,7 +1299,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[لفصل 6: الإمتناعات و الإلتزامات
@@ -1583,11 +1308,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="3" width="272" height="36" uuid="9231c33d-9989-4e60-a1a5-562a2b47f626">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="3" width="272" height="36" uuid="9231c33d-9989-4e60-a1a5-562a2b47f626"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1595,7 +1316,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 6 : INTERDICTIONS/ENGAGEMENTS
@@ -1604,11 +1325,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="280" width="278" height="290" uuid="fa647b3d-7968-4f63-93bb-a563d8753b2a">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="280" width="278" height="290" uuid="fa647b3d-7968-4f63-93bb-a563d8753b2a"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1616,16 +1333,14 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="307" width="272" height="266" uuid="fa544672-7472-44c4-9001-7f6788b4e545">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="307" width="272" height="266" uuid="fa544672-7472-44c4-9001-7f6788b4e545"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1633,7 +1348,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur s'engage pendant toute la durée du Crédit sous peine de résiliation du présent contrat à :
@@ -1648,11 +1363,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="11" y="282" width="272" height="25" uuid="3cb65b19-6c81-4221-9c3f-db082c27e33c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="11" y="282" width="272" height="25" uuid="3cb65b19-6c81-4221-9c3f-db082c27e33c"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1660,29 +1371,21 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[6.2 ENGAGEMENTS :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="280" width="274" height="290" uuid="3309c62b-5352-4400-abda-8a9c6539ac95">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="280" width="274" height="290" uuid="3309c62b-5352-4400-abda-8a9c6539ac95"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="276" y="308" width="273" height="248" uuid="08f2b214-3418-47d2-a57f-4454f9ef3956">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="276" y="308" width="273" height="248" uuid="08f2b214-3418-47d2-a57f-4454f9ef3956"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1690,7 +1393,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يلتزم المقترض ، طيلة مدة القرض و تحت طائلة فسخ هذا العقد، بما يلي:
@@ -1710,11 +1413,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="283" y="281" width="269" height="25" uuid="8a248b76-2ea8-4ea5-91f8-a9d17170aed4">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="283" y="281" width="269" height="25" uuid="8a248b76-2ea8-4ea5-91f8-a9d17170aed4"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1728,11 +1427,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 				<text><![CDATA[6.2 - الإلتزامات:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="572" width="269" height="33" uuid="0e2ce71b-f216-45a3-9958-5fafdc503ada">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="572" width="269" height="33" uuid="0e2ce71b-f216-45a3-9958-5fafdc503ada"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1740,17 +1435,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[الفصل 7: إمكانية فسخ هذا العقد]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="569" width="272" height="33" uuid="912326b3-adf3-4480-9c4a-9850a5212be6">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="5" y="569" width="272" height="33" uuid="912326b3-adf3-4480-9c4a-9850a5212be6"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1758,15 +1449,13 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 7 : FACULTE DE RESILIATION DES PRESENTES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="598" width="272" height="162" uuid="81485f9d-834e-4673-8f84-081451139174">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="598" width="272" height="162" uuid="81485f9d-834e-4673-8f84-081451139174"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1774,7 +1463,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Les sommes dues par l‘Emprunteur deviendront immédiatement et intégralement exigibles avec déchéance du terme et le présent contrat sera résilié de plein droit sans délai :
@@ -1785,9 +1474,7 @@ L’Emprunteur devra verser à la Banque le montant qu’il entend rembourser pa
 Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la Banque dans chacun des cas suivants, sans que cette énumération soit limitative, 60 jours après mise en demeure par lettre recommandée avec accusé de réception adressée par la Banque au domicile élu de l’Emprunteur, même si ce dernier ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="598" width="273" height="162" uuid="20ff2cb0-3946-4b98-9bf4-e7eba04f1fc3">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="598" width="273" height="162" uuid="20ff2cb0-3946-4b98-9bf4-e7eba04f1fc3"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1795,7 +1482,7 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يفسخ هذا العقد بقوة القانون، و تصبح المبالغ التي بذمة المقترض مستحقة فورا و بكاملها مع سقوط الأجل، :
@@ -1808,25 +1495,16 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="570" width="274" height="190" uuid="d79f9e35-42de-446b-9217-613115e89603">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="570" width="274" height="190" uuid="d79f9e35-42de-446b-9217-613115e89603"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="570" width="278" height="190" uuid="d5cd5e29-8939-47e0-be67-b4d0fda8db7f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="570" width="278" height="190" uuid="d5cd5e29-8939-47e0-be67-b4d0fda8db7f"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1834,7 +1512,7 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
@@ -1842,11 +1520,8 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 			</staticText>
 		</band>
 		<band height="738">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="276" y="8" width="273" height="392" uuid="bfc5fb85-4b64-4cab-81de-9f0d9495522d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="276" y="8" width="273" height="392" uuid="bfc5fb85-4b64-4cab-81de-9f0d9495522d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1854,7 +1529,7 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[- في حالة تخصيص مبلغ القرض جزئيا أو كليا لغرض آخر غير الغرض المخصص له و المنصوص عليه في هذا العقد، و كذا في حالة ما إذا تبين عدم قدرته على أداء التمويل الذاتي الخاص به ؛
@@ -1882,9 +1557,7 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="7" width="272" height="393" uuid="c4dfa86f-5f6b-4fae-9c52-179809c7f2a0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="7" width="272" height="393" uuid="c4dfa86f-5f6b-4fae-9c52-179809c7f2a0"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1892,7 +1565,7 @@ Toutefois, le présent contrat sera résilié de plein droit s’il plaît à la
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[n’aurait pas retiré cette lettre recommandée.
@@ -1912,25 +1585,15 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="0" width="274" height="400" uuid="5a4a5d29-a4da-43d5-8a94-987acf76a2e9">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="0" width="274" height="400" uuid="5a4a5d29-a4da-43d5-8a94-987acf76a2e9"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="0" width="278" height="400" uuid="efd860c9-e59f-4b1d-8cb7-a9b8d741d734">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="0" width="278" height="400" uuid="efd860c9-e59f-4b1d-8cb7-a9b8d741d734"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1938,18 +1601,14 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="400" width="278" height="330" uuid="888c1c2a-793c-4a3b-bb97-08ada37cae92">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="400" width="278" height="330" uuid="888c1c2a-793c-4a3b-bb97-08ada37cae92"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1957,30 +1616,23 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="400" width="274" height="330" uuid="55abf099-152d-431b-8898-3ba1c31e8efd">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="400" width="274" height="330" uuid="55abf099-152d-431b-8898-3ba1c31e8efd"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="436" width="273" height="294" uuid="0ae78f63-d15c-4f90-b1ed-64001d0815df">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="436" width="273" height="294" uuid="0ae78f63-d15c-4f90-b1ed-64001d0815df"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -1988,7 +1640,7 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يلتزم المقترض باكتتاب و تجديد بوليصات التأمين المنصوص عليها في الشروط الخاصة، و ذلك طيلة مدة القرض.
@@ -2006,9 +1658,7 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="436" width="272" height="294" uuid="ac79285b-050a-4a2e-a48e-8ce75b8588ae">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="436" width="272" height="294" uuid="ac79285b-050a-4a2e-a48e-8ce75b8588ae"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2016,7 +1666,7 @@ Il reste entendu entre les parties qu’en cas de résiliation du contrat dans l
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L'Emprunteur s'engage à souscrire et à maintenir, pendant toute la durée du Crédit, les polices d'assurances indiquées aux conditions particulières.
@@ -2029,11 +1679,7 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="407" width="272" height="33" uuid="a5103d9e-08b5-48f0-b1db-1d6fde1b531a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="5" y="407" width="272" height="33" uuid="a5103d9e-08b5-48f0-b1db-1d6fde1b531a"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2041,17 +1687,13 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 8: ASSURANCES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="410" width="269" height="33" uuid="4437aa04-3d49-4102-b359-d943946ea3c2">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="410" width="269" height="33" uuid="4437aa04-3d49-4102-b359-d943946ea3c2"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2059,18 +1701,15 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[لفصل 8: التأمين]]></text>
 			</staticText>
 		</band>
 		<band height="802">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="3" y="3" width="272" height="165" uuid="2f14c88a-6368-47a4-8a9d-5defdbf94c79">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="3" width="272" height="165" uuid="2f14c88a-6368-47a4-8a9d-5defdbf94c79"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2078,7 +1717,7 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[8.2 Au cas où l’Emprunteur ne souscrit pas une Assurance Groupe, il devra remettre à la Banque un avenant portant délégation expresse en faveur de celle-ci des indemnités dues en cas de sinistre.
@@ -2088,28 +1727,21 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="0" width="278" height="166" uuid="8bbc8828-0682-471f-8b7d-98bb3643db2f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="0" width="278" height="166" uuid="8bbc8828-0682-471f-8b7d-98bb3643db2f"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid"/>
-					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="3" width="266" height="163" uuid="5cd1eeac-8ca3-40a6-a6be-d08c72360dd2">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="3" width="266" height="163" uuid="5cd1eeac-8ca3-40a6-a6be-d08c72360dd2"/>
 				<box padding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
@@ -2117,7 +1749,7 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[ 
@@ -2131,25 +1763,15 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="0" width="274" height="166" uuid="c1d111fe-86ea-4224-95ee-c26cb245df26">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="0" width="274" height="166" uuid="c1d111fe-86ea-4224-95ee-c26cb245df26"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="166" width="278" height="102" uuid="dfd70c8f-4ae0-41e9-bc53-46e8787e69e0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="166" width="278" height="102" uuid="dfd70c8f-4ae0-41e9-bc53-46e8787e69e0"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -2157,30 +1779,22 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="166" width="274" height="101" uuid="dfac064c-f890-4251-b682-5218879242e3">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="166" width="274" height="101" uuid="dfac064c-f890-4251-b682-5218879242e3"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="6" y="192" width="272" height="78" uuid="059ac7c2-3d03-4602-bfe6-4db0b313b086">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="6" y="192" width="272" height="78" uuid="059ac7c2-3d03-4602-bfe6-4db0b313b086"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2188,15 +1802,13 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[La T.V.A. sur les intérêts et commissions, ainsi que tous autres impôts et taxes auxquels pourra donner lieu l'exécution des présentes sont à la charge de l’Emprunteur. Si quelque impôt ou taxe vient à être créé sur les opérations du genre de celle qui fait l'objet des présentes, ainsi qu'en cas de modifications des anciennes taxes, l’Emprunteur devra les supporter et les acquitter.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="281" y="192" width="266" height="68" uuid="5de9de57-9955-4b0b-8492-5b56850ae003">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="281" y="192" width="266" height="68" uuid="5de9de57-9955-4b0b-8492-5b56850ae003"/>
 				<box padding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
@@ -2204,15 +1816,13 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يتحمل المقترض الضريبة على القيمة المضافة المستحقة على الفوائد و العمولات و كذا جميع الضرائب و الرسوم الأخرى التي يمكن أن تتولد عن هذا العقد كما أنه، إذا تم إحداث أي ضريبة جديدة أو رسوم تمس العمليات التي هي من صنف العمليات موضوع هذا العقد، و كذا في حالة تغيير الرسوم السابقة، فإن المقترض يلتزم بتحملها و أدائها.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="290" width="272" height="99" uuid="77a25365-c673-4a9c-bf73-922a6c421609">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="290" width="272" height="99" uuid="77a25365-c673-4a9c-bf73-922a6c421609"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2220,7 +1830,7 @@ La Banque pourra donc même hors la présence de l’Emprunteur, toucher seule d
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Dans le cas où l'une ou plusieurs stipulations contenues dans le présent contrat seraient déclarées nulles, la validité des autres stipulations du présent contrat n'en serait en aucun cas affectée.
@@ -2228,10 +1838,7 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="278" y="395" width="269" height="20" uuid="4e5c4e6c-3ffe-4f5e-a896-686de07578f5">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="278" y="395" width="269" height="20" uuid="4e5c4e6c-3ffe-4f5e-a896-686de07578f5"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2245,11 +1852,7 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 				<text><![CDATA[الفصل 11: تعيين الموطن واختصاص المحاكم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="392" width="272" height="42" uuid="e444c8db-44c2-4f17-af71-6d852d374692">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="5" y="392" width="272" height="42" uuid="e444c8db-44c2-4f17-af71-6d852d374692"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2257,17 +1860,13 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 11 : ÉLECTION DE DOMICILE & ATTRIBUTION DE JURIDICTION ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="168" width="272" height="20" uuid="6c508507-eb4d-4f65-9d34-6ad74e93c443">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="168" width="272" height="20" uuid="6c508507-eb4d-4f65-9d34-6ad74e93c443"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2275,16 +1874,13 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 9 : IMPOTS ET TAXES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="279" y="168" width="269" height="20" uuid="8cdae28e-c656-48bc-b6af-5dea9469c20c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="168" width="269" height="20" uuid="8cdae28e-c656-48bc-b6af-5dea9469c20c"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2298,11 +1894,7 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 				<text><![CDATA[الفصل 9: الضرائب و الرسوم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="270" width="272" height="20" uuid="76da204c-f2d9-4980-b264-64d4efea360d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="5" y="270" width="272" height="20" uuid="76da204c-f2d9-4980-b264-64d4efea360d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2310,16 +1902,13 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 10 : DIVISIBILITE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="270" width="269" height="20" uuid="c23d728c-32d2-413e-8803-e040ad755080">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="270" width="269" height="20" uuid="c23d728c-32d2-413e-8803-e040ad755080"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2333,25 +1922,16 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 				<text><![CDATA[الفصل 10: عدم وحدة مقتضيات هذا العقد]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="280" y="267" width="274" height="396" uuid="99fb8d20-bd7f-48ae-bbfd-a2a84025fb87">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement mode="Transparent" x="280" y="267" width="274" height="396" uuid="99fb8d20-bd7f-48ae-bbfd-a2a84025fb87"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="267" width="278" height="396" uuid="37a8ebdd-8ed1-47b6-864c-a1377f127c9f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="267" width="278" height="396" uuid="37a8ebdd-8ed1-47b6-864c-a1377f127c9f"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2359,16 +1939,14 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="430" width="272" height="219" uuid="e88bd8df-16ea-4ea5-9ba4-5892b639c2ca">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="430" width="272" height="219" uuid="e88bd8df-16ea-4ea5-9ba4-5892b639c2ca"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2376,7 +1954,7 @@ Les stipulations déclarées nulles seraient, conformément à l’esprit et à 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Pour l'exécution des présentes et de leurs suites, il est fait élection de domicile pour :
@@ -2391,9 +1969,7 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="682" width="266" height="118" uuid="87aefb4c-528b-4daa-8dd9-00a170505686">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="682" width="266" height="118" uuid="87aefb4c-528b-4daa-8dd9-00a170505686"/>
 				<box padding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
@@ -2401,7 +1977,7 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[يتم الإتفاق بين الأطراف، على أن توقيع هدا العرض من طرف المقترض، وكفيله المحتمل، بعد إنقضاء مدة التفكير المحددة أعلاه ،يعد بمثابة قبولا صريحا للعرض.
@@ -2413,10 +1989,7 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="665" width="269" height="20" uuid="92caa585-a278-486a-ad34-a7d56b72dbc5">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="665" width="269" height="20" uuid="92caa585-a278-486a-ad34-a7d56b72dbc5"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2430,11 +2003,7 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 				<text><![CDATA[الفصل 12: قبول العرض]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="8" y="665" width="272" height="20" uuid="a21e109f-d091-476c-afc6-43a3e41bb67c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="8" y="665" width="272" height="20" uuid="a21e109f-d091-476c-afc6-43a3e41bb67c"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2442,15 +2011,13 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 12 : ACCEPTATION DE L’OFFRE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="681" width="272" height="119" uuid="693ff51b-7e43-4292-a148-d36e5609d3bc">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="7" y="681" width="272" height="119" uuid="693ff51b-7e43-4292-a148-d36e5609d3bc"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2458,7 +2025,7 @@ En cas de litige qui viendrait à naître entre les l’Emprunteur et la Banque 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Il est valablement convenu entre les parties que la signature de la présente offre par l’Emprunteur, et sa Caution éventuelle, après expiration du délai de réflexion ci-dessus indiqué, vaut acceptation de l’offre.
@@ -2468,11 +2035,7 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="663" width="278" height="138" uuid="ae2d1bdf-80a4-4edc-ab52-cfe761709c21">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="663" width="278" height="138" uuid="ae2d1bdf-80a4-4edc-ab52-cfe761709c21"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2480,30 +2043,23 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="663" width="274" height="138" uuid="ba6e45d8-d92c-47ac-85a5-8a628af6f03e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="663" width="274" height="138" uuid="ba6e45d8-d92c-47ac-85a5-8a628af6f03e"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="285" y="430" width="262" height="219" uuid="9eb906b2-0d03-4399-8562-b65bd8defbe7">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="285" y="430" width="262" height="219" uuid="9eb906b2-0d03-4399-8562-b65bd8defbe7"/>
 				<box padding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
@@ -2511,7 +2067,7 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[لتنفيد هذا العقد، يعين الأطراف موطن إقامتهم :
@@ -2529,9 +2085,7 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="290" width="259" height="98" uuid="11a4db13-cfe9-4db6-b97e-ffcf5ec4a8a8">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="290" width="259" height="98" uuid="11a4db13-cfe9-4db6-b97e-ffcf5ec4a8a8"/>
 				<box padding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="0.0"/>
@@ -2539,34 +2093,23 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
+				<textElement textAlignment="Right">
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[في حالة ما إذا تبين بطلان أحد أو مجموعة من مقتضيات هذا العقد، فإن المقتضيات الأخرى تبقى سارية المفعول و تحتفظ بكامل قوتها القانونية. و يبقى من المتفق عليه تماشيا مع روح وموضوع هذا العقد، أن المقتضيات الباطلة، سيتم استبدالها بأخرى صحيحة، في حدود ما هو مسموح به قانونا، تحمل معنى قريب من تلك التي تم إبطالها  ]]></text>
 			</staticText>
 		</band>
 		<band height="697">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="30" width="274" height="659" uuid="e01fb29b-8dbe-4b2a-a3aa-e6b55eda8642">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="30" width="274" height="659" uuid="e01fb29b-8dbe-4b2a-a3aa-e6b55eda8642"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="30" width="278" height="659" uuid="6c1f8f77-be17-42be-97ff-bde917f3ce8f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="1" y="30" width="278" height="659" uuid="6c1f8f77-be17-42be-97ff-bde917f3ce8f"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -2574,16 +2117,14 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="93" width="272" height="473" uuid="4c514f45-6ba3-4e76-bd12-6509e8d89f44">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="93" width="272" height="473" uuid="4c514f45-6ba3-4e76-bd12-6509e8d89f44"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2591,7 +2132,7 @@ Cette offre fera office de contrat de crédit à compter de sa signature par l�
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Par application des dispositions de la loi n° 09-08 relative à la protection des personnes physiques à l’égard du traitement des données à caractère personnel et conformément à la délibération en vigueur de la Commission Nationale de Contrôle de la Protection des Données à Caractère Personnel (CNDP) relative à la gestion des crédits et des garanties, l’Emprunteur (et / ou la caution) consent que la Banque collecte et traite ses données à caractère personnel pour la gestion des dossiers de crédit et des garanties.
@@ -2607,11 +2148,7 @@ En cochant la case indiquée aux conditions particulières du présent contrat, 
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="50" width="272" height="30" uuid="1479a57c-ddde-4e74-bf48-63205b3cf1b5">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="50" width="272" height="30" uuid="1479a57c-ddde-4e74-bf48-63205b3cf1b5"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2619,16 +2156,13 @@ En cochant la case indiquée aux conditions particulières du présent contrat, 
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 13 : DONNEES A CARACTERE PERSONNEL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="50" width="269" height="20" uuid="99b18d9e-9d02-4a89-bebb-9d1bc05332c3">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="277" y="50" width="269" height="20" uuid="99b18d9e-9d02-4a89-bebb-9d1bc05332c3"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2642,10 +2176,7 @@ En cochant la case indiquée aux conditions particulières du présent contrat, 
 				<text><![CDATA[الفصل  13 :المعطيات ذات الطابع الشخصي]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="93" width="269" height="381" uuid="46bceb6c-cdea-41eb-bb08-98adca1f9c12">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="93" width="269" height="381" uuid="46bceb6c-cdea-41eb-bb08-98adca1f9c12"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2675,11 +2206,7 @@ T-GC-82/2014
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="8" y="571" width="272" height="20" uuid="8756a317-47e5-4583-a179-40920a0d2e50">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="8" y="571" width="272" height="20" uuid="8756a317-47e5-4583-a179-40920a0d2e50"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2687,16 +2214,13 @@ T-GC-82/2014
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE  14 : TRANSFERABILITE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="571" width="269" height="20" uuid="9398b485-4bc4-4bc2-8ad6-c3d6ce228e1c">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="571" width="269" height="20" uuid="9398b485-4bc4-4bc2-8ad6-c3d6ce228e1c"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2710,11 +2234,7 @@ T-GC-82/2014
 				<text><![CDATA[الفصل 14 : نقل الحقوق ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="599" width="271" height="89" uuid="1a9a385e-2abb-4a6d-98ab-91ed765179c6">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="4" y="599" width="271" height="89" uuid="1a9a385e-2abb-4a6d-98ab-91ed765179c6"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2722,7 +2242,7 @@ T-GC-82/2014
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[L’Emprunteur pourra transférer le Crédit dans les conditions arrêtées à l’article 5 ci-dessus.
@@ -2730,10 +2250,7 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="599" width="270" height="89" uuid="78a099bc-f353-4f97-819a-f251388b5f2d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="282" y="599" width="270" height="89" uuid="78a099bc-f353-4f97-819a-f251388b5f2d"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2751,12 +2268,8 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 			</staticText>
 		</band>
 		<band height="575">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="283" y="35" width="269" height="20" uuid="17019d58-d006-4874-835c-1d99b382bacf">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="283" y="35" width="269" height="20" uuid="17019d58-d006-4874-835c-1d99b382bacf"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2770,11 +2283,7 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 				<text><![CDATA[  الفصل : 15 مكافحة الرشوة  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="35" width="272" height="20" uuid="0cad180a-b937-4385-ad5f-187937ecb0ba">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="2" y="35" width="272" height="20" uuid="0cad180a-b937-4385-ad5f-187937ecb0ba"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2782,15 +2291,13 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left">
+				<textElement>
 					<font fontName="DejaVu Sans" size="10" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[ARTICLE 15 : LUTTE CONTRE LA CORRUPTION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="57" width="272" height="493" uuid="6766695b-9bb9-4b92-aa54-befc3266b9e6">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="6" y="57" width="272" height="493" uuid="6766695b-9bb9-4b92-aa54-befc3266b9e6"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2798,7 +2305,7 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[« Acte de corruption » signifie l’acte volontaire, commis directement ou indirectement via toute personne telle qu’un tiers intermédiaire, de (a) donner, offrir, promettre à, ou (b) solliciter ou accepter de, quiconque (y compris tout Agent public), pour son propre compte ou le compte d’un tiers, tout don, cadeau, invitation, rétribution, ou chose de valeur, qui serait ou qui pourrait être perçu comme une incitation à corrompre, ou comme un acte délibéré de corruption, dans tous les cas en vue d’inciter une personne (y compris tout Agent public) à exercer ses fonctions de manière abusive ou malhonnête et/ou à obtenir un avantage indu. 
@@ -2810,10 +2317,7 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="279" y="58" width="269" height="440" uuid="e619036f-4fff-44fe-adc5-70ff8b49d2fd">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="279" y="58" width="269" height="440" uuid="e619036f-4fff-44fe-adc5-70ff8b49d2fd"/>
 				<box padding="0">
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="0.0" lineStyle="Solid"/>
@@ -2835,25 +2339,15 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="280" y="31" width="275" height="529" uuid="588b4a79-68d7-40cd-9efb-63d703037500">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement x="280" y="31" width="275" height="529" uuid="588b4a79-68d7-40cd-9efb-63d703037500"/>
 				<box>
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top"/>
+				<textElement textAlignment="Right"/>
 			</textField>
 			<staticText>
-				<reportElement x="3" y="31" width="276" height="529" uuid="8d652388-f431-463c-93fe-9214cdb4e230">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
+				<reportElement x="3" y="31" width="276" height="529" uuid="8d652388-f431-463c-93fe-9214cdb4e230"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Dotted"/>
 					<topPen lineWidth="1.0" lineStyle="Solid"/>
@@ -2861,7 +2355,7 @@ La Banque se réserve la possibilité de céder ou transférer à tout moment, t
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Top">
+				<textElement>
 					<font fontName="DejaVu Sans" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacingSize="5.0"/>
 				</textElement>
