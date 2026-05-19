@@ -21,6 +21,7 @@
 	<parameter name="rateType" class="java.lang.String"/>
 	<parameter name="rate" class="java.lang.String"/>
 	<field name="rangs" class="java.util.Collection"/>
+	<field name="properties" class="java.util.Collection"/>
 	<detail>
 		<band height="15" splitType="Stretch">
 			<frame>
@@ -698,165 +699,163 @@
 				<text><![CDATA[تعيين الرسم أو الرسوم العقارية :]]></text>
 			</staticText>
 		</band>
-		<band height="15" splitType="Stretch">
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="f8a9b0c1-d2e3-4139-5b6c-7d8e9f0a1b2c"/>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="a9b0c1d2-e3f4-4140-6c7d-8e9f0a1b2c3d"/>
-					<staticText>
-						<reportElement x="5" y="0" width="95" height="12" uuid="d6e7f8a9-b0c1-4137-3f4a-5b6c7d8e9f0a"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[Dénomination :]]></text>
-					</staticText>
-					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement x="100" y="0" width="165" height="12" uuid="e7f8a9b0-c1d2-4138-4a5b-6c7d8e9f0a1b"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10" isBold="true"/>
-						</textElement>
-						<textFieldExpression><![CDATA[$F{nomBien}]]></textFieldExpression>
-					</textField>
-				</frame>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="c1d2e3f4-a5b6-4142-8e9f-0a1b2c3d4e5f"/>
-					<staticText>
-						<reportElement x="7" y="0" width="260" height="12" uuid="d2e3f4a5-b6c7-4143-9f0a-1b2c3d4e5f6a"/>
-						<textElement textAlignment="Right">
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[التسمية :]]></text>
-					</staticText>
-				</frame>
-			</frame>
-		</band>
-		<band height="40" splitType="Stretch">
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="40" uuid="f8a9b0c1-d2e3-4239-5b6c-7d8e9f0a1b2c"/>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="40" uuid="a9b0c1d2-e3f4-4240-6c7d-8e9f0a1b2c3d"/>
-					<staticText>
-						<reportElement x="5" y="0" width="255" height="25" uuid="b0c1d2e3-f4a5-4241-7d8e-9f0a1b2c3d4e"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[Numéro(s) du (ou des) titre(s) foncier(s) ou de la (ou des) réquisition(s) :]]></text>
-					</staticText>
-					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement x="5" y="25" width="255" height="12" uuid="c1d2e3f4-a5b6-4242-8e9f-0a1b2c3d4e5f"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10" isBold="true"/>
-						</textElement>
-						<textFieldExpression><![CDATA[$F{titreFoncierBien}]]></textFieldExpression>
-					</textField>
-				</frame>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="40" uuid="e3f4a5b6-c7d8-4244-0a1b-2c3d4e5f6a7b"/>
-					<staticText>
-						<reportElement x="7" y="0" width="255" height="25" uuid="f4a5b6c7-d8e9-4245-1b2c-3d4e5f6a7b8c"/>
-						<textElement textAlignment="Right">
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[رقم الرسم أو الرسوم العقارية، أو مطلب (أو مطالب) التحفيظ:]]></text>
-					</staticText>
-				</frame>
-			</frame>
-		</band>
-		<band height="15" splitType="Stretch">
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="a5b6c7d8-e9f0-4146-2c3d-4e5f6a7b8c9d"/>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="b6c7d8e9-f0a1-4147-3d4e-5f6a7b8c9d0e"/>
-					<staticText>
-						<reportElement x="5" y="0" width="60" height="12" uuid="c7d8e9f0-a1b2-4148-4e5f-6a7b8c9d0e1f"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[Situation :]]></text>
-					</staticText>
-					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement x="65" y="0" width="195" height="12" uuid="d8e9f0a1-b2c3-4149-5f6a-7b8c9d0e1f2a"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10" isBold="true"/>
-						</textElement>
-						<textFieldExpression><![CDATA[$F{villeBien}]]></textFieldExpression>
-					</textField>
-				</frame>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="f0a1b2c3-d4e5-4151-7b8c-9d0e1f2a3b4c"/>
-					<staticText>
-						<reportElement x="7" y="0" width="260" height="12" uuid="a1b2c3d4-e5f6-4152-8c9d-0e1f2a3b4c5d"/>
-						<textElement textAlignment="Right">
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[الموقع :]]></text>
-					</staticText>
-				</frame>
-			</frame>
-		</band>
-		<band height="15" splitType="Stretch">
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="b2c3d4e5-f6a7-4153-9d0e-1f2a3b4c5d6e"/>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="c3d4e5f6-a7b8-4154-0e1f-2a3b4c5d6e7f"/>
-					<staticText>
-						<reportElement x="5" y="0" width="60" height="12" uuid="d4e5f6a7-b8c9-4155-1f2a-3b4c5d6e7f8a"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[Superficie :]]></text>
-					</staticText>
-					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement x="65" y="0" width="195" height="12" uuid="e5f6a7b8-c9d0-4156-2a3b-4c5d6e7f8a9b"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10" isBold="true"/>
-						</textElement>
-						<textFieldExpression><![CDATA[$F{areaBien}]]></textFieldExpression>
-					</textField>
-				</frame>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="a7b8c9d0-e1f2-4158-4c5d-6e7f8a9b0c1d"/>
-					<staticText>
-						<reportElement x="7" y="0" width="260" height="12" uuid="b8c9d0e1-f2a3-4159-5d6e-7f8a9b0c1d2e"/>
-						<textElement textAlignment="Right">
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[المساحة :]]></text>
-					</staticText>
-				</frame>
-			</frame>
-		</band>
-		<band height="35" splitType="Stretch">
-			<frame>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="35" uuid="c9d0e1f2-a3b4-4260-6e7f-8a9b0c1d2e3f"/>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="35" uuid="d0e1f2a3-b4c5-4261-7f8a-9b0c1d2e3f4a"/>
-					<staticText>
-						<reportElement x="5" y="0" width="255" height="20" uuid="e1f2a3b4-c5d6-4262-8a9b-0c1d2e3f4a5b"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[Description des constructions s'il y a lieu :]]></text>
-					</staticText>
-					<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-						<reportElement x="5" y="20" width="255" height="12" uuid="f2a3b4c5-d6e7-4263-9b0c-1d2e3f4a5b6c"/>
-						<textElement>
-							<font fontName="DejaVu Sans" size="10" isBold="false"/>
-						</textElement>
-						<textFieldExpression><![CDATA[$F{descriptionBien}]]></textFieldExpression>
-					</textField>
-				</frame>
-				<frame>
-					<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="35" uuid="b4c5d6e7-f8a9-4265-1d2e-3f4a5b6c7d8e"/>
-					<staticText>
-						<reportElement x="7" y="0" width="255" height="20" uuid="c5d6e7f8-a9b0-4266-2e3f-4a5b6c7d8e9f"/>
-						<textElement textAlignment="Right">
-							<font fontName="DejaVu Sans" size="10"/>
-						</textElement>
-						<text><![CDATA[وصف البناءات عند الاقتضاء :]]></text>
-					</staticText>
-				</frame>
-			</frame>
+		<band height="130" splitType="Stretch">
+			<componentElement>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="130" uuid="cc220001-cc22-4001-cc22-cc2200100001"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Properties" uuid="cc220002-cc22-4001-cc22-cc2200100002">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{properties})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="130" width="535">
+						<frame>
+							<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="130" uuid="cc220003-cc22-4001-cc22-cc2200100003"/>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="267" height="15" uuid="cc220004-cc22-4001-cc22-cc2200100004"/>
+								<staticText>
+									<reportElement x="5" y="0" width="90" height="12" uuid="cc220005-cc22-4001-cc22-cc2200100005"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<text><![CDATA[Dénomination :]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="100" y="0" width="165" height="12" uuid="cc220006-cc22-4001-cc22-cc2200100006"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nomBien}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="268" y="0" width="267" height="15" uuid="cc220007-cc22-4001-cc22-cc2200100007"/>
+								<staticText>
+									<reportElement x="7" y="0" width="253" height="12" uuid="cc220008-cc22-4001-cc22-cc2200100008"/>
+									<textElement textAlignment="Right">
+										<font fontName="DejaVu Sans" size="10"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[التسمية :]]></text>
+								</staticText>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="15" width="267" height="40" uuid="cc220009-cc22-4001-cc22-cc2200100009"/>
+								<staticText>
+									<reportElement x="5" y="0" width="255" height="25" uuid="cc220010-cc22-4001-cc22-cc2200100010"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<text><![CDATA[Numéro(s) du (ou des) titre(s) foncier(s) ou de la (ou des) réquisition(s) :]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="5" y="25" width="255" height="12" uuid="cc220011-cc22-4001-cc22-cc2200100011"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{titreFoncierBien}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="268" y="15" width="267" height="40" uuid="cc220012-cc22-4001-cc22-cc2200100012"/>
+								<staticText>
+									<reportElement x="7" y="0" width="253" height="25" uuid="cc220013-cc22-4001-cc22-cc2200100013"/>
+									<textElement textAlignment="Right">
+										<font fontName="DejaVu Sans" size="10"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[رقم الرسم أو الرسوم العقارية، أو مطلب (أو مطالب) التحفيظ:]]></text>
+								</staticText>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="55" width="267" height="15" uuid="cc220014-cc22-4001-cc22-cc2200100014"/>
+								<staticText>
+									<reportElement x="5" y="0" width="55" height="12" uuid="cc220015-cc22-4001-cc22-cc2200100015"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<text><![CDATA[Situation :]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="65" y="0" width="195" height="12" uuid="cc220016-cc22-4001-cc22-cc2200100016"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{villeBien}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="268" y="55" width="267" height="15" uuid="cc220017-cc22-4001-cc22-cc2200100017"/>
+								<staticText>
+									<reportElement x="7" y="0" width="253" height="12" uuid="cc220018-cc22-4001-cc22-cc2200100018"/>
+									<textElement textAlignment="Right">
+										<font fontName="DejaVu Sans" size="10"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[الموقع :]]></text>
+								</staticText>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="70" width="267" height="15" uuid="cc220019-cc22-4001-cc22-cc2200100019"/>
+								<staticText>
+									<reportElement x="5" y="0" width="55" height="12" uuid="cc220020-cc22-4001-cc22-cc2200100020"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<text><![CDATA[Superficie :]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="65" y="0" width="195" height="12" uuid="cc220021-cc22-4001-cc22-cc2200100021"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{areaBien}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="268" y="70" width="267" height="15" uuid="cc220022-cc22-4001-cc22-cc2200100022"/>
+								<staticText>
+									<reportElement x="7" y="0" width="253" height="12" uuid="cc220023-cc22-4001-cc22-cc2200100023"/>
+									<textElement textAlignment="Right">
+										<font fontName="DejaVu Sans" size="10"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[المساحة :]]></text>
+								</staticText>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="85" width="267" height="45" uuid="cc220024-cc22-4001-cc22-cc2200100024"/>
+								<staticText>
+									<reportElement x="5" y="0" width="255" height="20" uuid="cc220025-cc22-4001-cc22-cc2200100025"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<text><![CDATA[Description des constructions s'il y a lieu :]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="5" y="20" width="255" height="12" uuid="cc220026-cc22-4001-cc22-cc2200100026"/>
+									<textElement>
+										<font fontName="DejaVu Sans" size="10"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{descriptionBien}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement stretchType="RelativeToTallestObject" x="268" y="85" width="267" height="45" uuid="cc220027-cc22-4001-cc22-cc2200100027"/>
+								<staticText>
+									<reportElement x="7" y="0" width="253" height="20" uuid="cc220028-cc22-4001-cc22-cc2200100028"/>
+									<textElement textAlignment="Right">
+										<font fontName="DejaVu Sans" size="10"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[وصف البناءات عند الاقتضاء :]]></text>
+								</staticText>
+							</frame>
+							<line>
+								<reportElement stretchType="RelativeToTallestObject" x="0" y="129" width="535" height="1" uuid="cc220029-cc22-4001-cc22-cc2200100029"/>
+							</line>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
 		</band>
 		<band height="130" splitType="Stretch">
 			<frame>
