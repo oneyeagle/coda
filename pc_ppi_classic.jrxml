@@ -5651,18 +5651,11 @@ Le tableau d’amortissement définitif ne sera remis à l’Emprunteur pour app
 	<pageFooter>
 		<band height="20" splitType="Prevent">
 			<textField evaluationTime="Now">
-				<reportElement x="1" y="2" width="278" height="17" uuid="e993481c-0b1a-40f8-beaf-bc3baeefb641"/>
+				<reportElement x="1" y="2" width="556" height="17" uuid="748338ca-0067-423d-a0b2-48bba20af63a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " / "]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="280" y="2" width="278" height="17" uuid="e993481c-0b1a-40f8-beaf-bc3baeefb642"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans"/>
-				</textElement>
-				<textFieldExpression><![CDATA[String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

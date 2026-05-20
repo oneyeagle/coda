@@ -1041,22 +1041,4 @@ Les frais de mainlevée seront débités automatiquement par la Banque du compte
             </staticText>
         </band>
     </detail>
-    <pageFooter>
-        <band height="20" splitType="Prevent">
-            <textField evaluationTime="Now">
-                <reportElement x="0" y="5" width="500" height="12" uuid="ah10b001-7001-4001-9001-000000000002"/>
-                <textElement textAlignment="Right" verticalAlignment="Middle">
-                    <font fontName="DejaVu Sans" size="9"/>
-                </textElement>
-                <textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " / "]]></textFieldExpression>
-            </textField>
-            <textField evaluationTime="Report">
-                <reportElement x="500" y="5" width="35" height="12" uuid="ah10b001-7001-4001-9001-000000000003"/>
-                <textElement textAlignment="Left" verticalAlignment="Middle">
-                    <font fontName="DejaVu Sans" size="9"/>
-                </textElement>
-                <textFieldExpression><![CDATA[String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
-            </textField>
-        </band>
-    </pageFooter>
 </jasperReport>
