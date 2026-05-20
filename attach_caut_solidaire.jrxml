@@ -13,6 +13,12 @@
 	<field name="adresse_caution" class="java.lang.String"/>
 	<field name="cin_garant" class="java.lang.String"/>
 	<detail>
+		<band height="1" splitType="Prevent">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT} > 1]]></printWhenExpression>
+			<break>
+				<reportElement x="0" y="0" width="1" height="1" uuid="acs3b001-7003-4003-9003-000000000001"/>
+			</break>
+		</band>
 		<band height="15" splitType="Stretch">
 			<frame>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="535" height="15" uuid="a1234567-89ab-cdef-0123-456789abcdef"/>
@@ -727,4 +733,22 @@ Dans le cas où la Caution ne dispose pas d'un compte ouvert auprès de la Banqu
 			</frame>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="20" splitType="Prevent">
+			<textField evaluationTime="Now">
+				<reportElement x="0" y="5" width="500" height="12" uuid="acs3b001-7003-4003-9003-000000000002"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " / "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="5" width="35" height="12" uuid="acs3b001-7003-4003-9003-000000000003"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>
