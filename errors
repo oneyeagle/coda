@@ -1,0 +1,1 @@
+net.sf.jasperreports.engine.design.JRValidationException: Band height validation for subreport "conditions-generales" failed in the current page context (height = 842, top margin = 20, bottom margin = 20) : 
