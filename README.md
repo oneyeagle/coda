@@ -1,2 +1,1 @@
-[# coda](https://claude.com/cai/oauth/authorize?code=true&client_id=9d1c250a-e61b-44d9-88ed-5944d1962f5e&response_type=code&redirect_uri=http://localhost:62719/callback&scope=org:create_api_key+user:profile+user:inference+user:sessions:claude_code+user:mcp_servers+user:file_upload&code_challenge=ng7VYvtKWJNzPay4Lj8L5EJSEHS0qTadjfMN8lmWwWs&code_challenge_method=S256&state=Ltg6BsHkQoEq74gfpmt6NZuiaQSYVSfcTLxVPkfdte0)
-http://localhost:62719/callback?code=h8VUHtMVUWhCUvRi3xIh7ixMpO3IZYzCzHKUDCfbe4FHCSH7&state=Ltg6BsHkQoEq74gfpmt6NZuiaQSYVSfcTLxVPkfdte0
+https://vscode.dev/redirect?code=0b9d78f07ba13fde876f&state=http%3A%2F%2F127.0.0.1%3A49806%2Fcallback%3Fnonce%3D2VeM%252FA6%252Ft186rv4tww7PMA%253D%253D
