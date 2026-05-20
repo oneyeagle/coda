@@ -1,1 +1,15 @@
+2026-05-20T14:26:52.428+01:00 ERROR 10432 --- [octroi-credit-api-pp] [           main] [                                                 ] m.s.i.o.s.impl.OpcGeneratorServiceImpl   : Error generating OPC document for dossier: null | Product: PPI_CLASSIQUE | Reason: Band height validation for subreport "conditions-generales" failed in the current page context (height = 842, top margin = 20, bottom margin = 20) : 
+	 1. The detail section, the page and column headers and footers and the margins do not fit the page height.
+	 2. The detail section, the page and column headers and footers and the margins do not fit the page height.
+
 net.sf.jasperreports.engine.design.JRValidationException: Band height validation for subreport "conditions-generales" failed in the current page context (height = 842, top margin = 20, bottom margin = 20) : 
+	 1. The detail section, the page and column headers and footers and the margins do not fit the page height.
+	 2. The detail section, the page and column headers and footers and the margins do not fit the page height.
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.verifyBandHeights(JRFillSubreport.java:1183) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.validateReport(JRFillSubreport.java:1139) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluateSubreport(JRFillSubreport.java:545) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.evaluate(JRFillSubreport.java:360) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.evaluate(JRFillElementContainer.java:383) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRFillBand.evaluate(JRFillBand.java:548) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBand(JRVerticalFiller.java:2614) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillGroupHeader(JRVerticalFiller.java:674) ~[jasperreports-6.21.4.jar:6.21.4-557f35c205582c19ee0ad25cb5ddce396bae61c0]
