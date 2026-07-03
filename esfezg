@@ -1,81 +1,29 @@
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
 
-Sprint 95
+    <!-- Open HTML to PDF -->
+    <dependency>
+        <groupId>com.openhtmltopdf</groupId>
+        <artifactId>openhtmltopdf-core</artifactId>
+        <version>1.0.10</version>
+    </dependency>
+    <dependency>
+        <groupId>com.openhtmltopdf</groupId>
+        <artifactId>openhtmltopdf-pdfbox</artifactId>
+        <version>1.0.10</version>
+    </dependency>
+    <!-- ICU4J-backed bidi splitting/reordering: correct text-run layout and alignment -->
+    <dependency>
+        <groupId>com.openhtmltopdf</groupId>
+        <artifactId>openhtmltopdf-rtl-support</artifactId>
+        <version>1.0.10</version>
+    </dependency>
+</dependencies>
 
-POP-6561 — 5 SP
-POP-6746 — 8 SP
-POP-6749 — 8 SP Total: 21 SP
-
-Sprint 96
-
-POP-6609 — 2 SP
-POP-6616 — 2 SP
-POP-6632 — 8 SP
-POP-6633 — 8 SP
-POP-6800 — 1 SP Total: 21 SP
-
-Sprint 97
-
-POP-6825 — 3 SP
-POP-6828 — 5 SP
-POP-6856 — 2 SP Total: 10 SP
-
-Sprint 98
-
-POP-6907 — 3 SP
-POP-6882 — 2 SP
-POP-6797 — 8 SP Total: 13 SP
-
-Sprint 99
-
-POP-6984 — 2 SP
-POP-6882 — 0 SP (rework)
-POP-7017 — 1 SP Total: 3 SP (en 3JH)
-
-Sprint 100
-
-POP-7142 — 1 SP
-POP-7170 — 1 SP
-POP-7176 — 3 SP
-POP-7107 — 2 SP
-POP-6996 — 5 SP
-POP-6997 — 3 SP
-POP-6998 — 5 SP
-POP-7000 — 3 SP
-POP-7015 — 8 SP Total: 31 SP (EN 10JH)
-
-Sprint 101
-
-POP-7002 — 5 SP
-POP-7213 — 8 SP
-POP-6995 — 5 SP
-POP-7251 — 3 SP
-POP-7266 — 2 SP Total: 23 SP (EN 10JH)
-
-Sprint 102
-
-POP-7265 — 3 SP
-POP-7002 — 5 SP
-POP-7276 — 5 SP
-POP-7275 — 5 SP Total: 18 SP (EN 9JH)
-
-Sprint 103
-
-POP-7393 — 1 SP
-POP-7394 — 3 SP Total: 4 SP
-
-Sprint 104
-
-POP-7275 — 5 SP
-POP-7276 — 5 SP
-POP-7339 — 1 SP
-POP-7553 — 2 SP Total: 13 SP
-
-Sprint 105
-
-POP-7076 — 3 SP
-POP-7265 — 1 SP
-POP-7572 — 1 SP
-POP-7573 — 1 SP
-POP-7578 — 1 SP Total: 7 SP
-
-Total : 164 SP
+openhtmltopdf-core — the brain. Parses your XHTML + CSS and computes the layout: page breaks, margins, repeating table headers. Knows nothing about PDF itself.
+openhtmltopdf-pdfbox — the hand. Takes core's computed layout and draws it into an actual PDF using Apache PDFBox. Also does the font embedding. Without it you have a layout and no output format.
+openhtmltopdf-rtl-support — the linguist. Brings ICU4J bidi so mixed-direction text (Arabic names, Hebrew, RTL punctuation) is split and ordered correctly. If your statements are 100% Latin/LTR, you could drop it — but for banking, customer names make it worth keeping.
+Production? Yes, all three are runtime dependencies, needed in the deployed jar, not just for tests.
