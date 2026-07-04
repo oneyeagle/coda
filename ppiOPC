@@ -1,0 +1,297 @@
+package ma.sg.its.octroicreditapi.service.impl.opc.data;
+
+
+import lombok.extern.slf4j.Slf4j;
+import ma.sg.its.octroicredit.common.dto.CodeLabelDto;
+import ma.sg.its.octroicredit.common.dto.PersonalInfoDTO;
+import ma.sg.its.octroicredit.common.util.DateUtils;
+import ma.sg.its.octroicredit.common.util.MoneyToWords;
+import ma.sg.its.octroicredit.common.util.StringUtils;
+import ma.sg.its.octroicreditapi.dto.BeneficiaryDto;
+import ma.sg.its.octroicreditapi.dto.DossierDataDto;
+import ma.sg.its.octroicreditapi.dto.GuarantorDto;
+import ma.sg.its.octroicreditapi.dto.LoanDataDto;
+import ma.sg.its.octroicreditapi.dto.PropertyDto;
+import ma.sg.its.octroicreditapi.dto.RangDto;
+import ma.sg.its.octroicreditapi.dto.RepresentativeDto;
+import ma.sg.its.octroicreditapi.dto.RestrictionDto;
+import ma.sg.its.octroicreditapi.dto.RestrictionType;
+import ma.sg.its.octroicreditapi.dto.WarrantyDto;
+import ma.sg.its.octroicreditapi.dto.WarrantyType;
+import ma.sg.its.octroicreditapi.dto.opc.*;
+import ma.sg.its.octroicreditapi.model.OpcTemplateDefinition;
+import ma.sg.its.octroicreditapi.service.impl.opc.AbstractOpcDataFactory;
+import ma.sg.its.octroicreditapi.tools.ObjectUtils;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+
+@Slf4j
+@Service
+public abstract class PpiOpcDataService extends AbstractOpcDataFactory {
+
+    protected abstract String getCpTemplateName();
+
+    @Override
+    protected List<OpcTemplateDefinition> getTemplates() {
+        return List.of(
+                new OpcTemplateDefinition(
+                        "PC_NAME", "PC_DATA", getCpTemplateName(),
+                        this::buildParticularConditionData
+                ),
+                new OpcTemplateDefinition(
+                        "ATTCH_HYPOTHEC_NAME", "ATTCH_HYPOTHEC_DATA", "attach_hypothec",
+                        this::buildHypothecData
+                ),
+                new OpcTemplateDefinition(
+                        "ATTCH_HYPOTHECAIRE_NAME", "ATTCH_HYPOTHECAIRE_DATA", "attach_caut_hypothecaire",
+                        this::buildCautionHypothecData
+                ),
+                new OpcTemplateDefinition(
+                        "ATTCH_SOLIDAIRE_NAME", "ATTCH_SOLIDAIRE_DATA", "attach_caut_solidaire",
+                        this::buildCautionSolidaryData
+                )
+        );
+    }
+
+    public ParticularConditionDto buildParticularConditionData(DossierDataDto dossier) {
+        if (dossier.getCustomerData() == null) return null;
+        PersonalInfoDTO personalInfo = dossier.getCustomerData().getPersonalInfo();
+        RepresentativeDto representative = dossier.getRepresentatives().stream()
+                .filter(rep -> rep.getCustomer() != null)
+                .findFirst()
+                .orElse(null);
+        List<BeneficiaryDto> beneficiaries=dossier.getBeneficiaries();
+        List<GuarantorDto> guarantors=dossier.getGuarantors();
+        List<PropertyDto> properties=dossier.getPropertyData().getProperties();
+        OpcWarrantyDto opcWarrantyDto = properties.stream()
+                .filter(p -> Boolean.TRUE.equals(p.getForAcquisition()))
+                .findFirst()
+                .map(p -> {
+                    RangDto firstRan = Optional.ofNullable(beneficiaries)
+                            .orElseGet(Collections::emptyList).stream()
+                            .filter(b -> b != null && Boolean.TRUE.equals(b.getIsBorrower()))
+                            .findFirst()
+                            .flatMap(b -> Optional.ofNullable(b.getRangs())
+                                    .orElseGet(Collections::emptyList).stream()
+                                    .findFirst())
+                            .orElse(null);
+
+                    return OpcWarrantyDto.builder()
+                            .rang(firstRan != null ? firstRan.getRang() : null)
+                            .amount(firstRan != null && firstRan.getWarrantyAmount() != null ? MoneyToWords.formatConvertAmount(firstRan.getWarrantyAmount()) : "")
+                            .landCertificate(p.getLandCertificateNumber()!=null ? p.getLandCertificateNumber():"")
+                            .build();
+                })
+                .orElse(null);
+
+         ParticularConditionDto.ParticularConditionDtoBuilder builder=ParticularConditionDto.builder()
+                .customers(List.of(
+                        OpcCustomerDto.builder()
+                                .customerName(constructFullName(personalInfo.getLastName(), personalInfo.getFirstName()))
+                                .customerAddress(
+                                        Stream.of(personalInfo.getAddress1(), personalInfo.getAddress2(), personalInfo.getAddress3(), personalInfo.getCity(), personalInfo.getCountry())
+                                                .filter(Objects::nonNull)
+                                                .map(String::trim)
+                                                .filter(str -> !str.isEmpty())
+                                                .collect(Collectors.joining(", "))
+                                )
+                                .customerBirthDate(localDateFormatter(personalInfo.getBirthDate()))
+                                .customerCardIssuedDate(localDateFormatter(personalInfo.getCardIDEmissionDate()))
+                                .customerBirthPlace(personalInfo.getBirthCity())
+                                .customerCardId(personalInfo.getCardID())
+                                .intitule(constructLabel(guarantors))
+                                .mandataire(constructRepresentative(representative))
+                                 .build()
+                 ))
+                 .cautionBeneficiaries(
+                         Stream.concat(
+                                 Optional.of(guarantors).orElseGet(Collections::emptyList).stream()
+                                         .filter(p -> p != null && Boolean.FALSE.equals(p.getIsBorrower()))
+                                         .map(g -> OpcCautionDto.builder()
+                                                 .nameCaution(constructFullName(g.getLastName(), g.getFirstName()))
+                                                 .addressCaution(g.getAddress())
+                                                 .dateBirthCaution(localDateFormatter(g.getBirthDate()))
+                                                 .placeBirthCaution(g.getCodeBirthPlace())
+                                                 .nationalIdentityCaution(g.getIdCardNumber())
+                                                 .issuedCaution(localDateFormatter(g.getIssuedAt()))
+                                                 .natureCaution(constructCautionLabel(Boolean.TRUE.equals(g.getIsBeneficiary())))                                                 .build()),
+                                 Optional.ofNullable(beneficiaries).orElseGet(Collections::emptyList).stream()
+                                         .filter(p -> p != null && Boolean.FALSE.equals(p.getIsBorrower()))
+                                         .map(b -> OpcCautionDto.builder()
+                                                 .nameCaution(constructFullName(b.getLastname(), b.getFirstname()))
+                                                 .addressCaution(b.getAddress())
+                                                 .dateBirthCaution(localDateFormatter(b.getBirthDate()))
+                                                 .placeBirthCaution(b.getCodeBirthPlace())
+                                                 .nationalIdentityCaution(b.getIdCardNumber())
+                                                 .issuedCaution(localDateFormatter(b.getIssuedAt()))
+                                                 .natureCaution(constructBeneficiaryLabel(Boolean.TRUE.equals(b.getIsGuarantor())))
+                                                 .build())
+                         ).toList())
+
+                 .properties(Optional.of(properties).orElseGet(Collections::emptyList).stream()
+                         .filter(p -> p != null && Boolean.TRUE.equals(p.getForAcquisition()))
+                         .map(p -> OpcPropertyDto.builder()
+                                 .titreFoncierBien(p.getLandCertificateNumber())
+                                 .typeBien(Optional.ofNullable(dossier.getLoanData())
+                                         .map(LoanDataDto::getPropertyType)
+                                         .map(CodeLabelDto::getDesignation)
+                                         .orElse(null))
+                                 .villeBien(p.getCodePropertyCity())
+                                 .descriptionBien(p.getDescriptionBien() != null ? p.getDescriptionBien() : null)
+                                 .build())
+                         .toList())
+                 .warranties(Optional.ofNullable(dossier.getWarranties()).orElseGet(Collections::emptyList).stream()
+                         .filter(w -> w != null && (w.getType() == WarrantyType.TO_COLLECT || w.getType() == WarrantyType.AUTO))
+                         .map(WarrantyDto::getContent)
+                         .filter(Objects::nonNull)
+                         .toList());
+
+
+        if (opcWarrantyDto != null) {
+            builder
+                    .warrantyRang(opcWarrantyDto.getRang())
+                    .warrantyAmount(opcWarrantyDto.getAmount())
+                    .warrantyLandCertificate(opcWarrantyDto.getLandCertificate());
+        }
+        builder.reserves(List.of(""));
+
+        if (dossier.getRestrictions() != null) {
+            List<String> dscRestrictions = dossier.getRestrictions().stream()
+                    .map(RestrictionDto::getContent)
+                    .toList();
+
+            if (!dscRestrictions.isEmpty()) {
+                builder.reserves(dscRestrictions);
+            }
+        }
+
+        return builder.build();
+    }
+
+    private String constructRepresentative(RepresentativeDto represent) {
+        if (represent==null)return "";
+        return String.format("Représenté par %s Titulaire de la CIN %s selon la procuration en date du %s",
+                constructFullName(represent.getLastname(),represent.getFirstname()),represent.getCin(),localDateFormatter(represent.getCinIssuedAt())
+                );
+    }
+
+    private String constructCautionLabel(boolean isBeneficiary) {
+        return isBeneficiary? "Caution solidaire et hypothécaire" :"Caution solidaire";
+    }
+    private String constructBeneficiaryLabel(boolean isCaution) {
+        return isCaution? "Caution solidaire et hypothécaire" :"Caution hypothécaire";
+    }
+
+    private String constructLabel(List<GuarantorDto> guarantors) {
+        return guarantors.stream()
+                .anyMatch(g -> Boolean.TRUE.equals(g.getIsBorrower()))
+                ? "Emprunteur caution solidaire"
+                : "Emprunteur";
+    }
+
+    private String localDateFormatter(LocalDate date) {
+        if (date == null) return null;
+        return DateUtils.convertLocalDateToString(date, "dd/MM/yyyy");
+    }
+
+
+    private String constructFullName(String lastName, String firstName) {
+        return String.format("MME/MR %s %s",
+                StringUtils.defaultString(lastName),
+                StringUtils.defaultString(firstName).trim());
+
+    }
+
+    public List<HypothecDto> buildHypothecData(DossierDataDto dossier) {
+        if (dossier == null || dossier.getBeneficiaries() == null) {
+            return List.of();
+        }
+        return dossier.getBeneficiaries().stream()
+                .filter(b -> b != null && Boolean.TRUE.equals(b.getIsBorrower()))
+                .map(b -> HypothecDto.builder()
+                        .properties(Optional.ofNullable(b.getProperties()).orElse(List.of()).stream()
+                                .filter(Objects::nonNull)
+                                .map(p -> OpcPropertyDto.builder()
+                                        .titreFoncierBien(p.getLandCertificateNumber())
+                                        .nomBien(p.getDenomination())
+                                        .descriptionBien(p.getDescriptionBien())
+                                        .villeBien(p.getCodePropertyCity())
+                                        .areaBien(p.getPropertyArea() != null ? ObjectUtils.formatArea(p.getPropertyArea()) : "")
+                                        .build())
+                                .toList())
+                        .rangs(Optional.ofNullable(b.getRangs()).orElse(List.of()).stream()
+                                .filter(Objects::nonNull)
+                                .map(r -> OpcRangDto.builder()
+                                        .rang(Objects.toString(r.getRang(), ""))
+                                        .amount(MoneyToWords.formatConvertAmount(r.getWarrantyAmount()))
+                                        .build())
+                                .toList())
+                        .build())
+                .toList();
+    }
+
+    public List<CautionHypothecDto> buildCautionHypothecData(DossierDataDto dossier) {
+        if (dossier == null || dossier.getBeneficiaries() == null) {
+            return List.of();
+        }
+
+        return dossier.getBeneficiaries().stream()
+                .filter(b -> !Boolean.TRUE.equals(b.getIsBorrower()))
+                .map(b -> {
+                    List<RangDto> beneficiaryRangs = Optional.ofNullable(b.getRangs()).orElse(List.of());
+
+                    Set<Long> rankPropertyIds = beneficiaryRangs.stream()
+                            .map(RangDto::getPropertyId)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.toSet());
+
+                    List<PropertyDto> linkedAcqProperties = Optional.ofNullable(b.getProperties()).orElse(List.of()).stream()
+                            .filter(p -> rankPropertyIds.contains(p.getId()) && Boolean.TRUE.equals(p.getForAcquisition()))
+                            .toList();
+
+                    return CautionHypothecDto.builder()
+                            .beneficiaryFullName(constructFullName(b.getLastname(), b.getFirstname()))
+                            .beneficiaryAddress(StringUtils.defaultString(b.getAddress()))
+                            .beneficiaryCardID(StringUtils.defaultString(b.getIdCardNumber()))
+                            .propertyName(linkedAcqProperties.stream().map(p -> StringUtils.defaultString(p.getDenomination())).collect(Collectors.joining(", ")))
+                            .propertyLandCertificate(linkedAcqProperties.stream().map(p -> StringUtils.defaultString(p.getLandCertificateNumber())).collect(Collectors.joining(", ")))
+                            .propertyArea(linkedAcqProperties.stream().map(p ->  ObjectUtils.formatArea(p.getPropertyArea())).collect(Collectors.joining(", ")))
+                            .propertyCity(linkedAcqProperties.stream().map(p -> StringUtils.defaultString(p.getCodePropertyCity())).collect(Collectors.joining(", ")))
+                            .propertyRanks(beneficiaryRangs.stream()
+                                    .map(r -> OpcRangDto.builder()
+                                            .rang(Objects.toString(r.getRang(), ""))
+                                            .amount(MoneyToWords.formatConvertAmount(r.getWarrantyAmount()))
+                                            .build())
+                                    .toList())
+                            .build();
+                })
+                .toList();
+    }
+
+
+    public List<DAJCautionSolidaryDto> buildCautionSolidaryData(DossierDataDto dossier) {
+        if (dossier == null || dossier.getGuarantors() == null) {
+            return List.of();
+        }
+
+        return dossier.getGuarantors().stream()
+                .filter(g->Boolean.FALSE.equals(g.getIsBorrower()))
+                .map(g-> DAJCautionSolidaryDto.builder()
+                        .nom_complet_garant(constructFullName(g.getLastName(),g.getFirstName()))
+                        .adresse_caution(StringUtils.defaultString(g.getAddress()))
+                        .cin_garant(StringUtils.defaultString(g.getIdCardNumber()))
+                        .build()
+                )
+                .collect(Collectors.toList());
+    }
+}
+
