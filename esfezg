@@ -1,29 +1,115 @@
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
+package ma.sg.its.octroicreditapi.service.impl.opc;
 
-    <!-- Open HTML to PDF -->
-    <dependency>
-        <groupId>com.openhtmltopdf</groupId>
-        <artifactId>openhtmltopdf-core</artifactId>
-        <version>1.0.10</version>
-    </dependency>
-    <dependency>
-        <groupId>com.openhtmltopdf</groupId>
-        <artifactId>openhtmltopdf-pdfbox</artifactId>
-        <version>1.0.10</version>
-    </dependency>
-    <!-- ICU4J-backed bidi splitting/reordering: correct text-run layout and alignment -->
-    <dependency>
-        <groupId>com.openhtmltopdf</groupId>
-        <artifactId>openhtmltopdf-rtl-support</artifactId>
-        <version>1.0.10</version>
-    </dependency>
-</dependencies>
+import jakarta.validation.constraints.NotNull;
+import ma.sg.its.octroicredit.common.dto.AttachmentDto;
+import ma.sg.its.octroicredit.common.dto.IndividualCustomerDTO;
+import ma.sg.its.octroicredit.common.util.DateUtils;
+import ma.sg.its.octroicredit.common.util.LocationUtils;
+import ma.sg.its.octroicredit.common.util.MoneyToWords;
+import ma.sg.its.octroicredit.common.util.StringUtils;
+import ma.sg.its.octroicreditapi.constant.ApplicationConstants;
+import ma.sg.its.octroicreditapi.dto.DossierDataDto;
+import ma.sg.its.octroicreditapi.dto.LoanDetailValidationResult;
+import ma.sg.its.octroicreditapi.model.OpcTemplateDefinition;
+import ma.sg.its.octroicreditapi.service.OpcDataFactory;
+import ma.sg.its.octroicreditapi.tools.ObjectUtils;
 
-openhtmltopdf-core — the brain. Parses your XHTML + CSS and computes the layout: page breaks, margins, repeating table headers. Knows nothing about PDF itself.
-openhtmltopdf-pdfbox — the hand. Takes core's computed layout and draws it into an actual PDF using Apache PDFBox. Also does the font embedding. Without it you have a layout and no output format.
-openhtmltopdf-rtl-support — the linguist. Brings ICU4J bidi so mixed-direction text (Arabic names, Hebrew, RTL punctuation) is split and ordered correctly. If your statements are 100% Latin/LTR, you could drop it — but for banking, customer names make it worth keeping.
-Production? Yes, all three are runtime dependencies, needed in the deployed jar, not just for tests.
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public abstract class AbstractOpcDataFactory implements OpcDataFactory {
+
+    /**
+     * Each product factory must declare its template definitions.
+     */
+    protected abstract List<OpcTemplateDefinition> getTemplates();
+
+    @Override
+    public Map<String, Object> prepareData(DossierDataDto dossier, LoanDetailValidationResult loanDetailValidationResult) {
+        Map<String, Object> result = getTemplates().stream()
+                .map(t -> t.prepare(dossier))
+                .flatMap(m -> m.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        buildCommonParams(result,dossier,loanDetailValidationResult);
+        return result;
+    }
+
+    private void buildCommonParams(Map<String, Object> params, DossierDataDto dossier, LoanDetailValidationResult loanDetail) {
+        IndividualCustomerDTO customerData = dossier.getCustomerData();
+
+        // General
+        params.put("signedAt", DateUtils.convertDateToString(LocalDateTime.now(), "dd/MM/yyyy"));
+        params.put("signedIn", LocationUtils.getCityFromTimezone());
+        LocalDateTime decisionDate = getLatestNotificationDate(dossier, dossier.getDscTransferDate());
+        ObjectUtils.putSafe(params, "decisionDate", () -> DateUtils.convertDateToString(decisionDate, "dd/MM/yyyy"));
+        // Customer info
+        params.put("customerFullName", constructCustomerFullName(dossier));
+        ObjectUtils.putSafe(params, "customerRib", () -> customerData.getBalanceActivity().getAccountNumber());
+        ObjectUtils.putSafe(params, "customerAgencyCode", () -> ObjectUtils.extractBranchCode(customerData.getBalanceActivity().getAccountNumber()));
+        // Loan data
+        ObjectUtils.putSafe(params, "loanAmount", () -> MoneyToWords.formatConvertAmount(dossier.getLoanData().getLoanAmount()));
+        ObjectUtils.putSafe(params, "rateType", () -> dossier.getLoanData().getRateType().getDesignation());
+        ObjectUtils.putSafe(params, "rate", ()->ObjectUtils.formatPercentage(BigDecimal.valueOf(dossier.getLoanData().getRate())));
+        ObjectUtils.putSafe(params, "rateNature", () -> dossier.getLoanData().getRateNature().getDesignation());
+        ObjectUtils.putSafe(params, "freeHandFee", ()->MoneyToWords.formatAmount(dossier.getLoanData().getFreeHandFee()));
+        ObjectUtils.putSafe(params, "loanDuration", () -> formatLoanDuration(dossier.getLoanData().getDeadlineNumber(), true));
+        ObjectUtils.putSafe(params, "deferredDuration", () -> formatLoanDuration(dossier.getLoanData().getDelayDuration(),dossier.getLoanData().getDelayed()));
+        ObjectUtils.putSafe(params, "deferredType", ()-> dossier.getLoanData().getDelayType().getDesignation());
+        ObjectUtils.putSafe(params, "loanApplicationFee", () -> MoneyToWords.freeAmount(dossier.getLoanData().getApplicationFee()));
+        ObjectUtils.putSafe(params, "periodicity", ()->dossier.getLoanData().getPeriodicity().getDesignation());
+        ObjectUtils.putSafe(params, "loanObject",()-> dossier.getLoanData().getLoanObject().getDesignation());
+
+        // Loan detail
+        if (loanDetail!=null){
+            ObjectUtils.putSafe(params, "globalEffectiveRate", ()->ObjectUtils.formatPercentage(loanDetail.getLoanDetail().getTeg()));
+            ObjectUtils.putSafe(params, "firstInstallmentDate", () -> DateUtils.convertLocalDateToString(loanDetail.getLoanDetail().getFirstInstallmentDate(), "dd/MM/yyyy"));
+            ObjectUtils.putSafe(params, "lastInstallmentDate",  () -> DateUtils.convertLocalDateToString(loanDetail.getLoanDetail().getLastInstallmentDate(), "dd/MM/yyyy"));
+            ObjectUtils.putSafe(params, "loanAmountAmplitude",() -> MoneyToWords.formatConvertAmount(loanDetail.getLoanDetail().getLoanAmount()));
+            ObjectUtils.putSafe(params, "totalCreditCost", () -> MoneyToWords.formatConvertAmount(loanDetail.getLoanDetail().getTotalCreditCost()));
+            ObjectUtils.putSafe(params, "insuranceCost", () -> MoneyToWords.formatConvertAmount(loanDetail.getLoanDetail().getInsuranceCost()));
+            ObjectUtils.putSafe(params, "dueAmount", () ->"");
+            ObjectUtils.putSafe(params, "dueAmountTVA",() -> MoneyToWords.formatAmount(loanDetail.getLoanDetail().getConstantInstallmentAmount()));
+            ObjectUtils.putSafe(params, "bonusRate", () -> ObjectUtils.formatPercentage(loanDetail.getLoanDetail().getInsuranceRate()));
+        }
+    }
+    protected LocalDateTime getLatestNotificationDate(DossierDataDto dossier, LocalDateTime fallback) {
+        return Optional.ofNullable(dossier.getDossierAttachmentTypes())
+                .orElse(Collections.emptyList())
+                .stream()
+                .filter(dat -> "NOTIFICATION".equals(dat.getCodeRefAttachmentType()))
+                .flatMap(dat -> dat.getAttachments().stream())
+                .map(AttachmentDto::getUploadedAt)
+                .max(Comparator.naturalOrder())
+                .orElse(fallback);
+    }
+    private String formatLoanDuration(Integer deadlineNumber, @NotNull Boolean delayed) {
+        if(!delayed) return "";
+        return String.format("%s %s",
+                deadlineNumber,
+                ApplicationConstants.MONTH
+                );
+    }
+
+    private String constructCustomerFullName(DossierDataDto dossier) {
+        if (dossier == null) {
+            return "";
+        }
+
+        var customer = dossier.getCustomerData();
+        if (customer == null || customer.getPersonalInfo() == null) {
+            return "";
+        }
+
+        var info = customer.getPersonalInfo();
+        return String.format("MME/MR %s %s",
+                StringUtils.defaultString(info.getLastName()),
+                StringUtils.defaultString(info.getFirstName())).trim();
+    }
+}
