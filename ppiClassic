@@ -1,0 +1,22 @@
+package ma.sg.its.octroicreditapi.service.impl.opc.data;
+
+
+import ma.sg.its.octroicreditapi.model.OpcTemplateDefinition;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service("PPI_CLASSIQUE")
+public class PpiClassicService extends PpiOpcDataService {
+
+    @Override
+    protected List<OpcTemplateDefinition> getTemplates() {
+        return new ArrayList<>(super.getTemplates());
+    }
+
+    @Override
+    protected String getCpTemplateName() {
+            return "pc_ppi_classic";
+    }
+}
