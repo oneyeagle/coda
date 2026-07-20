@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DAJ_HYPOTHEQUE" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="78b10fa8-cfd6-40e6-85ef-f05acff7b8ea">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="TitreFoncierDataset" uuid="aaa2d76d-039e-42df-9fa7-6ac6e8fb7c2a">
+		<field name="amount" class="java.lang.String"/>
+		<field name="rang" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Properties" uuid="aaa2d76d-039e-42df-9fa7-6ac6e8fb7c2b">
+		<field name="nomBien" class="java.lang.String"/>
+		<field name="titreFoncierBien" class="java.lang.String"/>
+		<field name="villeBien" class="java.lang.String"/>
+		<field name="areaBien" class="java.lang.String"/>
+		<field name="descriptionBien" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="customerFullName" class="java.lang.String"/>
+	<parameter name="decisionDate" class="java.lang.String"/>
+	<parameter name="signedAt" class="java.lang.String"/>
+	<parameter name="signedIn" class="java.lang.String"/>
+	<parameter name="loanAmount" class="java.lang.String"/>
+	<parameter name="rateType" class="java.lang.String"/>
+	<parameter name="rate" class="java.lang.String"/>
+	<field name="rangs" class="java.util.Collection"/>
+	<field name="properties" class="java.util.Collection"/>
+	<detail>
+		<band height="608">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="150" uuid="1745dc3c-2a08-4cc9-9669-41cf1ef35ed1"/>
+				<break>
+					<reportElement x="0" y="1" width="554" height="1" uuid="d0e21bfc-e0b4-4bb1-8c60-b2a4ebc2fe13"/>
+				</break>
+				<staticText>
+					<reportElement x="0" y="0" width="180" height="15" uuid="a8437c3f-f09b-42f9-ae9c-107d59a8d55e">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[ANNEXE AU CONTRAT DE CREDIT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="15" width="90" height="15" uuid="5dae2bc6-b6a7-4a42-8358-bdb1678b2024">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[EN DATE DU      :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="30" width="90" height="15" uuid="d11b3c51-5fd4-463a-9866-20d47914187e">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[CONCLU AVEC :]]></text>
+				</staticText>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement x="90" y="15" width="380" height="15" uuid="b68261df-ff2c-48b3-85bc-0e5197041ba3"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{decisionDate}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+					<reportElement x="90" y="30" width="380" height="15" uuid="35774512-59df-47f6-8e64-0d7b3b19bf89">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customerFullName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="470" y="30" width="84" height="15" uuid="ae30a83b-f837-43e5-a215-c6c914863869">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[المبرم مع :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="470" y="0" width="85" height="15" uuid="1b932671-f957-44f7-a005-1c27290cfdd2">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[ملحق عقد القرض]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="470" y="15" width="85" height="15" uuid="d20baaaf-531c-41e6-9558-e05213d7b627">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[المؤرخ في:]]></text>
+				</staticText>
+				<rectangle radius="10">
+					<reportElement x="120" y="70" width="320" height="49" uuid="030db149-2472-4841-82f5-5201becb4cad"/>
+					<graphicElement>
+						<pen lineWidth="2.5"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="120" y="90" width="320" height="29" uuid="c34f0d99-1983-4b4e-868e-2a87ede379ee"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[عقـــــد
+رهــــن عقــــــاري]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="120" y="70" width="320" height="20" uuid="d907c928-66b0-4205-832a-a93b7279ca8b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ACTE D'HYPOTHEQUE]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="150" width="280" height="30" uuid="850bca4e-25e5-4280-bbe4-01255b2251ff"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[A la sûreté et garantie du paiement des sommes dont l'Emprunteur est ou sera débiteur envers la Banque, en raison du contrat de crédit]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="80" y="180" width="400" height="15" uuid="fa7fba36-7072-4e75-b21d-72cac735c847">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{decisionDate} != null ? $P{decisionDate} : "")]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="80" y="195" width="400" height="15" uuid="8944deb0-860c-429b-b15f-6b64ea375b02">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{loanAmount} != null ? $P{loanAmount} : "")]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="70" y="210" width="40" height="15" uuid="8fffce3f-5cbf-4195-bc6d-feadc1926521">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{rateType} != null ? $P{rateType} : "")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="240" width="400" height="15" uuid="f8844257-7eea-40bf-a1bb-f903bd353809">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[TVA en sus..............................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="270" width="280" height="40" uuid="9e16e1ed-80d2-4283-958d-8b8b6050a174">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[l'Emprunteur, conformément aux dispositions du Dahir du 22 novembre 2011, consent au profit de la Banque, qui accepte par privilège et préférence à tous autres, une hypothèque de :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="150" width="275" height="30" uuid="d477d70e-661f-4f27-b5bc-017d7a2e7f3e">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ضمــــــانــا لأداء المبالــــــغ التـــي يديــــــن بهــــــــا المقتــــــرض أو التـــــي سيكــــــون مدينـــــا بهـــــا تجـــــــاه البنـــــــــك، بمقتضى عقـــــد القـــــرض ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="180" width="75" height="15" uuid="1a7828b0-174c-4d2a-b1c5-cc963f0941e2">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[بتاريخ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="80" height="15" uuid="08b7d9f4-dd7e-4915-8f40-b818ca971833"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[en date du :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="195" width="80" height="15" uuid="898fbdfe-fee4-4f61-992f-a777ea045a48"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[de la somme de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="195" width="75" height="15" uuid="8bfb2436-91d1-4e7b-b197-03dba58c044b">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[بمبلغ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="210" width="45" height="15" uuid="8228a4b1-6cfd-4b9b-a995-44c8fd888e17">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[بنسبة فائدة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="210" width="70" height="15" uuid="cc392fa2-eadb-4ddc-90c4-7c3898ef90bc"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[au taux d'intérêt]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="480" y="210" width="30" height="15" uuid="eb2a43fc-6ea5-4e02-a079-b665a7301051">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{rateType} != null && $P{rateType}.matches("Fixe|Variable|Variable Capé")) ? ($P{rateType}.equals("Fixe") ? "ثابتة" : $P{rateType}.equals("Variable") ? "متغيرة" : "محددة") : ($P{rateType} != null ? $P{rateType} : "")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="210" width="20" height="15" uuid="fce0c776-317d-4239-8c82-402176b03a37"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="130" y="210" width="250" height="15" uuid="43c1fcc0-dcb8-4c9d-8af1-a7fd10cd26d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{rate} != null ? $P{rate} : "")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="210" width="100" height="15" uuid="4afe6b2a-2bab-48d0-b507-c982659bf108">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[قدرها]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="240" width="155" height="15" uuid="56c60156-3b45-4071-854b-7dd6eb7934cd">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[مع احتساب الضريبة على القيمة المضافة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="270" width="275" height="40" uuid="6e5ccfd0-df67-45f2-8a2c-5df979dcaf8b">
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box padding="0">
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="2" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[يمنـــح المقتــــرض طبقـــــا لمقتضيـــات ظهيـــــر 22 نوفمبر 2011، لفائـــــدة البنـــك الــــذي يقبـــــل بالامتيــــــاز وبالأفضليـــــة علـــــى كـــل دائــــــن آخـــــر
+]]></text>
+			</staticText>
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="314" width="555" height="31" uuid="bbf73c72-b270-437d-9257-45dfb40569a0">
+					<property name="com.jaspersoft.studio.layout"/>
+				</reportElement>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="280" y="31" width="274" height="259" uuid="81b01c10-f3b0-4374-8623-82cd8a8347b2">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box padding="0">
+						<pen lineWidth="1.0" lineStyle="Dotted"/>
+						<topPen lineWidth="0.0" lineStyle="Solid"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="2" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[رأسمــــــالا بالإضافــــــة إلــــــى الفـــــوائــــــد، العمــــــــولات، المصـــاريــف والتـــوابـــــــع علــــــى مجمـــــــــوع العقــــــــار أو العقــــــارات المعينـــــــة فيمـــــا يلـــــي، مـــــن أجــــــل ضمــــان تســــديـــــد مبلــــغ رأسمــــال هـــــذا القــــــرض  بالإضافــــة إلــــى تســـديـــــد الفـــــوائـــــــد لسنــــــة واحــــدة وللسنــــــة الجاريــة طبقـــــا لمقتضيـــات المــادة 168 مـن الظهيــــر السالــف الــذكــر.
+
+ويدخـــــل ضمــــن التخصيــــص الرهنــــي، المـــلك أو الممتلكـــــات العقاريـــــة المعينـــــة أسفله، كمـا هـــي موجــــودة، بمــــا فيهــــا جميــــع المرافـــق وكـــل البنــاءات التـــي سيتــم تشييــدها، وكـل الحقــــوق المرتبطـــة بهــــا، وكــل العقـــارات التابعـــة لهـا بالتخصيــص أو التــي يمكــن أن تصبـــح تابعـــة لهـــا وكـــــذا جميــــع التحسينــــات والإضــافات التـــي يمكـــن للمقتـــرض أن يدخلهــــا عليهــــا.
+
+ يلتــــــزم المقتــــــــرض بالمحافظـــــة علـــى البنـــأيـــات فـــي حـــالــة جيــــــدة وبالقيــــــام بكــــافـــــــة الإصـــلاحـــــات الضروريـــة للحفــــــــاظ علـــــــى العقــــــارات، حيــــــث يمكـــن للبنــــــك فــــــي أيــــــة لحظــــــة القيـــــام بمعاينــــــة حالـــــــة الأمــــــلاك المرهـــونــــة بواسطــــــة أشخــــــاص مــــــن اختيــــــاره علـــى نفقــــــة المقتـــرض الــــذي يلتــــــزم بـــــــذلك.
+
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="31" width="280" height="259" uuid="b28c3ce5-a8a7-44b5-b986-7531e1a6a088">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" size="11"/>
+						<paragraph leftIndent="0" rightIndent="2"/>
+					</textElement>
+					<text><![CDATA[en capital outre les intérêts, commissions, frais et accessoires, sur le (ou les) immeuble(s) désigné(s) ci-après pour garantir tant le remboursement du montant du présent crédit, en capital ainsi que le paiement des intérêts d’une année et de l’année courante en vertu de l’article 168 du Dahir précité.
+
+Sont compris dans l’affectation hypothécaire, les biens immobiliers ci-après désignés, tels qu’ils existent, y compris toutes dépendances, toutes les constructions qui seront édifiées, tous droits y attachés, tous immeubles par destination en dépendant ou pouvant en dépendre et toutes améliorations et accroissements que l’Emprunteur pourrait faire.
+
+L’Emprunteur s’engage à maintenir les constructions en bon état et à effectuer toutes les réparations nécessaires à la conservation des immeubles, la Banque pourra à toute époque faire constater l’état des biens hypothéqués par les personnes de son choix aux frais de l’Emprunteur qui s’y oblige.]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement stretchType="RelativeToTallestObject" x="-1" y="1" width="555" height="30" uuid="3fb5275f-6502-4bd5-92f2-5d8da14957b2"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="TitreFoncierDataset" uuid="4a0b635e-194c-4c33-976a-b3ec5bcd67ad">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{rangs})]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="30" width="555">
+							<frame>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="30" uuid="f2d88e1f-d9f5-482b-8400-61fa5b86f7b2">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<staticText>
+									<reportElement x="60" y="0" width="140" height="30" uuid="e785c033-e9dd-4790-af2d-7bc3a1802fce">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<textElement verticalAlignment="Top">
+										<font fontName="Times New Roman" size="11"/>
+									</textElement>
+									<text><![CDATA[à concurrence d'un montant de
+]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="60" height="30" uuid="1c7aa0bf-972c-48fe-8b93-705fb6d6bb06">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<textElement verticalAlignment="Top">
+										<font fontName="Times New Roman" size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA["- " +($F{rang} == null || $F{rang}.trim().equals("1") ? "1er" : String.format("%dème", Integer.parseInt($F{rang}.trim()))) + " rang"]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement x="490" y="0" width="65" height="30" uuid="72aabf04-68e9-486f-b1a1-616b4d778034">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+										<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+									</reportElement>
+									<textElement textAlignment="Right" verticalAlignment="Top">
+										<font fontName="Times New Roman" size="10"/>
+										<paragraph rightIndent="7"/>
+									</textElement>
+									<text><![CDATA[- رهنا رسميا من الدرجة
+]]></text>
+								</staticText>
+								<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+									<reportElement x="200" y="0" width="290" height="30" uuid="3e4fd6b2-df36-41f8-a186-49586aa2740d">
+										<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									</reportElement>
+									<textElement verticalAlignment="Top">
+										<font fontName="Times New Roman" size="11" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+								</textField>
+							</frame>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+		</band>
+		<band height="762">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="15" width="555" height="494" uuid="a1bb2630-b08f-40e1-a067-2a847e7858b3"/>
+				<staticText>
+					<reportElement x="0" y="0" width="280" height="500" uuid="3af6387d-8357-4537-9d5f-608e6bc7978c">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" size="11"/>
+						<paragraph leftIndent="0" rightIndent="2"/>
+					</textElement>
+					<text><![CDATA[L’Emprunteur s’interdit d’affecter l’(ou les) immeuble(s) hypothéqué(s) en faveur de la Banque  à un usage commercial, de le rattacher à un fonds de commerce ou d’y constituer un fonds de commerce.
+
+L’Emprunteur s’interdit de donner en location l’(ou les) immeuble(s) hypothéqué(s) en faveur de la Banque  sans accord préalable et écrit de cette dernière.
+En cas de location dûment autorisée par la Banque, l’Emprunteur déclare d’ores et déjà céder, déléguer et transporter au profit de la Banque tous loyers et revenus de l’(ou les) immeuble (s) grevé (s) d’hypothèque.
+
+En conséquence, il subroge la Banque dans tous ses droits et actions vis à vis de ses locataires, lesquels sont autorisés à se libérer de tous loyers directement entre les mains de la Banque par préférence et antériorité à tous autres créanciers et à lui-même sur simple quittance de celle-ci et hors la présence de l’Emprunteur.
+
+Néanmoins, notification de cette délégation et de cette subrogation ne sera faite aux locataires qu’en cas de défaut de paiement de toutes sommes dues et exigibles en capital, intérêts, commissions, frais et accessoires à quelque titre et pour quelque cause que ce soit ou en cas d’inexécution de l’une des clauses et conditions du présent contrat.
+
+
+L’Emprunteur déclare : 
+- que les immeubles par destination dépendant de la (ou des) propriété(s) désignée(s) ci-après ne sont pas nantis au profit d’un autre créancier et il s’engage expressément à ne pas les nantir sans l’autorisation expresse et par écrit de la Banque,
+- qu’il n’existe sur la (ou les) propriété(s) hypothéquée(s) ni clause de résolution ou de rescision, ni de servitude, ni droits coutumiers musulmans, ni opposition, ni hypothèque, demande d'hypothèque conventionnelle ou forcée, ni prénotation, ni aucun droit de nature à porter atteinte à l’hypothèque ci- dessus consentie.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="0" width="274" height="500" uuid="c26a864c-508b-4d74-9f0a-6fa8f9d71e53">
+						<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box padding="0">
+						<pen lineWidth="1.0" lineStyle="Dotted"/>
+						<topPen lineWidth="0.0" lineStyle="Solid"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="11" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="2" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[يمتنـــع المقتـــرض عـــن تخصيـــص العقــــار أو العقــــارات المرهونــــة رسميـــا لفـــائــــدة البنــــك للاستعمــــال التجــــاري، أو إلحـــاقهــــا بأصـــل تجـــــاري أو تأسيس أصــل تجــاري عليهــا، بـــدون المــوافقـــة المسبقــة والمكتــوبة مـــن البنـــك.
+
+يمتنــع المقتـــرض عــن منـــح العقـــار أو العقـــارات المرهــونــة رسميـــا لفائــدة البنــك علــى سبيـــل الكـــراء، بــــدون المـــوافقــة المسبقـــة والمكتوبـــة مـــن البنــــك.
+
+فــي حالـــة كــــراء مــرخـص بـــه كتابـــة مـــن طـــرف البنــــك، يصـــرح المقتـــرض، منــــــذ الآن، بتفـــويــت وإنابــــة و نقــل جميـــع أكريــــة ومداخيـــل العقـــار أو العقـــارات المثقلــــة بالرهـــون الرسميـــة، لفــائـــدة البنـــك.
+
+
+ونتيجــة لــذلك، فإن البنـــك يحـــل محلـــه فــي جميـــع حقوقـــه ودعـــاواه تجـــاه مكتريـــه، ويعتبـــر هــؤلاء المكتريـــن مخـــوليـــن صراحـــة بمقتـــضى هـــذا العقــــد، بــــأداء الأكريـــة مباشـــرة بيـــن يــــدي البنـــك بالأفضليـــة وبالأسبقيـــة علـــى جميــــع الدائنيـــن الآخريــــن بــــل وبالأسبقيـــة عليـــه هـــو نفســـــه بنــــاء علـــى مجــــرد وصــــل مــــن هــــذا البنــــك وفــــي غيــــاب المقـــــترض.
+
+
+
+
+
+
+ يصرح المقترض :
+- بــــأن البنــايــات التابعـــــة بالتخصيــص للملكيــــــة أو الأمـــلاك المعينــــة بعــــــده  غيـــــر مــرهـــونـــة لفـــائــــدة دائــــــن آخــــــر، ويتعهــــــد صراحـــة بعــــــدم  رهنهــــــا  بـــدون موافقـــــــة صريحــة ومكتوبـــة مــن البنـــك؛
+- أنـــه لا يــوجـــد علـــى الملكيـــة أو الأمـــلاك المرهونـــة أي شـــرط فاســـــخ أو مبطــــــل، ولا أي ارتفــاقـــات، ولا أي حقـــــــوق عرفيـــــــة إسلاميــــــة، كمـــا لا يــوجـــد أي تعــــرض أو رهـــــن رسمـــــي أو طلــــــــب رهــــــن رسمـــي اتفاقـــــي أو إجباري، ولا أي تقييــــــد احتياطــــي، أو أي حــــــق مـــــــن شأنـــــــه أن يمـــــــس بالــــرهـن الرسمـــــي  المنصوص عليه أعـــــلاه]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="519" width="280" height="16" uuid="50b36a36-399d-4166-9f02-ede7c8de7b61">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Désignation du (ou des) titre(s) :]]></text>
+				</staticText>
+			</frame>
+			<componentElement>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="550" width="555" height="100" uuid="24103be7-1a1b-453e-bc17-27ad30ee938a"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Properties" uuid="7b6540d6-7b7d-45b3-993c-80697584aba7">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{properties})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="100" width="555">
+						<frame>
+							<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="100" uuid="a4a9757e-c3c6-4b7b-b532-1c4e12fd84b2"/>
+							<staticText>
+								<reportElement x="0" y="1" width="160" height="15" uuid="c066cbff-51c4-404d-ba99-9cf4a35cffc1">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Times New Roman" size="10"/>
+								</textElement>
+								<text><![CDATA[Dénomination :]]></text>
+							</staticText>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="160" y="0" width="340" height="16" uuid="510e1d2f-0bd9-4c34-88e8-e37a91fd1e95"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nomBien}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="500" y="0" width="54" height="16" uuid="d2f5c1ba-741b-44ad-8f0d-c89809183b90"/>
+								<textElement textAlignment="Right">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[التسمية :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="16" width="160" height="25" uuid="04a1a8f0-57ef-4be9-907b-5da9b08dab8b"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10"/>
+								</textElement>
+								<text><![CDATA[Numéro(s) du (ou des) titre(s) foncier(s) ou de la (ou des) réquisition(s) :]]></text>
+							</staticText>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="160" y="16" width="185" height="25" uuid="84a28860-d6c3-413e-b4f0-ea8f4362cec7"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{titreFoncierBien}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="345" y="16" width="209" height="25" uuid="0da9296a-206b-4c9e-85c6-cd4a35a05a1f"/>
+								<textElement textAlignment="Right">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[رقم الرسم أو الرسوم العقارية، أو مطلب (أو مطالب) التحفيظ:]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="41" width="160" height="15" uuid="26dd4f26-2c51-4bee-ba19-8fa2172f7fb7">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Times New Roman" size="10"/>
+								</textElement>
+								<text><![CDATA[Situation :]]></text>
+							</staticText>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="160" y="42" width="340" height="14" uuid="45e8dcb8-2e08-4d4f-9727-74daaa27e632"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{villeBien}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="500" y="42" width="54" height="14" uuid="9d0e2231-a94a-4364-9e0f-36f75d19d946"/>
+								<textElement textAlignment="Right">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[الموقع :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="57" width="160" height="15" uuid="a5cef968-835f-4453-8c31-12be1d53acaf">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Times New Roman" size="10"/>
+								</textElement>
+								<text><![CDATA[Superficie :]]></text>
+							</staticText>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="160" y="57" width="340" height="15" uuid="23c71aee-ca75-4432-a66a-63f646c7a4ea"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{areaBien}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="500" y="57" width="55" height="14" uuid="476e7811-b24f-4342-b888-62f6dcc432fe"/>
+								<textElement textAlignment="Right">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[المساحة :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="72" width="160" height="28" uuid="ae4a6353-28fa-4d7c-816f-bf043f99d793">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
+								<textElement>
+									<font fontName="Times New Roman" size="10"/>
+								</textElement>
+								<text><![CDATA[Description des constructions s'il y a lieu :]]></text>
+							</staticText>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="160" y="72" width="255" height="28" uuid="91d9fafc-b770-47f1-9f23-5f982bcd0c6d"/>
+								<textElement>
+									<font fontName="Times New Roman" size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descriptionBien}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="415" y="72" width="140" height="28" uuid="4bf78144-9a78-4f9d-b81e-99d4855746c0"/>
+								<textElement textAlignment="Right">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph rightIndent="5"/>
+								</textElement>
+								<text><![CDATA[وصف البناءات عند الاقتضاء :]]></text>
+							</staticText>
+						</frame>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="280" y="535" width="275" height="15" uuid="64ab48a8-3fb6-4fcc-8303-6a775dd41d67">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[تعيين الرسم أو الرسوم العقارية :]]></text>
+			</staticText>
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="650" width="554" height="110" uuid="8a1b4c2d-4e0c-4ed7-b8d6-a9f3ce068771"/>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="280" height="110" uuid="75fc7684-67a7-4194-a8c2-3c188a2aeca8"/>
+					<box>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font fontName="Times New Roman" size="11"/>
+					</textElement>
+					<text><![CDATA[Par les présentes, les parties soussignées requièrent de Monsieur le Conservateur de la propriété Foncière de bien vouloir :
+- Inscrire la présente hypothèque au profit de la Banque sur le (ou les) titre(s) foncier(s) ou la (ou les) réquisition(s) ci-après désigné(s) notamment, l'interdiction d'hypothéquer et d'aliéner sans l'accord préalable et écrit de la banque.
+- Délivrer au porteur de l'acte le certificat simple d'inscription hypothécaire]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="280" y="0" width="274" height="110" uuid="cb5c8d29-c244-479d-adb9-868d657a7edc"/>
+					<textElement textAlignment="Right">
+						<font fontName="Times New Roman" size="11" isBold="false"/>
+					</textElement>
+					<text><![CDATA[تلتمـــــــس الأطــــــــراف المــــوقعـــــــة علـــــــى هــــــــذا العقـــــــــد مـــــــن السيـــــــــد المحــــافــــــظ علـــــــى الملكيــــــة العقاريــــة بــــأن يتفضـــــل :
+- بتقييــــــد هــــــــذا الرهــــن الرسمــــي لفائـــــدة البنـــــــك علـــــــى الرســـــــم أو الرســـوم العقاريـــة، أو مطلــــب أو مطالــــب التحفيــــظ المعينــــة أسفله، خاصــــة منـــع الرهــــن الرسمـــي و التفــــويت دون الموافقـــة المسبقـــة والمكتـــوبــــة مـــن البنــك.
+- بتسليـــم، حامــــل هــــــذا العقـــــــد، شهــــــــادة التقييـــد الرهنــــي.]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="340">
+			<staticText>
+				<reportElement x="0" y="0" width="280" height="16" uuid="b85862f7-0781-4cdf-8741-935f9012514b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Mainlevée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="1" width="275" height="15" uuid="f0beac67-ce3a-4e7b-bef6-7f790e86dfd5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[رفع اليد عن الضمان:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="280" height="130" uuid="4ea7da73-641e-4cd6-a0c8-b09589b74289"/>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[La mainlevée au titre de la présente garantie sera disponible à l'agence de l'Emprunteur dans les trente « 30 » jours ouvrables à compter du remboursement total du Crédit et acquittement des frais de mainlevées y afférents.
+L'Emprunteur devra prendre attache avec son agence pour les modalités de remise de ladite mainlevée.
+Les frais de mainlevée seront débités automatiquement par la Banque du compte de l'Emprunteur après remboursement total du Crédit, ce que ce dernier autorise sans contestations ni réserves.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="30" width="274" height="130" uuid="b5d7a38c-0ab1-405b-991c-647f6f6f6a74"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[رفع اليد عن هدا الضمان سيكون جاهزا في الوكالة البنكية للمقترض في غضون "30" يوم عمل من تاريخ التسديد الكامل لالتزاماته اتجاه البنك و كذا المصاريف المتعلقة برفع اليد.
+
+على المقترض أن يربط الاتصال بوكالته البنكية من أجل اطلاعه على الإجراءات المتعلقة بتسليم وثيقة رفع اليد.
+
+يبدي المقترض موافقته التامة بدون شرط أو قيد على الاقتطاع الآلي لمصاريف رفع اليد من حسابه فور التسديد الكامل للدين]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="5" y="247" width="75" height="15" uuid="e63ddda3-630c-41a7-96d1-a1e3d7beeb7f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Le]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement positionType="FixRelativeToBottom" x="80" y="232" width="350" height="15" uuid="25769294-c98d-45ee-8853-8e4d80604259">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signedIn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="430" y="247" width="122" height="15" uuid="ac7a1229-3d4e-48fc-9316-1fd82e87e955">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[بتاريخ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="380" y="290" width="139" height="42" uuid="2616de2f-63ed-418f-85aa-b7cddcbdc255"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LA BANQUE
+
+البنــــــــك]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="430" y="232" width="124" height="15" uuid="b1f2a6ea-b338-4c33-8985-66e5d8c89059">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[حرر ب:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="5" y="232" width="75" height="15" uuid="80e6ec95-bc28-414c-88ce-b16408dccc27">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Fait à]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement positionType="FixRelativeToBottom" x="80" y="248" width="350" height="15" uuid="dc8234e4-ab4c-4d4c-8d53-56b2d7f29829">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{decisionDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="41" y="290" width="139" height="40" uuid="da229292-fa23-4a11-ac2e-cc78f9348342"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[L'EMPRUNTEUR
+
+المقتـــــرض]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
+

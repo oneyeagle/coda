@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Annexe au contrat de crédit — Acte de cautionnement hypothécaire</title>
+  <style th:fragment="styles">
+    /* Converted from attach_caut_hypothecaire.jrxml.
+       Page: source 595x842pt, 0 margins, content width 535pt
+       -> margins 30pt left/right reproduce the content width;
+       10mm top / 12mm bottom for print safety.
+       Columns: FR 0..267 / AR 268..535 -> 50% / 50%.
+       Fonts routed per project rules (source declares system fonts that
+       are not registered in the pipeline): Latin = Noto Sans,
+       Arabic = Noto Naskh Arabic. No borders in this document.
+       MULTI-RECORD: the jrxml detail repeats per record with a leading
+       page-break band -> the whole act is wrapped in th:each over
+       ${attachHypothecaireData}; every act after the first starts on a
+       new page. Each repetition is a flattened AttachCautionHypothecaireView
+       (bound as ${cah}) merging loan-level scalars ($P{...}) with the
+       per-record fields ($F{...}); rank list items via ${r.*}. */
+    @page { size: A4; margin: 10mm 30pt 12mm 30pt; }
+    body { font-family: 'Noto Sans'; font-size: 10pt; color: #000000; margin: 0; }
+    .ar, td.ar { font-family: 'Noto Naskh Arabic'; }
+    .b { font-weight: 700; }
+
+    div.act { page-break-before: always; }
+    div.act.first { page-break-before: auto; }
+
+    table { width: 100%; border-collapse: collapse; }
+    td { vertical-align: top; padding: 0; }
+    td.fr { width: 50%; text-align: left; padding-right: 6pt; }
+    td.ar { width: 50%; text-align: right; padding-left: 6pt; }
+    td.fr.just { text-align: justify; }
+    /* Beneficiary rows: source gives the FR side 380/535 of the width */
+    td.fr.w70 { width: 71%; }
+    td.ar.w30 { width: 29%; }
+    td p { margin: 0 0 8pt 0; }
+    td p:last-child { margin-bottom: 0; }
+
+    table.hdr td { font-size: 11pt; font-weight: 700; }
+    table.row { margin-top: 3pt; }
+    table.pair { margin-top: 10pt; }
+    table.hdr2 td { font-weight: 700; }
+
+    div.doctitle {
+      text-align: center; font-weight: 700; font-size: 12pt;
+      margin: 16pt 0 12pt 0; page-break-inside: avoid;
+    }
+    div.doctitle .ar { font-size: 14pt; }
+
+    div.rank { margin-top: 8pt; page-break-inside: avoid; }
+
+    table.sig { margin-top: 16pt; page-break-inside: avoid; }
+    table.sigt { margin-top: 14pt; page-break-inside: avoid; }
+    table.sigt td { font-weight: 700; padding-top: 6pt; padding-bottom: 30pt; }
+    div.footnote { text-align: center; font-size: 10pt; margin-top: 8pt; page-break-inside: avoid; }
+  </style>
+</head>
+<body>
+
+<div class="act" th:fragment="content" th:each="cah, it : ${attachHypothecaireData}" th:classappend="${it.first} ? 'first'">
+
+  <!-- ============ HEADER ============ -->
+  <table class="hdr">
+    <tbody>
+    <tr>
+      <td class="fr">ANNEXE AU CONTRAT DE CREDIT</td>
+      <td class="ar" dir="rtl">ملحق عقد القرض</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="row hdr2">
+    <tbody>
+    <tr>
+      <td class="fr">EN DATE DU :&#160;<span th:text="${cah.decisionDate}">15/06/2026</span></td>
+      <td class="ar" dir="rtl">المؤرخ في:</td>
+    </tr>
+    <tr>
+      <td class="fr">CONCLU AVEC :&#160;<span th:text="${cah.customerFullName}">M. EXEMPLE CLIENT</span></td>
+      <td class="ar" dir="rtl">المبرم مع:</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ TITLE ============ -->
+  <div class="doctitle">
+    ACTE DE CAUTIONNEMENT HYPOTHECAIRE<br/>
+    <span class="ar" dir="rtl">عقـــــــد كـــفـــــالــــــــة رهنيــــــــــــة</span>
+  </div>
+
+  <!-- ============ INTERVENANT ============ -->
+  <table class="row">
+    <tbody>
+    <tr>
+      <td class="fr b">Aux présentes intervient</td>
+      <td class="ar b" dir="rtl">يتدخل بمقتضى هذا العقد:</td>
+    </tr>
+    <tr>
+      <td class="fr w70">M/Mme :&#160;<span class="b" th:text="${cah.beneficiaryFullName}">Mme EXEMPLE CAUTION</span></td>
+      <td class="ar w30" dir="rtl">السيد (ة) :</td>
+    </tr>
+    <tr>
+      <td class="fr w70">Demeurant à :&#160;<span class="b" th:text="${cah.beneficiaryAddress}">12, rue Exemple, Casablanca</span></td>
+      <td class="ar w30" dir="rtl">القاطن(ة) ب :</td>
+    </tr>
+    <tr>
+      <td class="fr">CIN n° :&#160;<span class="b" th:text="${cah.beneficiaryCardID}">AB123456</span></td>
+      <td class="ar" dir="rtl">و الحامل للبطاقة الوطنية للتعريف رقم:</td>
+    </tr>
+    <tr>
+      <td class="fr b">Appelée ci-après «&#160;LA CAUTION&#160;»</td>
+      <td class="ar b" dir="rtl">وهو الطرف المشار إليه فيما يلي بعبارة "الكفيل"</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ CONNAISSANCE DU CONTRAT ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr">La Caution, déclare avoir parfaite connaissance du contrat de crédit en date du</td>
+      <td class="ar" dir="rtl">يصرح الكفيل أنه أحيط علما بعقد القرض بتاريخ:</td>
+    </tr>
+    <tr>
+      <!-- Source: plain (non-bold) decisionDate on the FR side; the AR
+           frame of this band is empty in the jrxml. -->
+      <td class="fr" th:text="${cah.decisionDate}">15/06/2026</td>
+      <td class="ar" dir="rtl"></td>
+    </tr>
+    <tr>
+      <td class="fr w70">de la somme de&#160;<span class="b" th:text="${cah.loanAmount}">850 000,00 DH</span></td>
+      <td class="ar w30" dir="rtl">للمبلغ:</td>
+    </tr>
+    <tr>
+      <td class="fr" th:text="'consenti au profit ' + (${cah.customerFullName != null} ? ${cah.customerFullName} : '')">consenti au profit M. EXEMPLE CLIENT</td>
+      <td class="ar" dir="rtl" th:text="'الممنوح ل ' + (${cah.customerFullName != null} ? ${cah.customerFullName} : '')">الممنوح ل M. EXEMPLE CLIENT</td>
+    </tr>
+    <tr>
+      <td class="fr" th:text="'Au taux d\u2019intérêt ' + (${cah.rateNature != null} ? ${cah.rateNature} : '') + ' de ' + (${cah.rate != null} ? ${cah.rate} : '') + ' % TVA en sus'">Au taux d'intérêt Standard de 5,10 % TVA en sus</td>
+      <!-- Arabic rate-nature mapping replicated from the jrxml:
+           Standard -> عادية, Taux Convention -> اتفاقية,
+           Offre Promotionnelle -> ترويجية, Accord BU -> اتفاقية وحدة العمل,
+           any other non-null value passes through unchanged. -->
+      <td class="ar" dir="rtl" th:text="'بنسبة فائدة ' + (${cah.rateNature == 'Standard'} ? 'عادية' : (${cah.rateNature == 'Taux Convention'} ? 'اتفاقية' : (${cah.rateNature == 'Offre Promotionnelle'} ? 'ترويجية' : (${cah.rateNature == 'Accord BU'} ? 'اتفاقية وحدة العمل' : (${cah.rateNature != null} ? ${cah.rateNature} : ''))))) + ' قدرها ' + (${cah.rate != null} ? ${cah.rate} : '')">بنسبة فائدة عادية قدرها 5,10</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ RANKS LIST (source: Rank dataset over $F{propertyRanks};
+       rang is used RAW here - no ordinal formatting in this document) ============ -->
+  <div class="rank" th:each="r : ${cah.propertyRanks}">
+    <table>
+      <tbody>
+      <tr>
+        <td class="fr" th:text="'La Caution consent, conformément aux dispositions du dahir du 22 novembre 2011, au profit de la BANQUE qui accepte par privilège et préférence à tous autres créanciers une hypothèque en rang ' + (${r.rang != null} ? ${r.rang} : '') + ' à concurrence d\u2019un montant en capital de ' + (${r.amount != null} ? ${r.amount} : '') + ' outre les intérêts, commissions, frais et accessoires'">La Caution consent, conformément aux dispositions du dahir du 22 novembre 2011, au profit de la BANQUE qui accepte par privilège et préférence à tous autres créanciers une hypothèque en rang 1 à concurrence d'un montant en capital de 850 000,00 DH outre les intérêts, commissions, frais et accessoires</td>
+        <td class="ar" dir="rtl" th:text="'يمنح الكفيل طبقا لمقتضيات ظهير 22 نوفمبر 2011 لفائدة البنك الذي يقبل بالامتياز وبالأفضلية على جميع الدائنين الآخرين، رهنا رسميا من الدرجة ' + (${r.rang != null} ? ${r.rang} : '') + ' في حدود مبلغ أصل الدين ' + (${r.amount != null} ? ${r.amount} : '') + ' بالإضافة إلى الفوائد والعمولات والمصاريف والتوابع'">يمنح الكفيل طبقا لمقتضيات ظهير 22 نوفمبر 2011 لفائدة البنك الذي يقبل بالامتياز وبالأفضلية على جميع الدائنين الآخرين، رهنا رسميا من الدرجة 1 في حدود مبلغ أصل الدين 850 000,00 DH بالإضافة إلى الفوائد والعمولات والمصاريف والتوابع</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ GARANTIE / AFFECTATION ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr just">Sur l'(ou les) immeuble(s) désigné(s) ci-après pour garantir tant le remboursement du montant en capital du (ou des) présent(s) crédit(s), ainsi que le paiement des intérêts d'une année et de l'année courante en vertu de l'article 168 du Dahir précité.</td>
+      <td class="ar" dir="rtl">على مجمــوع العقــار أو العقــارات المعينــة فيمـا يلــي، مــن أجــل ضمــان تســديــد مبلــغ الرأسمــال هــذا القــرض أو لأي سبــب اخــر، بالإضافـــة إلى تســديــد الفــوائــد لسنــة واحـــدة وللسنـــة الجاريـــة طبقـــا لمقتضيـــات المــادة 168 من الظهيــر السالـــف الذكـــر.</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr just">
+        <p>Sont compris dans l'affectation hypothécaire, les biens immobiliers ci-après désignés, tels qu'ils existent, y compris toutes dépendances, toutes les constructions qui seront édifiées, tous droits y attachés, tous immeubles par destination en dépendant ou pouvant en dépendre et toutes améliorations et accroissements que la Caution  pourrait faire.</p>
+        <p>La Caution s'engage à maintenir les constructions en bon état et à effectuer toutes les réparations nécessaires à la conservation des immeubles, la BANQUE pourra à toute époque faire constater l'état des biens hypothéqués par les personnes de son choix aux frais de l'EMPRUNTEUR ou de la Caution qui s'y obligent.</p>
+        <p>La Caution s'interdit sans l'accord de la Banque d'affecter l'(ou les) immeuble(s) hypothéqué(s) en faveur de la BANQUE  à un usage commercial, de le rattacher à un fonds de commerce, d'y constituer un fonds de commerce ou d'y domicilier toute personnes physique ou morale</p>
+      </td>
+      <td class="ar" dir="rtl">
+        <p>ويدخل ضمن التخصيص الرهني، الملك أو الممتلكات العقارية المعينة فيما يلي، كما هي موجودة، بما فيها جميع المرافق وكل البناءات التي سيتم تشييدها، وكل الحقوق المرتبطة بها، وكل العقارات التابعة لها بالتخصيص أو التي يمكن أن تصبح تابعة لها وكذا جميع التحسينات والإضافات التي يمكن أن يدخلها عليها للمقترض.</p>
+        <p>يلتزم الكفيـــل بالمحافظـــة على البنايات في حالـــة جيدة وبالقيام بكافـة الإصلاحات الضرورية للحفاظ على العقارات، حيث يمكن للبنـــك في أية لحظة القيـــــام بمعاينــــة حالـــة الأملاك المرهونة رسميا بواسطــة أشخاص من اختياره على نفقة للمقترض أو الكفيل  الذين يلتزمون بذلك..</p>
+        <p>يمتنع الكفيل عن تخصيص العقار أو العقارات المرهونة رسميا لفائدة البنك للاستعمال التجاري، أو إلحاقها بأصل تجاري أو تأسيس أصل تجاري عليها ، أو توطين أي شخص ذاتي أو معنوي  في هذا العقار.</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ INTERDICTIONS / DECLARATIONS / AUTORISATIONS ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr just">
+        <p>La Caution s'interdit de donner en location l'(ou les) immeuble(s) hypothéqué(s) en faveur de la BANQUE sans l'accord préalable et écrit de cette dernière.<br/>
+          En cas de location dûment autorisée par la BANQUE, la Caution  déclare d'ores et déjà céder, déléguer  et transporter au profit de la BANQUE tous loyers et revenus de l'(ou les) immeubles grevé (s) d'hypothèque<br/>
+          en conséquence il subroge la banque dans tous ses droits et actions vis à vis de ses locataires, lesquels sont autorisés à se libérer de tous loyers directement entre les mains de la BANQUE par préférence et antériorité à tous  autres créanciers et à lui-même sur simple quittance de celle-ci  et hors la présence de la Caution.<br/>
+          Néanmoins, notification de cette délégation et de cette subrogation ne sera faite aux locataires qu'en cas de défaut de paiement de toutes sommes dues et exigibles en capital, intérêts, commission, frais et accessoires, ou en cas d'inexécution de l'une des clauses et conditions du présent contrat.</p>
+        <p>La Caution déclare :</p>
+        <p>- que les immeubles par destination dépendant de la (ou des) propriété(s) désignée(s) ci-après ne sont pas nantis au profit d'un autre créancier et il s'engage expressément à ne pas les nantir sans l'autorisation expresse et par écrit de la BANQUE,</p>
+        <p>-qu'il n'existe sur la (ou les) propriété(s) hypothéquée(s) ni clause de résolution ou de rescision, ni de servitude, ni opposition, ni hypothèque conventionnelle ou forcée, ni aucun droit de nature à porter atteinte à l'hypothèque ci-dessus consentie.</p>
+        <p>LA CAUTION autorise :<br/>
+          dès à présent la BANQUE, sans qu'il puisse en résulter aucune réduction de ses engagements, à donner son adhésion à tous atermoiements ou prorogations d'échéances et à tous concordats amiables ou judiciaires que la BANQUE pourrait être amenée à consentir, de même la CAUTION ne pourra se prévaloir d'aucune subrogation à l'occasion des paiements qu'elle effectuerait à la BANQUE avant qu'elle n'ait été intégralement remboursée de ses créances  en capital outre les intérêts, commissions, frais et accessoires sur l'EMPRUNTEUR.</p>
+        <p>Le présent cautionnement ne se confondra pas avec les autres cautionnements et généralement toutes garanties quelconques qui ont pu ou pourront être données par la CAUTION ou tous autres.</p>
+      </td>
+      <td class="ar" dir="rtl">
+        <p>يمتنع الكفيل عن منح العقار أو العقارات المرهونة رسميا لفائدة البنك على سبيل الكراء، بدون الموافقة المسبقة والمكتوبة من البنك .</p>
+        <p>في حالة كراء مرخص به كتابة من طرف البنك، يصرح الكفيل، منذ الآن، بتفويت وإنابة وتحويل جميع أكرية ومداخيل العقار أو العقارات المثقلة بالرهون الرسمية، لفائدة البنك.</p>
+        <p>ونتيجة لذلك، فإن البنك يحل محله في جميع حقوقه ودعاواه تجاه مكتريه، ويعتبر هؤلاء المكترين مخولين صراحة بمقتضى هذا العقد، بأداء الأكرية مباشرة بين يدي البنك بالأفضلية وبالأسبقية على جميع الدائنين الآخرين بل وبالأسبقية عليه هو نفسه بناء على مجرد وصل من هذا البنك وفي غياب الكفيل.</p>
+        <p>إلا أن تبليغ هذه الإنابة إلى المكترين، وحلول البنك محل المقترض، لن يتم إلا في حالة عدم أداء المبالغ المستحقة والتي حل أجلها رأسمالا وفوائد وعمولات ومصاريف وتوابع،  أو في حالة عدم تنفيذ أحد بنود أو شروط هذا العقد.</p>
+        <p>يصرح الكفيل:</p>
+        <p>- بأن البنايات التابعة بالتخصيص للملكية أو الأملاك المعينة أسفله، غير مرهونة لفائدة دائن آخر، ويتعهد صراحة بعدم رهنها بدون موافقة صريحة ومكتوبة من البنك</p>
+        <p>- أنه لا يوجد على الملكية أو الأملاك المرهونة رسميا أي شرط فاسخ أو مبطل، ولا أي ارتفاقات،  كما لا يوجد أي تعرض  أو رهن رسمي اتفاقي أو إجباري، أو أي حق من شأنه أن يمس بالرهن الرسمي الممنوح أعلاه</p>
+        <p>و يرخـــص الكفــيــل:<br/>
+          من الآن للبنك ودون أن ينتـــج عـــن ذلك أي نقصـــان لإلتزاماتـــــه أن يمنح موافقته على أي إمهـــــال أو تمــديــد للإستحقاقات وكـــذا أي صلــــح ودي أو قضـــائي، يمكن أن يمنحــــه البنــــــك للمقتــــــرض، كمـــــا لا يمكــــــن للكفيـــل أن يستفيـــد مـــن أي حلـــــول بمناسبـــة الأداءات التي سيقــــــوم بها لفائـــــــدة البنــــك، وذلك إلى حين التسديد الكلي لديون  المقترض، كيفما كان نوعها و لأي سبب كانت، بمــــا فيهـــا الأصــــل زيادة على الفــــوائد والمصاريف و العمــــولات و التوابـــع</p>
+        <p>تستقل هذه الكفالة عن باقي الكفالات الأخرى، و بصفة عامة عن مختلف الضمانات التي يمكن أن يقدمها أو سبق أن قدمها الكفيل أو غيره</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ DETAIL DES TITRES FONCIERS ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr b">Détail du (ou des) titre(s) fonciers:</td>
+      <td class="ar b" dir="rtl">مراجع الرسم أو الرسوم العقارية :</td>
+    </tr>
+    <tr>
+      <td class="fr">Dénomination :&#160;<span class="b" th:text="${cah.propertyName}">Résidence Exemple</span></td>
+      <td class="ar" dir="rtl">التسمية :</td>
+    </tr>
+    <tr>
+      <td class="fr">NUMERO(S) DU (OU DES) TITRE(S)FONCIER OU DE LA (OU DES) REQUISITION(S) :<br/>
+        <span class="b" th:text="${cah.propertyLandCertificate}">TF 12345/C</span></td>
+      <td class="ar" dir="rtl">رقم الرسم أو الرسوم العقارية، أو مطلب أو مطالب التحفيظ:</td>
+    </tr>
+    <tr>
+      <td class="fr">Situation :&#160;<span class="b" th:text="${cah.propertyCity}">Casablanca</span></td>
+      <td class="ar" dir="rtl">الموقع :</td>
+    </tr>
+    <tr>
+      <!-- Source: the AR frame of the Superficie band is EMPTY in the
+           jrxml (no المساحة label) - reproduced verbatim. -->
+      <td class="fr">Superficie :&#160;<span class="b" th:text="${cah.propertyArea}">120 m²</span></td>
+      <td class="ar" dir="rtl"></td>
+    </tr>
+    <tr>
+      <td class="fr">Description des constructions s'il y a lieu :<br/>
+        <span class="b" th:text="${cah.enrichment}">Appartement au 3ème étage</span></td>
+      <td class="ar" dir="rtl">وصف البناءات عند الاقتضاء :</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ REQUISITION AU CONSERVATEUR (dynamic: propertyCity) ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr" th:text="'Par les présentes, les parties soussignées requièrent de Monsieur le Conservateur de la Propriété Foncière de ' + (${cah.propertyCity != null} ? ${cah.propertyCity} : '') + ' de bien vouloir :'">Par les présentes, les parties soussignées requièrent de Monsieur le Conservateur de la Propriété Foncière de Casablanca de bien vouloir :</td>
+      <td class="ar" dir="rtl" th:text="'تلتمس الأطراف الموقعة على هذا العقد من السيد المحافظ على الملكية العقارية ب: ' + (${cah.propertyCity != null} ? ${cah.propertyCity} : '') + ' بأن يتفضل:'">تلتمس الأطراف الموقعة على هذا العقد من السيد المحافظ على الملكية العقارية ب: Casablanca بأن يتفضل:</td>
+    </tr>
+    <tr>
+      <td class="fr just">
+        <p>-Inscrire la présente hypothèque au profit de la BANQUE sur le (ou les) titre(s) foncier(s) ou la (ou les) réquisition(s) ci-après désigné(s), notamment, l'interdiction d'hypothéquer  et d'aliéner sans l'accord préalable et écrit de la banque<br/>
+          -Délivrer au porteur de l'acte le certificat simple d'inscription hypothécaire.</p>
+      </td>
+      <td class="ar" dir="rtl">
+        <p>- بتقييــد هــذا الرهــن الرسمــي لفائــدة البنــك علــى الرســم أو الرســـوم العقاريــة، أو مطلـــب أو مطالـــب التحفيــظ المعينــة بعــــده، خاصـــة منـــع الرهـــن الرسمـــي أو التفويـــت دون الموافقة المسبقة و المكتوبة من البنك</p>
+        <p>- تسليم، حامل هذا العقد، شهادة تقييد الرهن.</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ MAINLEVEE ============ -->
+  <table class="pair">
+    <tbody>
+    <tr>
+      <td class="fr b">Mainlevée :</td>
+      <td class="ar b" dir="rtl">رفع اليد عن الضمان</td>
+    </tr>
+    <tr>
+      <td class="fr just">
+        <p>La mainlevée au titre de la présente garantie sera disponible à l'agence de l'Emprunteur dans les trente « 30 » jours ouvrables à compter du remboursement total du Crédit et acquittement des frais de mainlevées y afférents.</p>
+        <p>La Caution devra prendre attache avec l'agence de l'Emprunteur pour les modalités de remise de ladite mainlevée.</p>
+        <p>Les frais de mainlevée seront débités automatiquement par la Banque du compte de la Caution après remboursement total du Crédit, ce que cette dernière autorise sans contestations ni réserves.<br/>
+          Dans le cas où la Caution ne dispose pas d'un compte ouvert auprès de la Banque, elle s'engage expressément à régler les frais de la mainlevée directement à la Banque pour pouvoir disposer de sa mainlevée</p>
+      </td>
+      <td class="ar" dir="rtl">
+        <!-- "هدا" and the doubled "في غضون في غضون" below are typos in
+             the source jrxml - kept verbatim pending legal review. -->
+        <p>رفع اليد عن هدا الضمان سيكون جاهزا في الوكالة البنكية للمقترض في غضون في غضون "30" يوم عمل من تاريخ التسديد الكامل لالتزاماته اتجاه البنك و كذا المصاريف المتعلقة برفع اليد.</p>
+        <p>على الكفيل أن يربط الاتصال بوكالة المقترض البنكية من أجل اطلاعه على الإجراءات المتعلقة بتسليم وثيقة رفع اليد.</p>
+        <p>يبدي الكفيل موافقته التامة بدون شرط أو قيد على الاقتطاع الآلي لمصاريف رفع اليد من حسابه فور التسديد الكامل للدين.</p>
+        <p>هذا و يلتزم الكفيل، في حالة ما إذا لم يكن يتوفرعلى حساب بنكي مفتوح لدى البنك، بآداء مصاريف رفع اليد مباشرة للبنك لتمكينه من وثيقة رفع اليد</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ SIGNATURES ============
+       NOTE: as in the hypothec annex, the source binds $P{decisionDate} to
+       the "Le" line and never uses $P{signedAt} - reproduced VERBATIM.
+       If that is a source bug, swap to ${cah.signedAt} below. -->
+  <table class="sig">
+    <tbody>
+    <tr>
+      <td class="fr">Fait à&#160;<span class="b" th:text="${cah.signedIn}">Casablanca</span><br/>
+        Le&#160;<span class="b" th:text="${cah.decisionDate}">15/06/2026</span></td>
+      <td class="ar" dir="rtl">حرر ب:<br/>بتاريخ:</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="sigt">
+    <tbody>
+    <tr>
+      <td class="fr">LA CAUTION (1)</td>
+      <td class="ar" dir="rtl">الكفيل (1)</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="footnote">(1) Faire précéder la signature par la mention écrite de la main de la Caution : "Lu et approuvé, Bon pour accord »<br/>
+    <span class="ar" dir="rtl">يتعيـــن علــــى المــوقــــع أن يسبـــــق تــوقيعـــــه بالبيـانــات التـاليــــــة المكتـوبــــة بخــط اليــــــد</span></div>
+
+</div>
+
+</body>
+</html>
