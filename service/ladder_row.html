@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/></head>
+<body>
+
+<!--
+  Reusable dot-leader row.
+  Parameters:
+    - labelFr : French label (left)
+    - value   : Dynamic value (bold) — pass '' for blank hand-fillable rows
+    - labelAr : Arabic label (right)
+    - suffix  : Optional suffix after value — pass '' if none
+-->
+<div th:fragment="row(labelFr, value, labelAr, suffix)"
+     style="position: relative; height: 1.4em; line-height: 1.4em;
+            overflow: hidden; page-break-inside: avoid;
+            padding: 1pt 7pt 0; width: 100%;
+            border: none; border-right: none; border-left: none;">
+  <span style="font-weight: 400;"
+        th:text="${labelFr}"></span><span
+        style="font-weight: 700;"
+        th:if="${value != null and !#strings.isEmpty(value)}"
+        th:text="${value} + (${suffix != null and !#strings.isEmpty(suffix)} ? ' ' + ${suffix} : '')"></span><span
+        style="color: #666666; word-spacing: -1px;">&#160;. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span>
+    <span style="position: absolute; top: 1.0mm; right: 7pt;
+               background-color: #ffffff; padding-left: 4pt;
+               font-family: 'Noto Naskh Arabic'; font-weight: 400;"
+          dir="rtl"
+          th:text="${labelAr}"></span>
+</div>
+
+</body>
+</html>
