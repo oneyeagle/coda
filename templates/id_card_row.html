@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/>
+    <style>
+
+        /* ---- Outer card table: 2 columns, FR | AR ---- */
+        table.cdr-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 0;
+            border-top: 0.5pt solid #000000;
+            border-bottom: 0.5pt solid #000000;
+        }
+
+        tr.cdr { border-bottom: 0.5pt solid #000000; }
+        tr.cdr:last-child { border-bottom: none; }
+
+        td.cdr-fr-cell {
+            width: 50%;
+            border-right: 0.5pt solid #000000;
+            padding: 2pt 4pt 2pt 7pt;
+            vertical-align: middle;
+        }
+        td.cdr-ar-cell {
+            width: 50%;
+            padding: 2pt 7pt 2pt 4pt;
+            vertical-align: middle;
+            text-align: right;
+            direction: rtl;
+            unicode-bidi: embed;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+            font-size: 10pt;
+        }
+
+        /* ---- Inner table inside FR cell: label | value | dots ---- */
+        /* IMPORTANT: auto layout so label/value shrink-wrap to content
+           and nowrap is actually respected by PDF renderers. */
+        table.cdr-inner {
+            width: 100%;
+            table-layout: auto;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+        }
+
+        td.ci-label {
+            width: 0;                   /* shrink-wrap to content under auto layout */
+            white-space: nowrap;
+            padding: 0 3pt 0 0;
+            vertical-align: middle;
+            font-weight: 400;
+            direction: ltr;
+            text-align: left;
+        }
+        td.ci-value {
+            width: 0;                   /* shrink-wrap to content under auto layout */
+            white-space: nowrap;
+            padding: 0 3pt 0 0;
+            vertical-align: middle;
+            font-weight: 700;
+            direction: ltr;
+            text-align: left;
+        }
+        td.ci-dots {
+            width: 100%;                /* takes ALL remaining space */
+            white-space: nowrap;
+            color: #666666;
+            letter-spacing: 1px;
+            word-spacing: 0px;
+            direction: ltr;
+            text-align: left;
+            padding: 0;
+            vertical-align: middle;
+        }
+        td.ci-dots .dots-inner {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        /* ---- Tag row ---- */
+        tr.cdr-tag { border-bottom: 0.5pt solid #000000; }
+        tr.cdr-tag:last-child { border-bottom: none; }
+        td.cdr-tag-fr {
+            width: 50%;
+            padding: 2pt 4pt 2pt 7pt;
+            border-right: 0.5pt solid #000000;
+            direction: ltr;
+            text-align: left;
+            vertical-align: middle;
+            font-style: italic;
+        }
+        td.cdr-tag-ar {
+            width: 50%;
+            padding: 2pt 7pt 2pt 4pt;
+            direction: rtl;
+            unicode-bidi: embed;
+            text-align: right;
+            vertical-align: middle;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+            font-size: 10pt;
+            font-style: italic;
+        }
+
+        /* ---- Full-width mandataire row ---- */
+        tr.cdr-full { border-top: 0.5pt solid #000000; }
+        td.cdr-full-td {
+            padding: 2pt 7pt;
+            font-weight: 700;
+            direction: ltr;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--
+    Standard data row:
+    LEFT CELL  → inner table: [labelFr] [value] [........dots........]
+    RIGHT CELL → Arabic label, RTL, right-aligned
+-->
+<tr th:fragment="row(labelFr, value, labelAr)" class="cdr">
+    <td class="cdr-fr-cell">
+        <table class="cdr-inner">
+            <tbody>
+            <tr>
+                <td class="ci-label" th:text="${labelFr}"></td>
+                <td class="ci-value"
+                    th:text="${value != null and !#strings.isEmpty(value)} ? ${value} : ''"></td>
+                <td class="ci-dots">
+                    <div class="dots-inner">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    <td class="cdr-ar-cell" dir="rtl" th:text="${labelAr}"></td>
+</tr>
+
+<!-- Tag row: 50/50, no dots -->
+<tr th:fragment="tagRow(textFr, textAr)" class="cdr-tag">
+    <td class="cdr-tag-fr" th:text="${textFr}"></td>
+    <td class="cdr-tag-ar" dir="rtl" th:text="${textAr}"></td>
+</tr>
+
+<!-- Mandataire row: full width, bold, only shown if not empty -->
+<tr th:fragment="mandataireRow(text)" class="cdr-full"
+    th:if="${text != null and !#strings.isEmpty(text)}">
+    <td class="cdr-full-td" colspan="2" th:text="${text}"></td>
+</tr>
+
+</body>
+</html>

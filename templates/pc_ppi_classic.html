@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style th:fragment="styles">
+
+        /* ---- Title bar ---- */
+        div.titlebar { border: 0.75pt solid #000000; margin: 0; page-break-inside: avoid; }
+        table.title { width: 100%; border-collapse: collapse; }
+        table.title td { text-align: center; font-weight: 700; font-size: 13pt; padding: 7pt 8pt; vertical-align: middle; }
+        table.title td.fr { width: 50%; border-right: 0.75pt solid #000000; }
+        table.title td.ar { width: 50%; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; }
+
+        /* ---- Outer frame ---- */
+        div.frame { border: 0.75pt solid #000000; border-top: none; }
+
+        /* ---- Article bars ---- */
+        table.artbar { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.artbar td { font-weight: 700; font-size: 11.5pt; text-decoration: underline; padding: 5pt 8pt; vertical-align: middle; border-top: 0.7pt solid #000000; border-bottom: 0.7pt solid #000000; }
+        table.artbar td.fr { width: 50%; border-right: 0.7pt solid #000000; }
+        table.artbar td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 12pt; }
+
+        /* ---- Sub-section headings ---- */
+        table.subhead { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.subhead td { font-weight: 700; text-decoration: underline; padding: 4pt 8pt; vertical-align: middle; border-bottom: 0.5pt solid #000000; }
+        table.subhead td.fr { width: 50%; border-right: 0.5pt solid #000000; }
+        table.subhead td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 11pt; }
+
+        /* ---- Paired rows (text blocks, central divider) ---- */
+        table.pair { margin: 0; width: 100%; border-collapse: collapse; }
+        table.pair td { vertical-align: top; padding: 3pt 7pt; text-align: justify; }
+        table.pair td.fr { width: 50%; border-right: 0.5pt solid #000000; text-align: justify; }
+        table.pair td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; unicode-bidi: embed; }
+        table.pair td.b  { font-weight: 700; }
+
+        /* ---- Ladder rows ---- */
+        /* IMPORTANT: auto layout so the FR label shrink-wraps to its content
+           (no forced wrapping) and the dots column reliably takes the rest. */
+        table.ldr-table {
+            width: 100%;
+            table-layout: auto;
+            border-collapse: collapse;
+            margin: 0;
+            border-top: 0.5pt solid #000000;
+            border-bottom: 0.5pt solid #000000;
+        }
+        tr.ldr { border-bottom: 0.5pt solid #000000; }
+        tr.ldr:last-child { border-bottom: none; }
+        tr.ldr td { padding: 2pt 3pt; vertical-align: middle; }
+
+        td.ldr-fr {
+            width: 0;                   /* shrink-wrap to content under auto layout */
+            white-space: nowrap;
+            padding-left: 7pt;
+            padding-right: 2pt;
+            font-weight: 400;
+            direction: ltr;
+            text-align: left;
+        }
+        td.ldr-dots {
+            width: 100%;                /* takes all remaining space */
+            white-space: nowrap;
+            color: #666666;
+            letter-spacing: 1px;
+            word-spacing: 0px;
+            text-align: left;
+            direction: ltr;
+            padding: 0;
+        }
+        td.ldr-dots .dots-inner {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        td.ldr-ar {
+            width: 0;                   /* shrink-wrap to content under auto layout */
+            white-space: nowrap;
+            padding-left: 2pt;
+            padding-right: 7pt;
+            text-align: right;
+            direction: rtl;
+            unicode-bidi: embed;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+        }
+
+        /* ---- Property card ---- */
+        div.propcard { border: 0.5pt solid #000000; padding: 4pt 7pt; margin-top: 5pt; page-break-inside: avoid; font-size: 10pt; }
+
+        /* ---- Checkbox disclosure ---- */
+        div.checkbox { margin-top: 8pt; page-break-inside: avoid; }
+
+        /* ---- Signature grid ---- */
+        table.siggrid { margin-top: 10pt; border-collapse: collapse; width: 100%; }
+        table.siggrid td { border: 0.5pt solid #000000; vertical-align: top; padding: 4pt; }
+        table.siggrid td.hdr { text-align: center; font-weight: 700; vertical-align: middle; }
+        table.siggrid td.blank { height: 70pt; }
+        table.sigline { margin-top: 10pt; width: 100%; border-collapse: collapse; }
+        table.sigline td { padding: 2pt 0; }
+        table.sigline td.fr { width: 50%; font-weight: 700; }
+        table.sigline td.ar { width: 50%; font-weight: 700; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; }
+        div.cautionsig { border: 0.5pt solid #000000; padding: 5pt 8pt; margin-top: 6pt; page-break-inside: avoid; min-height: 40pt; }
+
+    </style>
+</head>
+<body>
+
+<div th:fragment="content" th:if="${data != null}">
+
+    <!-- ============ TITLE ============ -->
+    <div class="titlebar">
+        <table class="title">
+            <tbody>
+            <tr>
+                <td class="fr">CONDITIONS PARTICULIERS</td>
+                <td class="ar" dir="rtl">شـــروط خـــاصـــــة</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="frame">
+
+        <!-- ============ ARTICLE 1 : IDENTIFICATION DES PARTIES ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 1 : IDENTIFICATION DES PARTIES</td>
+                <td class="ar" dir="rtl">الفصـــل 1: هــويـــة الأطـــــراف</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.1 BANQUE -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.1 DESIGNATION DE LA BANQUE</td>
+                <td class="ar" dir="rtl">1.1 هويـــة الــبـنــك</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">SAHAM BANK, Société Anonyme à Directoire et à Conseil de Surveillance au capital de 2.152.500.000,00DH, dont le siège social est à CASABLANCA, 55 Boulevard Abdelmoumen, immatriculée au Registre de commerce de Casablanca sous le n° 28987 du Registre analytique, valablement représentée par :</td>
+                <td class="ar" dir="rtl">سهام بنك، شركة مساهمة ذات مجلس مراقبة و إدارة جماعية، رأسمالها 2.152.500.000,00 درهم، الكائن مقرها بالبيضاء، 55 شارع عبد المومن، المقيدة بالسجل التجاري للدار البيضاء تحت رقم 28987 من السجل التحليلي، يمثلها:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Bank representative static dot-leader rows -->
+        <table class="ldr-table">
+            <tbody>
+            <tr class="ldr">
+                <td class="ldr-fr">- M.</td>
+                <td class="ldr-dots"><div class="dots-inner">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div></td>
+                <td class="ldr-ar" dir="rtl">- السيد(ة)</td>
+            </tr>
+            <tr class="ldr">
+                <td class="ldr-fr">- en qualité de</td>
+                <td class="ldr-dots"><div class="dots-inner">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div></td>
+                <td class="ldr-ar" dir="rtl">- بصفته(ها)</td>
+            </tr>
+            <tr class="ldr">
+                <td class="ldr-fr">- M.</td>
+                <td class="ldr-dots"><div class="dots-inner">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div></td>
+                <td class="ldr-ar" dir="rtl">- السيد(ة)</td>
+            </tr>
+            <tr class="ldr">
+                <td class="ldr-fr">- en qualité de</td>
+                <td class="ldr-dots"><div class="dots-inner">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div></td>
+                <td class="ldr-ar" dir="rtl">- بصفته(ها)</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Appelée ci après la « Banque »</td>
+                <td class="ar" dir="rtl">المسمى فيما يلي "البنـك"</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.2 EMPRUNTEUR ET CAUTION -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.2 DESIGNATION DE L'EMPRUNTEUR ET DE LA CAUTION</td>
+                <td class="ar" dir="rtl">2.1 هوية المقترض و الكفيل</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b">- Désignation de l&#8217;Emprunteur :</td>
+                <td class="ar b" dir="rtl">- هـويـة المقتـرض:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- EMPRUNTEUR CARDS -->
+        <div th:each="cust : ${data.customers}" style="page-break-inside: avoid;">
+            <table class="cdr-table">
+                <tbody>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${cust.customerName}, 'الإسم العائلي و الشخصي:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${cust.customerAddress}, 'العنوان:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${cust.customerBirthDate}, 'المزداد يوم:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${cust.customerBirthPlace}, 'ب :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${cust.customerCardId}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Délivrée le : ', ${cust.customerCardIssuedDate}, 'المسلمة بتاريخ :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                    'Appelé(e) ci-après l«' + (${cust.intitule != null} ? ${cust.intitule} : '') + '»',
+                    (${cust.intitule != null} ? ${cust.intitule} : '') + ' المسمى فيما يلي المقترض'
+                )}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: mandataireRow(${cust.mandataire})}"></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CAUTION SECTION -->
+        <th:block th:if="${data.cautionBeneficiaries != null and !data.cautionBeneficiaries.isEmpty()}">
+            <table class="pair">
+                <tbody>
+                <tr>
+                    <td class="fr b">- Désignation de la Caution</td>
+                    <td class="ar b" dir="rtl">- هـويــة الكفيــل:</td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:each="caut : ${data.cautionBeneficiaries}" style="page-break-inside: avoid;">
+                <table class="cdr-table">
+                    <tbody>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${caut.nameCaution}, 'الإسم العائلي و الشخصي:')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${caut.addressCaution}, 'العنوان :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${caut.dateBirthCaution}, 'المزداد يوم :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${caut.placeBirthCaution}, 'ب :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${caut.nationalIdentityCaution}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('délivrée le : ', ${caut.issuedCaution}, 'المسلمة بتاريخ :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                        'Appelé(e) ci-après la «' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '»',
+                        '«' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '» المسمى فيما يلي'
+                    )}"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+
+        <!-- CHUNK 2 will go here: ARTICLE 2 — Objet -->
+        <!-- CHUNK 3 will go here: ARTICLE 3 — Caractéristiques du crédit -->
+        <!-- CHUNK 4 will go here: ARTICLE 4 — Domiciliation bancaire -->
+        <!-- CHUNK 5 will go here: ARTICLE 5 — Garanties -->
+        <!-- CHUNK 6 will go here: ARTICLE 6 — Conditions suspensives -->
+        <!-- CHUNK 7 will go here: Signatures -->
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,70 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Offre Préalable de Crédit</title>
-  <style>
-    /* Global page numbering, equivalent to main_report.jrxml's pageFooter band
-       ("Page " + $V{PAGE_NUMBER} + " / " + total), applied across every page
-       of the assembled document regardless of which components are active. */
-    @page {
-      size: A4;
-      margin: 20px;
-      @bottom-right {
-        content: "Page " counter(page) " / " counter(pages);
-        font-family: 'Noto Sans';
-        font-size: 9pt;
-        color: #000000;
-      }
-    }
-    body { margin: 0; }
-  </style>
+    <meta charset="UTF-8"/>
+    <title>Offre Préalable de Crédit</title>
 
-  <!-- Each active component contributes its own styles fragment here,
-       mirroring the per-subreport layout of main_report.jrxml. -->
-  <th:block th:replace="~{fragments/general_conditions :: styles}"></th:block>
-  <th:block th:replace="~{fragments/attach_hypothec :: styles}"></th:block>
-  <th:block th:replace="~{fragments/attach_caut_hypothecaire :: styles}"></th:block>
-  <th:block th:replace="~{fragments/attach_caut_solidaire :: styles}"></th:block>
-  <th:block th:replace="~{fragments/pc_ppi_classic :: styles}"></th:block>
+    <th:block th:replace="~{opc/fragments/shared/styles :: shared_styles}"></th:block>
+
+    <th:block th:each="section : ${sections}">
+        <th:block th:replace="~{|opc/fragments/${section.fragmentName}| :: styles}"></th:block>
+    </th:block>
+
 </head>
 <body>
 
-<!-- ================= GENERAL CONDITIONS (active) =================
-     main_report.jrxml groupHeader band #1: unconditional subreport
-     (general_conditions.jasper), always printed. -->
-<div th:replace="~{fragments/general_conditions :: content}"></div>
-
-<!-- ================= CONDITIONS PARTICULIERES (active) =================
-     main_report.jrxml groupHeader bands #2-#3: break + subreport selected by
-     PC_NAME, fed by PC_DATA, printWhenExpression: $P{PC_DATA} != null.
-     Source: fragments/pc_ppi_classic.jrxml -->
-<div th:if="${pcData != null}" style="page-break-before: always;"></div>
-<div th:if="${pcData != null}" th:replace="~{fragments/pc_ppi_classic :: content}"></div>
-
-<!-- ================= CAUTION HYPOTHEC ATTACHMENT (active) =================
-     main_report.jrxml groupHeader bands #4-#5: break + subreport selected by
-     ATTCH_HYPOTHEC_NAME, fed by ATTCH_HYPOTHEC_DATA,
-     printWhenExpression: $P{ATTCH_HYPOTHEC_DATA} != null && !$P{ATTCH_HYPOTHEC_DATA}.isEmpty().
-     Source: fragments/attach_hypothec.jrxml -->
-<div th:if="${attachHypothecData != null and !attachHypothecData.isEmpty()}" style="page-break-before: always;"></div>
-<div th:if="${attachHypothecData != null and !attachHypothecData.isEmpty()}" th:replace="~{fragments/attach_hypothec :: content}"></div>
-
-<!-- ================= CAUTION HYPOTHECAIRE ATTACHMENT (active) =================
-     main_report.jrxml groupHeader bands #6-#7: break + subreport selected by
-     ATTCH_HYPOTHECAIRE_NAME, fed by ATTCH_HYPOTHECAIRE_DATA,
-     printWhenExpression: $P{ATTCH_HYPOTHECAIRE_DATA} != null && !$P{ATTCH_HYPOTHECAIRE_DATA}.isEmpty().
-     Source: fragments/attach_caut_hypothecaire.jrxml -->
-<div th:if="${attachHypothecaireData != null and !attachHypothecaireData.isEmpty()}" style="page-break-before: always;"></div>
-<div th:if="${attachHypothecaireData != null and !attachHypothecaireData.isEmpty()}" th:replace="~{fragments/attach_caut_hypothecaire :: content}"></div>
-
-<!-- ================= CAUTION SOLIDAIRE ATTACHMENT (active) =================
-     main_report.jrxml groupHeader bands #8-#9: break + subreport selected by
-     ATTCH_SOLIDAIRE_NAME, fed by ATTCH_SOLIDAIRE_DATA,
-     printWhenExpression: $P{ATTCH_SOLIDAIRE_DATA} != null && !$P{ATTCH_SOLIDAIRE_DATA}.isEmpty().
-     Source: fragments/attach_caut_solidaire.jrxml -->
-<div th:if="${attachSolidaireData != null and !attachSolidaireData.isEmpty()}" style="page-break-before: always;"></div>
-<div th:if="${attachSolidaireData != null and !attachSolidaireData.isEmpty()}" th:replace="~{fragments/attach_caut_solidaire :: content}"></div>
+<th:block th:each="section, iter : ${sections}">
+    <div th:if="${!iter.first}" class="page-break"></div>
+    <!-- th:insert keeps host element alive so th:with scope is active -->
+    <div th:insert="~{|opc/fragments/${section.fragmentName}| :: content}"
+         th:with="data=${section.data},common=${section.common}">
+    </div>
+</th:block>
 
 </body>
 </html>
