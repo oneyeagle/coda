@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style th:fragment="styles">
+        body { font-family: 'Noto Sans'; font-size: 10pt; color: #000000; margin: 0; }
+        .ar, td.ar { font-family: 'Noto Naskh Arabic'; }
+        .b { font-weight: 700; }
+
+        div.act { page-break-before: always; }
+        div.act.first { page-break-before: auto; }
+
+        table { width: 100%; border-collapse: collapse; }
+        td { vertical-align: top; padding: 0; }
+        td.fr { width: 50%; text-align: left; padding-right: 6pt; }
+        td.ar { width: 50%; text-align: right; padding-left: 6pt; }
+        td.fr.just { text-align: justify; }
+        td p { margin: 0 0 8pt 0; }
+        td p:last-child { margin-bottom: 0; }
+
+        table.rule td.fr { border-right: 0.5pt solid #000000; }
+
+        table.hdr td { font-size: 11pt; font-weight: 700; vertical-align: middle; }
+        table.row { margin-top: 3pt; }
+        table.pair { margin-top: 10pt; }
+        table.hdr2 td { font-weight: 700; vertical-align: middle; }
+
+        table.sig { margin-top: 16pt; page-break-inside: avoid; }
+        table.sigt { margin-top: 14pt; page-break-inside: avoid; }
+        table.sigt td { font-weight: 700; padding-top: 6pt; padding-bottom: 6pt; }
+
+        div.siggroup { page-break-inside: avoid; }
+        table.sigbox { margin-top: 6pt; page-break-inside: avoid; }
+        table.sigbox td.box1 {
+            border: 2pt solid #000000; height: 40pt; text-align: center;
+            vertical-align: middle; font-weight: 700;
+        }
+        table.sigbox td.box2 { border: 1pt solid #000000; height: 55pt; }
+    </style>
+</head>
+<body>
+
+<div th:fragment="content">
+    <div class="act" th:each="cs, it : ${data != null ? data : #lists.emptyList()}"
+         th:classappend="${it.first} ? 'first'">
+
+        <!-- ============ HEADER ============ -->
+        <table class="hdr">
+            <tbody>
+            <tr>
+                <td class="fr">ANNEXE AU CONTRAT DE CREDIT</td>
+                <td class="ar" dir="rtl">ملحق عقد القرض</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="row hdr2">
+            <tbody>
+            <tr>
+                <td class="fr">EN DATE DU :&#160;<span th:text="${common.decisionDate}"></span></td>
+                <td class="ar" dir="rtl">المؤرخ في:</td>
+            </tr>
+            <tr>
+                <td class="fr">CONCLU AVEC :&#160;<span th:text="${common.customerFullName}"></span></td>
+                <td class="ar" dir="rtl">المبرم مع:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ TITLE ============ -->
+        <div class="box">
+            <div class="doctitle">
+                ACTE DE CAUTIONNEMENT PERSONNEL ET SOLIDAIRE<br/>
+                <span class="ar" dir="rtl">عقد كفالـــــة شخصيــــة تضامنيــــة </span>
+            </div>
+        </div>
+
+        <!-- ============ INTERVENANT ============ -->
+        <table class="row rule">
+            <tbody>
+            <tr>
+                <td class="fr b">Aux présentes intervient</td>
+                <td class="ar b" dir="rtl">يتدخل بمقتضى هذا العقد:</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="row">
+            <tbody>
+            <tr>
+                <td class="fr">M/Mme :&#160;<span class="b" th:text="${cs.nom_complet_garant}"></span></td>
+                <td class="ar" dir="rtl">السيد (ة) :</td>
+            </tr>
+            <tr>
+                <td class="fr">Demeurant à :&#160;<span class="b" th:text="${cs.adresse_caution}"></span></td>
+                <td class="ar" dir="rtl">القاطن(ة) ب :</td>
+            </tr>
+            <tr>
+                <td class="fr">CIN n° :&#160;<span class="b" th:text="${cs.cin_garant}"></span></td>
+                <td class="ar" dir="rtl">و الحامل للبطاقة الوطنية للتعريف رقم:</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="row rule">
+            <tbody>
+            <tr>
+                <td class="fr b">Appelée ci-après «&#160;LA CAUTION&#160;»</td>
+                <td class="ar b" dir="rtl">وهو الطرف المشار إليه فيما يلي بعبارة "الكفيل"</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ CONNAISSANCE DU CONTRAT ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">La Caution, déclare avoir parfaite connaissance du contrat de crédit en date du</td>
+                <td class="ar" dir="rtl">يصرح الكفيل أنه أحيط علما بعقد القرض بتاريخ:</td>
+            </tr>
+            <tr>
+                <td class="fr" th:text="${common.decisionDate}"></td>
+                <td class="ar" dir="rtl"></td>
+            </tr>
+            <tr>
+                <td class="fr">de la somme de&#160;<span class="b" th:text="${common.loanAmount}"></span></td>
+                <td class="ar" dir="rtl">للمبلغ:</td>
+            </tr>
+            <tr>
+                <td class="fr b" th:text="'Au taux d\u2019intérêt ' + (${common.rateNature != null} ? ${common.rateNature} : '') + ' de ' + (${common.rate != null} ? ${common.rate} : '') + ' % TVA en sus'"></td>
+                <td class="ar" dir="rtl"></td>
+            </tr>
+            <tr>
+                <td class="fr">consenti à&#160;<span class="b" th:text="${common.customerFullName}"></span></td>
+                <td class="ar" dir="rtl">الممنوح ل</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ ENGAGEMENT SOLIDAIRE ============ -->
+        <table class="pair rule">
+            <tbody>
+            <tr>
+                <td class="fr">notamment des conditions générales et particulières dudit contrat, se porter CAUTION SOLIDAIRE et personnelle et s'engage à ce titre envers la Banque à garantir en cette qualité le remboursement en cas de défaillance de l'Emprunteur de toutes sommes que ce dernier doit ou devra à la Banque à quelque titre et pour quelque cause que ce soit</td>
+                <td class="ar" dir="rtl">و كذا الشروط العامة و الخاصة لهذا العقد, و أنه يكفل تضامنيا و شخصيا و يلتزم اتجاه البنك بضمان تسديد كل المبالغ التي سيكون المقترض مدينا بها اتجاه البنك, كيفما كان نوعها و لأي سبب كانت في حالة تقصير هذا الأخير,</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ MONTANT DE L'ENGAGEMENT ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">À concurrence de la somme en capital de :&#160;<span class="b" th:text="${common.loanAmount}"></span></td>
+                <td class="ar" dir="rtl">فـــــي حــــــدود مبلغ الرأسمال :</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ ETENDUE DE LA GARANTIE ============ -->
+        <table class="pair rule">
+            <tbody>
+            <tr>
+                <td class="fr just">
+                    <p>majoré des intérêts, commissions, frais et accessoires relatifs à cette créance. Quelle que soit la nature des créances de la Banque sur l'Emprunteur l'époque où elles prendront naissance, la Banque aura le droit d'appliquer la garantie résultant du présent acte aux créances qu'il lui plaira de choisir.</p>
+                    <p>Il est bien entendu que la modification ou la disparition des liens de fait ou de droit que la Caution pourrait entretenir avec l'Emprunteur n'aura aucun effet sur le présent cautionnement qui ne pourra être révoqué et dont l'effet demeurera entier sans contestation possible de la part de la Caution jusqu'au remboursement intégral des sommes dues par l'Emprunteur à la Banque à quelque titre et pour quelque cause que ce soit à concurrence de la somme mentionnée ci-dessus. En raison du caractère solidaire de son engagement, la Caution renonce expressément aux bénéfices de discussion et de division.</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>المتعلق بهذا الدين، زيادة على الفوائد، العمولات و المصاريف و التوابع كيفما كانت طبيعة ديون البنك على المقترض، وفترة نشأتها، سيكون للبنك الحق في تطبيق الضمانة الناتجة عن هذا العقد لتغطية الديون التي يختارها.</p>
+                    <p>و يبقى من المتفق عليه، أن تغيير الروابط الفعلية أو القانونية بين الكفيل و المقترض، لن تؤثر على هذه الكفالة التي لن تنتهي ويبقى أثرها ساريا دون إمكانية المنازعة فيها من طرف الكفيل، و ذلك إلى حين التسديد الكلي للمبالغ المتبقية بذمة المقترض لفائدة البنك، كيفما كان نوعها و لأي سبب كانت، في حدود المبلغ المشار إليه أعلاه.</p>
+                    <p>و اعتبارا للتضامن القائم عن التزامه، يتنازل الكفيل صراحة عن التمتع بحق التجريد و القسمة.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ RENONCIATIONS / DISPOSITIONS FINALES ============ -->
+        <table class="pair rule">
+            <tbody>
+            <tr>
+                <td class="fr just">
+                    <p>En renonçant au bénéfice de discussion, elle s'engage à payer à la banque sans pouvoir exiger de cette dernière qu'elle poursuive préalablement l'Emprunteur sur ses biens. En renonçant au bénéfice de division, elle accepte d'ores et déjà que la Banque puisse lui réclamer au cas où d'autres personnes se seraient portées cautions de l'Emprunteur la totalité de ce que ce dernier lui doit à quelque titre et pour quelque cause que ce soit, dans la limite du montant du cautionnement sans pouvoir exiger de la Banque ni la division préalable de sa créance, ni de son action en raison de l'existence des autres Cautions. Le présent cautionnement ne se confondra pas avec les autres cautionnements et généralement toutes garanties quelconques qui ont pu ou pourront être données par la Caution ou tous autres. La Caution autorise d'ores et déjà la Banque sans qu'il puisse en résulter aucune réduction de ses engagements, à donner son adhésion à tous atermoiements ou prorogations d'échéances tacites ou expresses et à tous concordats amiables ou judiciaires, de même qu'elle ne pourra se prévaloir d'aucune subrogation des paiements qu'elle effectuerait à la Banque avant que cette dernière n'ait été intégralement remboursée de ses créances à quelque titre et pour quelque cause que ce soit en capital intérêts, commissions frais et accessoires sur l'Emprunteur. La Caution dispense par ailleurs la Banque de tous protêt et avis de non paiement dans les délais légaux et la dégage expressément de toutes responsabilités pour retard ou omission de ces formalités pour tous effets, billets à ordre et chèques portant la signature des l'Emprunteur, à titre quelconque étant compris que la Banque sera seule juge de faire protester ou non les effets non stipulés « SANS FRAIS ». En cas de décès de la Caution tous ses héritiers, ayants droit et successeurs, seront tenus conjointement et solidairement de l'exécution du présent engagement de caution indivisible à leur égard. La mainlevée au titre de la présente garantie sera disponible à l'agence de l'Emprunteur dans les trente « 30 » jours ouvrables à compter du remboursement total du Crédit et acquittement des frais de mainlevées y afférents. La Caution devra prendre attache avec l'agence de l'Emprunteur pour les modalités de remise de ladite mainlevée. Les frais de mainlevée seront débités automatiquement par la Banque du compte de la Caution après remboursement total du Crédit, ce que cette dernière autorise sans contestations ni réserves.</p>
+                    <p>Dans le cas où la Caution ne dispose pas d'un compte ouvert auprès de la Banque, elle s'engage expressément à régler les frais de la mainlevée directement à la Banque pour pouvoir disposer de sa mainlevée.</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>و بتنازله عن التجريد يلتزم الكفيل بالأداء للبنك و دون أن يفرض هذا الأخير مسبقا متابعة المقترض في ممتلكاته و بتنازله عن حق القسمة، و يقبل الكفيل من الآن إمكانية مطالبة البنك له بأداء دين المقترض بكامله، كيفما كان نوعه و لأي سبب كان، وذلك في حالة وجود أشخاص آخرين يكفلون المقترض، في حدود مبلغ الكفالة، و دون إمكانية مطالبة البنك لا بقسمة دينه ولا بقسمة الدعوى، نظرا لوجود كفلاء آخرين. تستقل هذه الكفالة عن باقي الكفالات الأخرى، وبصفة عامة عن مختلف الضمانات التي يمكن أن يقدمها أو سبق أن قدمها الكفيل أو غيره. و يرخص الكفيل، من الآن للبنك ودون أن ينتج عن ذلك أي نقصان لإلتزاماته، أن يمنح موافقته على أي إمهال، أو تمديد، صريح أو ضمني للإستحقاقات، وكذا أي صلح ودي أو قضائي. هذا و لا يمكن للكفيل أن يستفيد من أي حلول بمناسبة الأداءات التي سيقوم بها لفائدة البنك، و ذلك إلى حين التسديد الكلي لديون المقترض وكيفما كان نوعها و لأي سبب كانت، بما فيها الأصل زيادة على الفوائد و المصاريف والعمولات والتوابع.</p>
+                    <p>و من جهة أخرى يعفي الكفيل البنك من إقامة أي احتجاج، أو إشعار بعدم الوفاء داخل الآجال القانونية، كما يحرره صراحة من كل مسؤولية بسبب تأخير في القيام بهذه الإجراءات أو نسيانها، و ذلك فيما يرجع لكل الأوراق التجارية، و السندات لأمر، و الشيكات التي تحمل توقيع المقترض أيا كانت الصفة، علما بأن البنك سيكون الحكم الوحيد فيما يرجع لإقامة الإحتجاج أو عدمه بشأن الأوراق غير المصرح فيها بعبارة "بدون مصاريف". في حالة وفاة الكفيل، فإن ورثته ذوي حقوقه و الحالين محله، ملزمون اقترانيا وتضامنيا بتنفيذ هذا الإلتزام غير المجزأة اتجاههم.</p>
+                    <p>رفع اليد عن هدا الضمان سيكون جاهزا في الوكالة البنكية للمقترض في غضون "30" يوم عمل من تاريخ التسديد الكامل لالتزاماته اتجاه البنك و كذا المصاريف المتعلقة برفع اليد.</p>
+                    <p>على الكفيل أن يربط الاتصال بوكالة المقترض البنكية من أجل اطلاعه على الإجراءات المتعلقة بتسليم وثيقة رفع اليد.</p>
+                    <p>يبدي الكفيل موافقته التامة بدون شرط أو قيد على الاقتطاع الآلي لمصاريف رفع اليد من حسابه فور التسديد الكامل للدين.</p>
+                    <p>هذا و يلتزم الكفيل، في حالة ما إذا لم يكن يتوفر على حساب بنكي مفتوح لدى البنك، بأداء مصاريف رفع اليد مباشرة للبنك لتمكينه من وثيقة رفع اليد.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ SIGNATURES ============ -->
+        <table class="sig">
+            <tbody>
+            <tr>
+                <td class="fr">Fait à&#160;<span class="b" th:text="${common.signedIn}"></span><br/>
+                    Le&#160;<span class="b" th:text="${common.decisionDate}"></span></td>
+                <td class="ar" dir="rtl">حرر ب:<br/>بتاريخ:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="siggroup">
+            <table class="sigt">
+                <tbody>
+                <tr>
+                    <td class="fr">LA CAUTION (1)</td>
+                    <td class="ar" dir="rtl">الكفيل (1)</td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="sigbox">
+                <tbody>
+                <tr><td class="box1" colspan="2">Signature (1)</td></tr>
+                <tr><td class="box2" colspan="2"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============ FOOTNOTE ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr just" th:text="'1) Faire précéder la signature par la mention écrite de la main de la CAUTION : \u00AB En ma qualité de Caution solidaire, je sais que je n\u2019ai pas le droit d\u2019exiger la discussion de l\u2019Emprunteur, prévu par l\u2019article 1136 du Dahir du 9 ramadan 1331 (12 août 1913) formant Code des Obligations et des Contrats et en conséquences je m\u2019engage à rembourser la Banque, solidairement avec Mr. ou Mrs ' + (${common.customerFullName != null} ? ${common.customerFullName} : '') + ' sans exiger qu\u2019elle le ou les poursuive préalablement \u00BB.'"></td>
+                <td class="ar" dir="rtl">(1) يتعيـــن علـــى الموقـــع أن يسبـــق توقيعـــــه بالبيـــانـــات التاليــــة المكتـــوبة بخــــط اليــــد " بصفتــــي كفيـــــل متضامــــن، أصـــرح أنـــه ليـس مـن حقـي فـرض المتابعـة القبليـة للمقتـرض، المنصـوص عليهـا في المـادة 1136 من ظهير 9 رمضان 1331 (12 غشت 1913) المشكل لقانون الالتزامات و العقود وبالتالي فإني أتعهد بأن أؤدي للبنك تضامنيا مع السيد أو السادة دون إمكانية فرض متابعة أو متابعتهم القبلية.</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Offre Préalable de Crédit</title>
+
+    <th:block th:replace="~{opc/fragments/shared/styles :: shared_styles}"></th:block>
+
+    <th:block th:each="section : ${sections}">
+        <th:block th:replace="~{|opc/fragments/${section.fragmentName}| :: styles}"></th:block>
+    </th:block>
+
+</head>
+<body>
+
+<th:block th:each="section, iter : ${sections}">
+    <div th:if="${!iter.first}" class="page-break"></div>
+    <!-- th:insert keeps host element alive so th:with scope is active -->
+    <div th:insert="~{|opc/fragments/${section.fragmentName}| :: content}"
+         th:with="data=${section.data},common=${commonParams}">
+    </div>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- th:fragment must wrap both this file's own rules and the imported
+         id_card_row styles in one element, since a Thymeleaf fragment name
+         can only be attached to a single element (see id_card_row.html for
+         why that import is required at all). -->
+    <th:block th:fragment="styles">
+    <style>
+
+        /* ---- Title bar ---- */
+        div.titlebar { border: 0.75pt solid #000000; margin: 0; page-break-inside: avoid; }
+        table.title { width: 100%; border-collapse: collapse; }
+        table.title td { text-align: center; font-weight: 700; font-size: 13pt; padding: 7pt 8pt; vertical-align: middle; }
+        table.title td.fr { width: 50%; border-right: 0.75pt solid #000000; }
+        table.title td.ar { width: 50%; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; }
+
+        /* ---- Outer frame ---- */
+        div.frame { border: 0.75pt solid #000000; border-top: none; }
+
+        /* ---- Article bars ---- */
+        table.artbar { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.artbar td { font-weight: 700; font-size: 11.5pt; text-decoration: underline; padding: 5pt 8pt; vertical-align: middle; border-top: 0.7pt solid #000000; border-bottom: 0.7pt solid #000000; }
+        table.artbar td.fr { width: 50%; border-right: 0.7pt solid #000000; }
+        table.artbar td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 12pt; }
+
+        /* ---- Sub-section headings ---- */
+        table.subhead { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.subhead td { font-weight: 700; text-decoration: underline; padding: 4pt 8pt; vertical-align: middle; border-bottom: 0.5pt solid #000000; }
+        table.subhead td.fr { width: 50%; border-right: 0.5pt solid #000000; }
+        table.subhead td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 11pt; }
+
+        /* ---- Paired rows (text blocks, central divider) ---- */
+        table.pair { margin: 0; width: 100%; border-collapse: collapse; }
+        table.pair td { vertical-align: top; padding: 3pt 7pt; text-align: justify; }
+        table.pair td.fr { width: 50%; border-right: 0.5pt solid #000000; text-align: justify; }
+        table.pair td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; unicode-bidi: embed; }
+        table.pair td.b  { font-weight: 700; }
+
+        /* ---- Dot-leader rows: "- labelFr ..........  labelAr -" ---- */
+        /* Two approaches were tried and rejected before this one:
+           1) Table cells (nowrap dots cell): auto layout inflates the column
+              and pushes the Arabic cell off the page (see DOT-LEADER-RULES.md).
+           2) A single long inline text run of ". " pairs, self-wrapping to
+              fill the line (the "textbook" dot-leader technique): openhtmltopdf's
+              line-breaker mis-measures any run longer than ~110-119 pairs and
+              dumps the whole run onto a clipped second line instead of wrapping
+              at the correct point - verified empirically, and the safe/unsafe
+              boundary shifts with how much width the label already used, so
+              there's no single safe constant across rows.
+           Instead, the dots are a repeating background-image tile that fills
+           the whole row (div.dotsfill), with the French label and Arabic label
+           painted as opaque (white-background) overlays on top of it at each
+           end. This never goes through text layout, so it can't hit the
+           line-breaker bug, and the dots always reach exactly from one label
+           to the other regardless of label length.
+           Stacking note: position:absolute siblings here don't reliably paint
+           in DOM order in this renderer - explicit z-index is required to keep
+           dotsfill (z-index:0) beneath the two labels (z-index:1). */
+        div.ldr-block { border-top: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; }
+        div.row.lead {
+            position: relative;
+            height: 1.35em;
+            line-height: 1.35em;
+            overflow: hidden;
+            padding: 2pt 7pt;
+            border-bottom: 0.5pt solid #000000;
+        }
+        div.row.lead:last-child { border-bottom: none; }
+        div.dotsfill {
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            top: 1.0mm;
+            width: 100%;
+            height: 1.25em;
+            /* 5x9pt tile, one ~1.2pt gray (#666) anti-aliased dot near the
+               tile's bottom edge. Inline data URI so the PDF renderer needs
+               no base URI / external resource resolution to find it. */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAJCAYAAAD6reaeAAAAPElEQVR4nGNgoA1grK+vZyKsKiUlxYKRkbH2w4cPgatXr/7NwMDAwMLMzPzi////2xgYGP4yMDD8x6kdABrWECfJlCgBAAAAAElFTkSuQmCC');
+            background-repeat: repeat-x;
+            background-position: left bottom;
+        }
+        span.lbl {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 1.0mm;
+            height: 1.25em;
+            line-height: 1.25em;
+            direction: ltr;
+            white-space: nowrap;
+            background-color: #ffffff;
+            padding-right: 3pt;
+        }
+        span.arlbl {
+            position: absolute;
+            z-index: 1;
+            top: 1.0mm;
+            right: 0;
+            height: 1.25em;
+            line-height: 1.25em;
+            background-color: #ffffff;
+            padding-left: 3pt;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+        }
+
+        /* ---- Property card ---- */
+        div.propcard { border: 0.5pt solid #000000; padding: 4pt 7pt; margin-top: 5pt; page-break-inside: avoid; font-size: 10pt; }
+
+        /* ---- Checkbox disclosure ---- */
+        div.checkbox { margin-top: 8pt; page-break-inside: avoid; }
+
+        /* ---- Signature grid ---- */
+        table.siggrid { margin-top: 10pt; border-collapse: collapse; width: 100%; }
+        table.siggrid td { border: 0.5pt solid #000000; vertical-align: top; padding: 4pt; }
+        table.siggrid td.hdr { text-align: center; font-weight: 700; vertical-align: middle; }
+        table.siggrid td.blank { height: 70pt; }
+        table.sigline { margin-top: 10pt; width: 100%; border-collapse: collapse; }
+        table.sigline td { padding: 2pt 0; }
+        table.sigline td.fr { width: 50%; font-weight: 700; }
+        table.sigline td.ar { width: 50%; font-weight: 700; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; }
+        div.cautionsig { border: 0.5pt solid #000000; padding: 5pt 8pt; margin-top: 6pt; page-break-inside: avoid; min-height: 40pt; }
+
+    </style>
+    <th:block th:replace="~{opc/fragments/shared/id_card_row :: styles}"></th:block>
+    </th:block>
+</head>
+<body>
+
+<div th:fragment="content" th:if="${data != null}">
+
+    <!-- ============ TITLE ============ -->
+    <div class="titlebar">
+        <table class="title">
+            <tbody>
+            <tr>
+                <td class="fr">CONDITIONS PARTICULIERS</td>
+                <td class="ar" dir="rtl">شـــروط خـــاصـــــة</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="frame">
+
+        <!-- ============ ARTICLE 1 : IDENTIFICATION DES PARTIES ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 1 : IDENTIFICATION DES PARTIES</td>
+                <td class="ar" dir="rtl">الفصـــل 1: هــويـــة الأطـــــراف</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.1 BANQUE -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.1 DESIGNATION DE LA BANQUE</td>
+                <td class="ar" dir="rtl">1.1 هويـــة الــبـنــك</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">SAHAM BANK, Société Anonyme à Directoire et à Conseil de Surveillance au capital de 2.152.500.000,00DH, dont le siège social est à CASABLANCA, 55 Boulevard Abdelmoumen, immatriculée au Registre de commerce de Casablanca sous le n° 28987 du Registre analytique, valablement représentée par :</td>
+                <td class="ar" dir="rtl">سهام بنك، شركة مساهمة ذات مجلس مراقبة و إدارة جماعية، رأسمالها 2.152.500.000,00 درهم، الكائن مقرها بالبيضاء، 55 شارع عبد المومن، المقيدة بالسجل التجاري للدار البيضاء تحت رقم 28987 من السجل التحليلي، يمثلها:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Bank representative static dot-leader rows -->
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- M.</span>
+                <span class="arlbl" dir="rtl">- السيد(ة)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- en qualité de</span>
+                <span class="arlbl" dir="rtl">- بصفته(ها)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- M.</span>
+                <span class="arlbl" dir="rtl">- السيد(ة)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- en qualité de</span>
+                <span class="arlbl" dir="rtl">- بصفته(ها)</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Appelée ci après la « Banque »</td>
+                <td class="ar" dir="rtl">المسمى فيما يلي "البنـك"</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.2 EMPRUNTEUR ET CAUTION -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.2 DESIGNATION DE L'EMPRUNTEUR ET DE LA CAUTION</td>
+                <td class="ar" dir="rtl">2.1 هوية المقترض و الكفيل</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b">- Désignation de l&#8217;Emprunteur :</td>
+                <td class="ar b" dir="rtl">- هـويـة المقتـرض:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- EMPRUNTEUR CARDS -->
+        <div th:each="cust : ${data.customers}" style="page-break-inside: avoid;">
+            <table class="cdr-table">
+                <tbody>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${cust.customerName}, 'الإسم العائلي و الشخصي:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${cust.customerAddress}, 'العنوان:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${cust.customerBirthDate}, 'المزداد يوم:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${cust.customerBirthPlace}, 'ب :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${cust.customerCardId}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Délivrée le : ', ${cust.customerCardIssuedDate}, 'المسلمة بتاريخ :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                    'Appelé(e) ci-après l«' + (${cust.intitule != null} ? ${cust.intitule} : '') + '»',
+                    (${cust.intitule != null} ? ${cust.intitule} : '') + ' المسمى فيما يلي المقترض'
+                )}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: mandataireRow(${cust.mandataire})}"></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CAUTION SECTION -->
+        <th:block th:if="${data.cautionBeneficiaries != null and !data.cautionBeneficiaries.isEmpty()}">
+            <table class="pair">
+                <tbody>
+                <tr>
+                    <td class="fr b">- Désignation de la Caution</td>
+                    <td class="ar b" dir="rtl">- هـويــة الكفيــل:</td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:each="caut : ${data.cautionBeneficiaries}" style="page-break-inside: avoid;">
+                <table class="cdr-table">
+                    <tbody>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${caut.nameCaution}, 'الإسم العائلي و الشخصي:')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${caut.addressCaution}, 'العنوان :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${caut.dateBirthCaution}, 'المزداد يوم :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${caut.placeBirthCaution}, 'ب :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${caut.nationalIdentityCaution}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('délivrée le : ', ${caut.issuedCaution}, 'المسلمة بتاريخ :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                        'Appelé(e) ci-après la «' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '»',
+                        '«' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '» المسمى فيما يلي'
+                    )}"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+
+        <!-- CHUNK 2 will go here: ARTICLE 2 — Objet -->
+        <!-- CHUNK 3 will go here: ARTICLE 3 — Caractéristiques du crédit -->
+        <!-- CHUNK 4 will go here: ARTICLE 4 — Domiciliation bancaire -->
+        <!-- CHUNK 5 will go here: ARTICLE 5 — Garanties -->
+        <!-- CHUNK 6 will go here: ARTICLE 6 — Conditions suspensives -->
+        <!-- CHUNK 7 will go here: Signatures -->
+
+    </div>
+
+</div>
+
+</body>
+</html>
