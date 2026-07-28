@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:fragment="shared_styles">
+        <style>
+            @page {
+                size: A4;
+                margin: 20mm;
+                @bottom-right {
+                    content: "Page " counter(page) " / " counter(pages);
+                    font-family: 'Noto Sans';
+                    font-size: 9pt;
+                    color: #000000;
+                }
+            }
+
+            body {
+                font-family: 'Noto Sans';
+                font-size: 9pt;
+                color: #000000;
+                margin: 0;
+            }
+
+            table.opc {
+                width: 100%;
+                border-collapse: collapse;
+                border-left:  0.4pt solid #000000;
+                border-right: 0.4pt solid #000000;
+                -fs-table-paginate: paginate;
+            }
+
+            table.opc thead { display: table-header-group; }
+            table.opc tfoot { display: table-footer-group; }
+
+            table.opc td.pgtop {
+                border-bottom: 0.4pt solid #000000;
+                padding: 0; height: 0; line-height: 0; font-size: 0;
+            }
+            table.opc td.pgbot {
+                border-top: 0.4pt solid #000000;
+                padding: 0; height: 0; line-height: 0; font-size: 0;
+            }
+
+            table.opc th {
+                border: none;
+                border-bottom: 0.4pt solid #000000;
+                padding: 1.5mm 2mm;
+                text-align: center;
+                font-weight: 700;
+            }
+            table.opc th:first-child { border-right: 0.4pt solid #000000; }
+
+            .h-fr { font-size: 11pt;}
+            .h-ar { font-family: 'Noto Naskh Arabic'; font-size: 12pt;}
+
+            table.opc td {
+                width: 50%;
+                padding: 1.5mm 3mm 2mm 3mm;
+                vertical-align: top;
+                border: none;
+            }
+            table.opc td.fr { border-right: 0.4pt solid #000000; }
+
+            tr.clause { page-break-inside: avoid; }
+            tr.art td  { padding-top: 3mm; border-top: 0.4pt solid #000000;}
+
+            .u {text-decoration: underline; text-decoration-thickness: 3px; }
+            .fr { direction: ltr; text-align: justify; line-height: 1.25; }
+            .ar {
+                font-family: 'Noto Naskh Arabic';
+                direction:   rtl;
+                text-align:  justify;
+                font-size:   10pt;
+                line-height: 1.35;
+            }
+
+            .b { font-weight: 700; }
+
+            .fr p, .ar p       { margin: 0 0 1.5mm 0; }
+            .fr p:last-child,
+            .ar p:last-child   { margin-bottom: 0; }
+
+            .sub               { margin-left: 4mm; }
+            .ar .sub           { margin-left: 0; margin-right: 4mm; }
+
+            .page-break        { page-break-before: always; }
+            div.box {
+                width: 61%; margin: 16pt auto 12pt auto; padding: 10pt 8pt;
+                border: 2.5pt solid #000000; border-radius: 10pt;
+                text-align: center; page-break-inside: avoid;
+            }
+            div.doctitle { font-weight: 700; font-size: 11pt; }
+            div.doctitle .ar { font-size: 14pt; display: block; margin-top: 4pt; }
+        </style>
+    </th:block>
+</head>
+</html>
