@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <!-- th:fragment must wrap both this file's own rules and the imported
+         id_card_row styles in one element, since a Thymeleaf fragment name
+         can only be attached to a single element (see id_card_row.html for
+         why that import is required at all). -->
+    <th:block th:fragment="styles">
+    <style>
+
+        /* ---- Title bar ---- */
+        div.titlebar { border: 0.75pt solid #000000; margin: 0; page-break-inside: avoid; }
+        table.title { width: 100%; border-collapse: collapse; }
+        table.title td { text-align: center; font-weight: 700; font-size: 13pt; padding: 7pt 8pt; vertical-align: middle; }
+        table.title td.fr { width: 50%; border-right: 0.75pt solid #000000; }
+        table.title td.ar { width: 50%; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; }
+
+        /* ---- Outer frame ---- */
+        div.frame { border: 0.75pt solid #000000; border-top: none; }
+
+        /* ---- Article bars ---- */
+        table.artbar { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.artbar td { font-weight: 700; font-size: 11.5pt; text-decoration: underline; padding: 5pt 8pt; vertical-align: middle; border-top: 0.7pt solid #000000; border-bottom: 0.7pt solid #000000; }
+        table.artbar td.fr { width: 50%; border-right: 0.7pt solid #000000; }
+        table.artbar td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 12pt; }
+
+        /* ---- Sub-section headings ---- */
+        table.subhead { margin: 0; width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+        table.subhead td { font-weight: 700; text-decoration: underline; padding: 4pt 8pt; vertical-align: middle; border-bottom: 0.5pt solid #000000; }
+        table.subhead td.fr { width: 50%; border-right: 0.5pt solid #000000; }
+        table.subhead td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; font-size: 11pt; }
+
+        /* ---- Paired rows (text blocks, central divider) ---- */
+        table.pair { margin: 0; width: 100%; border-collapse: collapse; }
+        table.pair td { vertical-align: top; padding: 3pt 7pt; text-align: justify; }
+        table.pair td.fr { width: 50%; border-right: 0.5pt solid #000000; text-align: justify; }
+        table.pair td.ar { width: 50%; text-align: right; font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif; unicode-bidi: embed; }
+        table.pair td.b  { font-weight: 700; }
+
+        /* ---- Dot-leader rows: "- labelFr ..........  labelAr -" ---- */
+        /* Two approaches were tried and rejected before this one:
+           1) Table cells (nowrap dots cell): auto layout inflates the column
+              and pushes the Arabic cell off the page (see DOT-LEADER-RULES.md).
+           2) A single long inline text run of ". " pairs, self-wrapping to
+              fill the line (the "textbook" dot-leader technique): openhtmltopdf's
+              line-breaker mis-measures any run longer than ~110-119 pairs and
+              dumps the whole run onto a clipped second line instead of wrapping
+              at the correct point - verified empirically, and the safe/unsafe
+              boundary shifts with how much width the label already used, so
+              there's no single safe constant across rows.
+           Instead, the dots are a repeating background-image tile that fills
+           the whole row (div.dotsfill), with the French label and Arabic label
+           painted as opaque (white-background) overlays on top of it at each
+           end. This never goes through text layout, so it can't hit the
+           line-breaker bug, and the dots always reach exactly from one label
+           to the other regardless of label length.
+           Stacking note: position:absolute siblings here don't reliably paint
+           in DOM order in this renderer - explicit z-index is required to keep
+           dotsfill (z-index:0) beneath the two labels (z-index:1). */
+        div.ldr-block { border-top: 0.5pt solid #000000; border-bottom: 0.5pt solid #000000; }
+        div.row.lead {
+            position: relative;
+            height: 1.35em;
+            line-height: 1.35em;
+            overflow: hidden;
+            padding: 2pt 7pt;
+            border-bottom: 0.5pt solid #000000;
+        }
+        div.row.lead:last-child { border-bottom: none; }
+        div.dotsfill {
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            top: 1.0mm;
+            width: 100%;
+            height: 1.25em;
+            /* 5x9pt tile, one solid black anti-aliased dot centered
+               horizontally and sitting near the tile's bottom edge (matches
+               the reference OPC PDF's typed dot-leader: a small, fully-opaque,
+               near-square dot rather than a faint gray smear - see
+               inspirations/img_1.png vs the previous #666 low-alpha tile in
+               DOT-LEADER-RULES.md's git history). Inline data URI so the PDF
+               renderer needs no base URI / external resource resolution to
+               find it. */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAJCAYAAAD6reaeAAAAO0lEQVR4nJXKwQnAIBBE0Se5iWVYR6qyQjuwInMZbyGQD8uDYflbwRW/q7gjaJjYsUHPcK6f74EV33sAtz4H8cFADUkAAAAASUVORK5CYII=');
+            background-repeat: repeat-x;
+            background-position: left bottom;
+        }
+        span.lbl {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 1.0mm;
+            height: 1.25em;
+            line-height: 1.25em;
+            direction: ltr;
+            white-space: nowrap;
+            background-color: #ffffff;
+            padding-right: 3pt;
+        }
+        span.arlbl {
+            position: absolute;
+            z-index: 1;
+            top: 1.0mm;
+            right: 0;
+            height: 1.25em;
+            line-height: 1.25em;
+            background-color: #ffffff;
+            padding-left: 3pt;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+        }
+
+        /* ---- Generic helpers needed by Article 2-6 content (bare full-width
+           statements and bold dot-leader values have no other selector to
+           hook into once outside a table.pair/table.sigline cell). ---- */
+        .b { font-weight: 700; }
+        div.frame > p { margin: 4pt 0; padding: 0 7pt; }
+        div.row.lead .v { font-weight: 700; }
+
+        /* ---- Property card ---- */
+        /* Its rows share the dot-leader row.lead styling used elsewhere, but
+           unlike those blocks the card itself is the only border wanted -
+           no divider between the n°/sise à/Consistant en rows (see inspirations/properties.png). */
+        div.propcard { border: 0.5pt solid #000000; padding: 4pt 7pt; margin-top: 5pt; page-break-inside: avoid; font-size: 10pt; }
+        div.propcard div.row.lead { border-bottom: none; }
+
+        /* ---- Checkbox disclosure ---- */
+        div.checkbox { margin-top: 8pt; page-break-inside: avoid; }
+
+        /* ---- Signature grid ---- */
+        table.siggrid { margin-top: 6pt; border-collapse: collapse; width: 100%; }
+        table.siggrid td { border: 0.5pt solid #000000; vertical-align: top; padding: 4pt; }
+        table.siggrid td.hdr { text-align: center; font-weight: 700; vertical-align: middle; }
+        table.siggrid td.blank { height: 70pt; }
+
+        /* ---- Signature page ---- */
+        /* Forces the Fait à/Le/exemplaires fields + signature grid + NB note
+           onto their own dedicated page, regardless of where Article 6's
+           content happens to end (see attach_caut_solidaire.html's
+           div.siggroup for the same before+inside-avoid combo). */
+        div.sigpage { page-break-before: always; page-break-inside: avoid; }
+
+        /* ---- Signature dates block ----
+           Reuses this file's own row/lead/dotsfill/lbl/arlbl dot-leader
+           primitives (same as every other dot-leader row in the document -
+           see id_card_row.html's own comment on why it reuses these rather
+           than duplicating them). id_card_row's cdr-table row() was tried
+           here first, but its label column is a fixed 75pt box sized for
+           "Nom et Prénom : " - short labels like "Fait à :" left a dead
+           blank gap (the label span's opaque background) before the value.
+           span.lbl has no fixed width, so label+value sit flush together
+           with dots starting immediately after, like every Article 3/4/5
+           dot-leader row. border-left/right close off the sides, matching
+           table.siggrid below it, since this block stands alone. */
+        div.sigdates {
+            border: 0.5pt solid #000000;
+        }
+
+    </style>
+    <th:block th:replace="~{opc/fragments/shared/id_card_row :: styles}"></th:block>
+    </th:block>
+</head>
+<body>
+
+<div th:fragment="content" th:if="${data != null}">
+
+    <!-- ============ TITLE ============ -->
+    <div class="titlebar">
+        <table class="title">
+            <tbody>
+            <tr>
+                <td class="fr">CONDITIONS PARTICULIERS</td>
+                <td class="ar" dir="rtl">شـــروط خـــاصـــــة</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="frame">
+
+        <!-- ============ ARTICLE 1 : IDENTIFICATION DES PARTIES ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 1 : IDENTIFICATION DES PARTIES</td>
+                <td class="ar" dir="rtl">الفصـــل 1: هــويـــة الأطـــــراف</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.1 BANQUE -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.1 DESIGNATION DE LA BANQUE</td>
+                <td class="ar" dir="rtl">1.1 هويـــة الــبـنــك</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">SAHAM BANK, Société Anonyme à Directoire et à Conseil de Surveillance au capital de 2.152.500.000,00DH, dont le siège social est à CASABLANCA, 55 Boulevard Abdelmoumen, immatriculée au Registre de commerce de Casablanca sous le n° 28987 du Registre analytique, valablement représentée par :</td>
+                <td class="ar" dir="rtl">سهام بنك، شركة مساهمة ذات مجلس مراقبة و إدارة جماعية، رأسمالها 2.152.500.000,00 درهم، الكائن مقرها بالبيضاء، 55 شارع عبد المومن، المقيدة بالسجل التجاري للدار البيضاء تحت رقم 28987 من السجل التحليلي، يمثلها:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Bank representative static dot-leader rows -->
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- M.</span>
+                <span class="arlbl" dir="rtl">- السيد(ة)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- en qualité de</span>
+                <span class="arlbl" dir="rtl">- بصفته(ها)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- M.</span>
+                <span class="arlbl" dir="rtl">- السيد(ة)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- en qualité de</span>
+                <span class="arlbl" dir="rtl">- بصفته(ها)</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Appelée ci après la « Banque »</td>
+                <td class="ar" dir="rtl">المسمى فيما يلي "البنـك"</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 1.2 EMPRUNTEUR ET CAUTION -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1.2 DESIGNATION DE L'EMPRUNTEUR ET DE LA CAUTION</td>
+                <td class="ar" dir="rtl">2.1 هوية المقترض و الكفيل</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b">- Désignation de l&#8217;Emprunteur :</td>
+                <td class="ar b" dir="rtl">- هـويـة المقتـرض:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- EMPRUNTEUR CARDS -->
+        <div th:each="cust : ${data.customers}" style="page-break-inside: avoid;">
+            <table class="cdr-table">
+                <tbody>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${cust.customerName}, 'الإسم العائلي و الشخصي:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${cust.customerAddress}, 'العنوان:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${cust.customerBirthDate}, 'المزداد يوم:')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${cust.customerBirthPlace}, 'ب :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${cust.customerCardId}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Délivrée le : ', ${cust.customerCardIssuedDate}, 'المسلمة بتاريخ :')}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                    'Appelé(e) ci-après l«' + (${cust.intitule != null} ? ${cust.intitule} : '') + '»',
+                    (${cust.intitule != null} ? ${cust.intitule} : '') + ' المسمى فيما يلي المقترض'
+                )}"></tr>
+                <tr th:replace="~{opc/fragments/shared/id_card_row :: mandataireRow(${cust.mandataire})}"></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CAUTION SECTION -->
+        <th:block th:if="${data.cautionBeneficiaries != null and !data.cautionBeneficiaries.isEmpty()}">
+            <table class="pair">
+                <tbody>
+                <tr>
+                    <td class="fr b">- Désignation de la Caution</td>
+                    <td class="ar b" dir="rtl">- هـويــة الكفيــل:</td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:each="caut : ${data.cautionBeneficiaries}" style="page-break-inside: avoid;">
+                <table class="cdr-table">
+                    <tbody>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Nom et Prénom : ', ${caut.nameCaution}, 'الإسم العائلي و الشخصي:')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Adresse : ', ${caut.addressCaution}, 'العنوان :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('Né le : ', ${caut.dateBirthCaution}, 'المزداد يوم :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('A : ', ${caut.placeBirthCaution}, 'ب :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('CNI n° : ', ${caut.nationalIdentityCaution}, 'رقم البطاقة الوطنية للتعريف :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: row('délivrée le : ', ${caut.issuedCaution}, 'المسلمة بتاريخ :')}"></tr>
+                    <tr th:replace="~{opc/fragments/shared/id_card_row :: tagRow(
+                        'Appelé(e) ci-après la «' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '»',
+                        '«' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '') + '» المسمى فيما يلي'
+                    )}"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+
+        <!-- ============ ARTICLE 2 : OBJET ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 2 : OBJET</td>
+                <td class="ar" dir="rtl">الفصل 2: الموضوع</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">La présente OPC a pour objet de parfaire le financement soit de :</td>
+                <td class="ar" dir="rtl">موضوع هذا العرض المسبق للقرض هو تمويل إما:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p class="b" th:text="'- ' + (${common.loanObject != null} ? ${common.loanObject} : '')">- Acquisition d'un bien immobilier</p>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Portant sur la totalité de la propriété objet du titre foncier</td>
+                <td class="ar" dir="rtl">المتعلق بمجموع الملكية موضوع الرسم العقاري</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- PROPERTIES (BIEN) LIST -->
+        <div class="propcard" th:each="bien : ${data.properties}" style="page-break-inside: avoid;">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">n°&#160;: <span class="v" th:text="${bien.titreFoncierBien}"></span></span>
+                <span class="arlbl" dir="rtl">عدد :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">sise à&#160;: <span class="v" th:text="${bien.villeBien}"></span></span>
+                <span class="arlbl" dir="rtl">الكائنة  ب :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Consistant en&#160;: <span class="v" th:text="${bien.descriptionBien}"></span></span>
+                <span class="arlbl" dir="rtl">و المكونة من :</span>
+            </div>
+        </div>
+
+        <!-- ============ ARTICLE 3 : CARACTERISTIQUES DU CREDIT ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 3 : CARACTERISTIQUES DU CREDIT</td>
+                <td class="ar" dir="rtl">الفصل 3: خصائص القرض</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">-Montant du Crédit&#160;: <span class="v" th:text="${common.loanAmountAmplitude}"></span></span>
+                <span class="arlbl" dir="rtl">- مبلغ القرض:</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">-Durée Globale du Crédit&#160;: <span class="v" th:text="${common.loanDuration}"></span></span>
+                <span class="arlbl" dir="rtl">-المدة الإجمالية للقرض  :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">-Taux effectif global (TEG)&#160;: <span class="v" th:text="${common.globalEffectiveRate}"></span></span>
+                <span class="arlbl" dir="rtl">-النسبة الفعلية الإجمالية :</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b" th:text="'-Taux du crédit ' + (${common.rateType != null} ? ${common.rateType} : '') + ' % l&#8217;an ' + (${common.rate != null} ? ${common.rate} : '') + '    HT'">-Taux du crédit Fixe % l'an 5,10    HT</td>
+                <td class="ar" dir="rtl">  د-  نسبة فائدة القرض* ( تحديد نسبة فائدة ثابتة أو نسبة فائدة متغيرة)% سنويا</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr"> T.V.A en vigueur </td>
+                <td class="ar" dir="rtl"> بالإضافة إلى الضريبة على القيمة المضافة الجاري بها العمل.</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Le Crédit sera rémunéré au taux annuel appliqué la  première année de …..% H.T. (soit ………% TTC), générant des échéances T.T.C de   DH pour les 12 premiers mois. </td>
+                <td class="ar" dir="rtl">تتم مكافئة القرض حسب سعر الفائدة السنوي المطبق بالنسبة  بالنسبة للسنة الأولى  ……….% دون احتساب الرسوم ( أي  % مع احتساب الرسوم)، و الذي ستترتب عنه استحقاقات مع احتساب الرسوم بمبلغ.  درهم بالنسبة الإثنا عشر شهر (12) الأولى.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- Frais de Dossier :&#160;<span class="v" th:text="${common.loanApplicationFee} + '   HT'"></span></span>
+                <span class="arlbl" dir="rtl">-  مصاريف الملف:</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- Autres Frais : (A détailler le cas échéant)</span>
+                <span class="arlbl" dir="rtl">- مصاريف أخرى: (تتم تفصيلها عند الإقتضاء)</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">-   Mainlevées :&#160;<span class="v" th:text="${common.freeHandFee}"></span></span>
+                <span class="arlbl" dir="rtl">- رفع اليد:</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">- Coût des Assurances :  (sous réserve de l&#8217;acceptation de la compagnie d&#8217;assurance) </td>
+                <td class="ar" dir="rtl"> - تكلفة التأمينات ( مع مراعاة موافقة شركة التأمين)</td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="b" style="text-align: center;" th:text="${common.insuranceCost}">2 400,00 DH</p>
+
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">1-  Assurance Décès-invalidité </td>
+                <td class="ar" dir="rtl"> 1-التأمين عن العجز و الوفاة</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">-100 %  (Cf. Notice d'assurance)</td>
+                <td class="ar" dir="rtl">100%بنسبة ( أنظر مختصر شروط التأمين. أو أنظر بيان التأمين).</td>
+            </tr>
+            <tr>
+                <td class="fr">Si la prime d'assurance est unique .</td>
+                <td class="ar" dir="rtl">إذا كان قسط التأمين قسطا موحد.</td>
+            </tr>
+            <tr>
+                <td class="fr">Si la prime d'assurance est périodique:</td>
+                <td class="ar" dir="rtl">إذا كان قسط التأمين قسطا دوريا :</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">  Personnes assurées    : <span class="b" th:text="${common.customerFullName}">M. EXEMPLE CLIENT</span></td>
+                <td class="ar" dir="rtl"> الأشخاص المؤمن لهم : السيد</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">-Mode de règlement   : <span class="b">Prélèvement sur le compte bancaire</span></td>
+                <td class="ar" dir="rtl">- طريقة التسديد: </td>
+            </tr>
+            <tr>
+                <td class="fr">-Prime périodique      :  <span class="b">Indexé sur le capital restant dû</span></td>
+                <td class="ar" dir="rtl">  - قسط دوري:</td>
+            </tr>
+            <tr>
+                <td class="fr">-Taux de la prime       :  <span class="b" th:text="${common.bonusRate} + ' Annuelle +TVA EN SUS'">0,35 % Annuelle +TVA EN SUS</span></td>
+                <td class="ar" dir="rtl">- سعر القسط:  </td>
+            </tr>
+            <tr>
+                <td class="fr">-Base de calcul : Capital Restant Dû</td>
+                <td class="ar" dir="rtl">" - قاعدة حساب : الرأسمال الباقي أداؤه "</td>
+            </tr>
+            <tr>
+                <td class="fr"> Coût de l'assurance (somme des primes périodiques) : <span class="b" th:text="${common.insuranceCost}">2 400,00 DH</span></td>
+                <td class="ar" dir="rtl">"كلفة التأمين (مبلغ الأقساط الدورية) بالدرهم :"</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">La périodicité du règlement de la prime d'assurance Décès Invalidité correspond à la périodicité des échéances du présent prêt.</td>
+                <td class="ar" dir="rtl"> وتيرة تسديد أقساط التأمين تكون موافقة لوتيرة تسديد الأقساط المتعلقة بهذا القرض.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 2 - ASSURANCE MULTIRISQUES HABITATION -->
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">2-Assurance Multirisques habitation</td>
+                <td class="ar" dir="rtl">2- تأمين السكن ضد الأخطار المتعددة (  أنظر بيان التأمين)</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>(Cf. Notice d'assurance)</p>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr"> Coût annuel de l'assurance</td>
+                <td class="ar" dir="rtl">  التكلفة السنوية للتأمين :</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr"> - Echéances :</td>
+                <td class="ar" dir="rtl">الأقساط :</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Nombre d'échéances&#160;: <span class="v" th:text="${common.loanDuration}"></span></span>
+                <span class="arlbl" dir="rtl">عدد الأقساط :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Montant de l'échéance (HT)&#160;: <span class="v"></span></span>
+                <span class="arlbl" dir="rtl">مبلغ القسط ( دون احتساب الرسوم ):</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Montant de l'échéance (TVA comprise)&#160;: <span class="v"></span></span>
+                <span class="arlbl" dir="rtl">مبلغ القسط (مع احتساب الضريبة على القيمة المضافة) :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Périodicité&#160;: <span class="v" th:text="${common.periodicity}"></span></span>
+                <span class="arlbl" dir="rtl">وتيرة الاستحقاق:</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Il reste entendu que le tableau d&#8217;amortissement annexé aux présentes est délivré par la Banque à l&#8217;Emprunteur à titre indicatif Le tableau d&#8217;amortissement définitif ne sera remis à l&#8217;Emprunteur pour approbation et signature qu&#8217;après déblocage effectif du crédit. Ce tableau d&#8217;amortissement sera considéré de convention expresse comme faisant partie intégrante des présentes.</td>
+                <td class="ar" dir="rtl">يبقى من المتفق عليه أن جدول الإستخمادات المرفق بهذا العرض هو مسلم من طرف البنك إلى المقترض على سبيل الإشارة فقط. لن يتم تسليم جدول الإستخماد النهائي إلى المقترض من أجل المصادقة عليه وتوقيعه إلا بعد الإفراج الفعلي عن القرض، و باتفاق صريح بين الأطراف فإنه سيتم اعتبار  هذا الجدول بمثابة جزء لا يتجزأ من هذا العقد .</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Date de la 1ère Echéance&#160;: <span class="v" th:text="${common.firstInstallmentDate}"></span></span>
+                <span class="arlbl" dir="rtl">تاريخ القسط الأول:</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Date de la Dernière Echéance&#160;: <span class="v" th:text="${common.lastInstallmentDate}"></span></span>
+                <span class="arlbl" dir="rtl">تاريخ القسط الأخير :</span>
+            </div>
+        </div>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">- Durée du Différé  :&#160;<span class="v" th:text="${common.deferredDuration}"></span></span>
+                <span class="arlbl" dir="rtl">- مدة الإعفاء :</span>
+            </div>
+        </div>
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr" th:text="'(préciser en ' + (${common.deferredType != null} ? ${common.deferredType} : '') + ')'">(préciser en capital)</td>
+                <td class="ar" dir="rtl">  ( تحديد رأسمال فقط أم رأسمال و فائدة)</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr"> - Coût total du Crédit (somme des intérêts + frais et commissions) :  </td>
+                <td class="ar" dir="rtl">  (- الكلفة الإجمالية للقرض ( مبلغ الفوائد + مصاريف  عمولات</td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="b" style="text-align: center;" th:text="${common.totalCreditCost}">85 000,00 DH</p>
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">DH (si le taux ne subit aucun changement durant toute la période du prêt)</td>
+                <td class="ar" dir="rtl">درهم ( إذا لم يطرأ أي تغيير على سعر الفائدة خلال فترة القرض )</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b">  - Coût total des Sûretés Réelles : </td>
+                <td class="ar b" dir="rtl">- تقدير تكلفة الضمانات الفعلية:</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Enregistrement :</span>
+                <span class="arlbl" dir="rtl">التسجيل :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Conservation Foncière :</span>
+                <span class="arlbl" dir="rtl">التحفيظ العقاري :</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">D&#8217;autre frais seront également à la charge de l&#8217;Emprunteur notamment les frais de timbre de légalisation de signature et du notaire.</td>
+                <td class="ar" dir="rtl">و ذلك دون احتساب المصاريف الأخرى التي تبقى على عاتق المقترض كمصاريف التنبر، تصحيح الإمضاء و مصاريف الموثق أو أي جهة أخرى مكلفة بتحرير عقود الضمانات أو غيرها، المتعلقة بهذا القرض.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- DISCLOSURE CHECKBOXES -->
+        <div class="checkbox">
+            <table class="pair">
+                <tbody>
+                <tr>
+                    <td class="fr">-Données à caractère personnel</td>
+                    <td class="ar" dir="rtl">المعطيات ذات الطابع الشخصي</td>
+                </tr>
+                <tr>
+                    <td class="fr">&#9744; En cochant cette case, L&#8217;Emprunteur (et/ou la caution) accepte de recevoir de la Banque des offres et des informations commerciales et ce, à travers tout moyen (téléphone, télécopieur, courrier électronique,…), dans le cadre des opérations marketing destinées à la clientèle.</td>
+                    <td class="ar" dir="rtl">بملء هذا الإطار  &#9744; يقبل المقترض و/أو الكفيل التوصل من طرف البنك في إطار عمليات التسويق الموجهة للزبناء بعروض ومعلومات تجارية وذلك عن طريق ( الهاتف – الفاكس – البريد الالكتروني ...)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============ ARTICLE 4 : DOMICILIATION BANCAIRE ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 4 : DOMICILIATION BANCAIRE POUR LES PRELEVEMENTS</td>
+                <td class="ar" dir="rtl">الفصل 4 : التوطين البنكي للاقتطاعات</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ldr-block">
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Agence :&#160;<span class="v" th:text="${common.customerAgencyCode}"></span></span>
+                <span class="arlbl" dir="rtl">الوكالة :</span>
+            </div>
+            <div class="row lead">
+                <div class="dotsfill"></div>
+                <span class="lbl">Compte n°  :&#160;<span class="v" th:text="${common.customerRib}"></span></span>
+                <span class="arlbl" dir="rtl">رقم الحساب :</span>
+            </div>
+        </div>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">L'Emprunteur s'engage à maintenir ce compte de prélèvement jusqu'au remboursement intégral du Crédit sauf accord express de la Banque.</td>
+                <td class="ar" dir="rtl">يلتزم المقترض بالمحافظة على حساب الإقتطاع المشار إليه أعلاه إلى حين التسديد الكامل للقرض باستثناء وجود موافقة صريحة للبنك.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ ARTICLE 5 : GARANTIES ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE 5 : GARANTIES</td>
+                <td class="ar" dir="rtl">الفصل 5 : الضمانات</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">En garantie du remboursement du Crédit en capital outre les intérêts, commissions, frais et accessoires, l&#8217;Emprunteur confère à la Banque les garanties indiquées ci-après, objet des annexes ci-jointes ou actes séparés faisant partie intégrante des présentes :</td>
+                <td class="ar" dir="rtl">يمنح المقترض للبنك، ضمانا لتسديد مبلغ القرض من رأسمال، فوائد، عمولات، مصاريف و توابع الضمانات التالية موضوع الملحقات أو العقود المنفصلة المعتبرة جزءا لا يتجزأ من هذا العقد:</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="subhead">
+            <tbody>
+            <tr>
+                <td class="fr">5.1 GARANTIE  HYPOTHECAIRE</td>
+                <td class="ar" dir="rtl">5  الرهن العقاري </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b" th:text="'- Hypothèque en ' + (${data.warrantyRang != null and data.warrantyRang == 1} ? '1er' : ('' + (${data.warrantyRang} != null ? ${data.warrantyRang} : 1) + 'ème')) + ' rang'">- Hypothèque en 1er rang</td>
+                <td class="ar" dir="rtl">- رهن عقاري  من الدرجة :</td>
+            </tr>
+            <tr>
+                <td class="fr" th:text="${data.warrantyAmount != null} ? '  A hauteur de la somme en principal de ' + ${data.warrantyAmount} : ''">  A hauteur de la somme en principal de 850 000,00 DH</td>
+                <td class="ar" dir="rtl"> في حدود مبلغ كأصل الدين</td>
+            </tr>
+            <tr>
+                <td class="fr b">  outre les intérêts, frais et accessoires </td>
+                <td class="ar b" dir="rtl"> بالإضافة إلى الفوائد، المصاريف و التوابع   </td>
+            </tr>
+            <tr>
+                <td class="fr">  sur la totalité de la propriété objet du titre foncier </td>
+                <td class="ar" dir="rtl">  على مجموع الملكية موضوع الرسم العقاري   </td>
+            </tr>
+            <tr>
+                <td class="fr" th:text="'  n° :  ' + (${data.warrantyLandCertificate != null} ? ${data.warrantyLandCertificate} : '')">  n° :  TF 12345/C</td>
+                <td class="ar" dir="rtl">  عدد :   </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <th:block th:if="${data.warranties != null and !data.warranties.isEmpty()}">
+            <table class="subhead">
+                <tbody>
+                <tr>
+                    <td class="fr">5.2 AUTRES GARANTIES</td>
+                    <td class="ar" dir="rtl">5.2  ضمانات أخرى</td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="pair">
+                <tbody>
+                <tr>
+                    <td class="fr"> Le Crédit est assorti également des garanties  suivantes :</td>
+                    <td class="ar" dir="rtl">يتضمن هذا القرض أيضا الضمانات التالية: </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- Free-text list items (arbitrary length) - not a dot-leader row:
+                 span.lbl is nowrap + the row is height-clamped/overflow:hidden,
+                 which clips anything longer than a short fixed label (verified
+                 against rendered PDF output - long warranty/reserve strings were
+                 cut off mid-word). Plain wrapping paragraphs instead. -->
+            <p th:each="w : ${data.warranties}" th:text="'- ' + ${w}">- Nantissement de fonds de commerce</p>
+        </th:block>
+
+        <!-- ============ ARTICLE 6 : CONDITIONS SUSPENSIVES ============ -->
+        <table class="artbar">
+            <tbody>
+            <tr>
+                <td class="fr">ARTICLE  6 : CONDITIONS SUSPENSIVES</td>
+                <td class="ar" dir="rtl"> الفصل 6 :   الشروط الواقفة </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">Le déblocage du Crédit est subordonné à la réalisation par    l&#8217;Emprunteur des conditions suivantes :</td>
+                <td class="ar" dir="rtl">وضع القرض رهن إشارة المقترض لن يتم إلا بعد بتحقيق الشروط التالية:</td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Free-text list (arbitrary length) - see the warranties list above
+             for why this is a plain wrapping paragraph, not a dot-leader row. -->
+        <p th:each="r : ${data.reserves}" th:if="${r != null and !#strings.isEmpty(r)}" th:text="'- ' + ${r}">- Production de l'attestation d'assurance habitation</p>
+
+        <!-- ============ SIGNATURES ============ -->
+        <div class="sigpage">
+            <div class="sigdates">
+                <div class="row lead">
+                    <div class="dotsfill"></div>
+                    <span class="lbl">Fait à : <span class="v" th:text="${common.signedIn}">Casablanca</span></span>
+                    <span class="arlbl" dir="rtl">حرر ب:</span>
+                </div>
+                <div class="row lead">
+                    <div class="dotsfill"></div>
+                    <span class="lbl">Le : <span class="v" th:text="${common.decisionDate}">15/06/2026</span></span>
+                    <span class="arlbl" dir="rtl">بتاريخ:</span>
+                </div>
+                <div class="row lead">
+                    <div class="dotsfill"></div>
+                    <span class="lbl">En 4 exemplaires</span>
+                    <span class="arlbl" dir="rtl">في 4 نسخ:</span>
+                </div>
+            </div>
+
+            <table class="siggrid">
+                <tbody>
+                <tr>
+                    <td class="hdr" style="width: 33%;"></td>
+                    <td class="hdr" style="width: 33%;">Date de remise de l&#8217;offre<br/><span class="ar" dir="rtl">تاريخ تسليم العرض</span><br/>Et Signatures<br/><span class="ar" dir="rtl">و التوقيعات</span></td>
+                    <td class="hdr" style="width: 33%;">Date d'acceptation de l&#8217;offre<br/><span class="ar" dir="rtl">تاريخ قبول العرض</span><br/>Et Signatures<br/><span class="ar" dir="rtl">و التوقيعات</span></td>
+                </tr>
+                <tr>
+                    <td class="hdr">La Banque<br/><span class="ar" dir="rtl">البنـــك</span></td>
+                    <td class="blank"></td>
+                    <td class="blank"></td>
+                </tr>
+                <tr>
+                    <td class="hdr">L'Emprunteur<br/><span class="ar" dir="rtl">المقتـرض</span><br/><span class="b" th:text="${common.customerFullName}">M. EXEMPLE CLIENT</span></td>
+                    <td class="blank"></td>
+                    <td class="blank"></td>
+                </tr>
+                <tr th:each="caut : ${data.cautionBeneficiaries}">
+                    <td class="hdr">
+                        <span th:text="'La ' + (${caut.natureCaution != null} ? ${caut.natureCaution} : '')">La Caution Hypothécaire</span><br/>
+                        <span class="ar" dir="rtl">الكفيــل الرهني</span><br/>
+                        (le cas échéant)<br/>
+                        <span class="ar" dir="rtl">(عند الاقتضاء)</span>
+                    </td>
+                    <td class="blank"></td>
+                    <td class="blank"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="pair" style="margin-top: 6pt;">
+                <tbody>
+                <tr>
+                    <td class="fr">NB : l&#8217;offre préalable doit être paraphée à toutes les pages par tous les signataires.</td>
+                    <td class="ar" dir="rtl">العــــرض المسبـــــق للقــــــرض يجب أن يكون مؤشرا  في كل الصفحات من طرف جميع الأطراف </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
