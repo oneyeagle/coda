@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/>
+    <!-- th:fragment="styles": main_report.html only pulls ":: styles" for each
+         top-level section template (opc/fragments/${section.fragmentName}),
+         so this fragment must be named and explicitly pulled in by any
+         consuming template's own "styles" fragment (see pc_ppi_classic.html)
+         or none of the rules below are ever loaded - the .cdr-* classes
+         would be present on the elements but match nothing.
+
+         Dot-leader rows reuse pc_ppi_classic.html's own row/lead, dotsfill,
+         lbl, v and arlbl classes verbatim instead of a second near-identical
+         "cdr-row"/"cdr-dotsfill"/... copy: this fragment's "styles" is
+         th:replace'd straight into pc_ppi_classic.html's style block, so
+         both end up in the same stylesheet and the shared class names are
+         already available here - no need to redeclare them (a former
+         slightly-different copy, 1.5em row/1.5mm offset instead of
+         1.35em/1.0mm, was the reason id-card rows looked more loosely
+         spaced under the Arabic label than every other dot-leader row in
+         the document; it was dropped rather than kept in sync by hand).
+
+         CAUTION: this is a CSS comment block inside a style element parsed
+         as XML (SAX) before openhtmltopdf ever sees CSS syntax - literal
+         angle brackets here (e.g. writing out a tag name in prose) are
+         parsed as real unclosed elements and break the whole document with
+         an opaque "must be terminated" SAXParseException. Never write a
+         tag name in angle brackets inside these comments; spell it out in
+         words instead (see below). -->
+    <style th:fragment="styles">
+
+        /* ---- Card block wrapper ---- */
+        table.cdr-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 0;
+        }
+        /* border-left/right omitted: this card always sits flush against
+           pc_ppi_classic.html's div.frame own left/right border (no
+           padding/margin between them anywhere up the ancestor chain), so
+           drawing its own side borders too doubled up into a visibly
+           thicker vertical line instead of frame's single line - same fix
+           as div.assurbox/propcard/sigdates there. */
+        div.cdr-card {
+            border-top: 0.5pt solid #000000;
+            border-bottom: 0.5pt solid #000000;
+        }
+        td.cdr-row-td {
+            padding: 0;
+            border-bottom: 0.5pt solid #000000;
+        }
+        /* Border lives on the table cell, not the table row: openhtmltopdf
+           (like every mainstream browser engine) does not paint borders
+           declared directly on a table-row element, even under
+           border-collapse - it silently draws nothing. Every row type
+           below carries its own cell border-bottom so consecutive rows
+           always get a visible separator; the last row's line simply
+           coincides with the table's own border-bottom (harmless overlap,
+           no special :last-child case needed). */
+        td.cdr-row-td { padding: 0; border-bottom: 0.5pt solid #000000; }
+
+        /* ---- Tag row: 50/50, no dots, no divider ---- */
+        td.cdr-tag-fr, td.cdr-tag-ar {
+            width: 50%;
+            border-bottom: 0.5pt solid #000000;
+            vertical-align: middle;
+            font-style: italic;
+        }
+        td.cdr-tag-fr { padding: 2pt 4pt 2pt 7pt; direction: ltr; text-align: left; }
+        td.cdr-tag-ar {
+            padding: 2pt 7pt 2pt 4pt;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Noto Naskh Arabic', 'Arial Unicode MS', Tahoma, sans-serif;
+            font-size: 10pt;
+        }
+
+        /* ---- Full-width mandataire row (last row when present - the
+           preceding row's own border-bottom already separates it, so this
+           needs no border of its own) ---- */
+        td.cdr-full-td {
+            padding: 2pt 7pt;
+            font-weight: 700;
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Whichever row ends up last (row/tagRow, since mandataireRow is
+           conditional) would otherwise draw its own border-bottom right on
+           top of div.cdr-card's own border-bottom, doubling the line - same
+           last-child suppression convention as table.dotldr/table.abrow in
+           pc_ppi_classic.html. Scoped to the actual last tr, not per-class,
+           since row()'s td and tagRow()'s two td's aren't interchangeable. */
+        table.cdr-table tr:last-child > td.cdr-row-td,
+        table.cdr-table tr:last-child > td.cdr-tag-fr,
+        table.cdr-table tr:last-child > td.cdr-tag-ar {
+            border-bottom: none;
+        }
+
+        /* ---- Fixed label column ----
+           Row labels are its own opaque span, not a value's), so each row's
+           label previously ended - and its value started - wherever that
+           row's own label text happened to stop, leaving values in a
+           ragged, unaligned column. Giving the label a fixed width (sized
+           to the longest label in this block, "Nom et Prénom : ") and
+           starting the value span at that same offset on every row makes
+           all values begin at one shared x position instead. */
+        span.cdr-lbl {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 1.0mm;
+            width: 75pt;
+            height: 1.25em;
+            line-height: 1.25em;
+            overflow: hidden;
+            direction: ltr;
+            white-space: nowrap;
+            background-color: #ffffff;
+        }
+        span.cdr-val {
+            position: absolute;
+            z-index: 1;
+            left: 75pt;
+            top: 1.0mm;
+            height: 1.25em;
+            line-height: 1.25em;
+            white-space: nowrap;
+            background-color: #ffffff;
+            font-weight: 700;
+            padding-right: 3pt;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Data row: labelFr + bold value on the left, dots filling the rest of
+     the row, Arabic label overlaid flush right - no column divider. -->
+<tr th:fragment="row(labelFr, value, labelAr)" class="cdr">
+    <td class="cdr-row-td" colspan="2">
+        <div class="row lead">
+            <div class="dotsfill"></div>
+            <span class="cdr-lbl">[[${labelFr}]]</span>
+            <span class="cdr-val" th:text="${value != null and !#strings.isEmpty(value)} ? ${value} : ''"></span>
+            <span class="arlbl" dir="rtl" th:text="${labelAr}"></span>
+        </div>
+    </td>
+</tr>
+
+<!-- Tag row: 50/50, no dots -->
+<tr th:fragment="tagRow(textFr, textAr)" class="cdr-tag">
+    <td class="cdr-tag-fr" th:text="${textFr}"></td>
+    <td class="cdr-tag-ar" dir="rtl" th:text="${textAr}"></td>
+</tr>
+
+<!-- Mandataire row: full width, bold, only shown if not empty -->
+<tr th:fragment="mandataireRow(text)" class="cdr-full"
+    th:if="${text != null and !#strings.isEmpty(text)}">
+    <td class="cdr-full-td" colspan="2" th:text="${text}"></td>
+</tr>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <style th:fragment="styles">
+        body { font-family: 'Noto Sans'; font-size: 11pt; color: #000000; margin: 0; }
+        .ar, td.ar { font-family: 'Noto Naskh Arabic'; }
+        .b { font-weight: 700; }
+
+        table { width: 100%; border-collapse: collapse; }
+        td { vertical-align: top; padding: 0; }
+        td.fr { width: 50%; text-align: left; padding-right: 6pt; }
+        td.ar { width: 50%; text-align: right; padding-left: 6pt; }
+        td p { margin: 0 0 8pt 0; }
+        td p:last-child { margin-bottom: 0; }
+        table.hdr td { font-size: 11pt; font-weight: 700; vertical-align: middle; }
+
+        table.hdr td.lab { width: 90pt; font-weight: 700; }
+        table.hdr td.val { font-weight: 700; }
+        table.hdr td.arl { width: 90pt; font-weight: 700; text-align: right; }
+        table.hdr { page-break-inside: avoid; }
+
+        table.line td.fl { white-space: nowrap; }
+        table.line td.mid { width: 100%; }
+        table.line td.al { white-space: nowrap; text-align: right; font-family: 'Noto Naskh Arabic'; }
+
+        p.blk { margin: 10pt 0 0 0; }
+        table.pair { margin-top: 10pt; }
+        table.pair.tight { margin-top: 4pt; }
+
+        table.rang { margin-top: 6pt; page-break-inside: avoid; }
+        div.prop { font-size: 10pt; margin-top: 8pt; page-break-inside: avoid; }
+        div.prop table td { padding-top: 1pt; padding-bottom: 1pt; }
+        div.prop td.plab { width: 160pt; }
+        div.prop td.pval { font-weight: 700; }
+        div.prop td.parl { width: 170pt; text-align: right; font-family: 'Noto Naskh Arabic'; }
+
+        div.desig { margin-top: 14pt; page-break-inside: avoid; }
+
+        table.sig { margin-top: 40pt; page-break-inside: avoid; }
+        table.sigt td { text-align: center; font-weight: 700; padding-top: 26pt; padding-bottom: 50pt; }
+    </style>
+</head>
+<body>
+
+<div th:fragment="content">
+    <div th:each="hy : ${data}">
+
+        <!-- ============ HEADER ============ -->
+        <table class="hdr">
+            <tbody>
+            <tr>
+                <td class="lab" colspan="2">ANNEXE AU CONTRAT DE CREDIT</td>
+                <td class="arl ar" dir="rtl">ملحق عقد القرض</td>
+            </tr>
+            <tr>
+                <td class="lab">EN DATE DU&#160;:</td>
+                <td class="val" th:text="${common.decisionDate}"></td>
+                <td class="arl ar" dir="rtl">المؤرخ في:</td>
+            </tr>
+            <tr>
+                <td class="lab">CONCLU AVEC&#160;:</td>
+                <td class="val" th:text="${common.customerFullName}"></td>
+                <td class="arl ar" dir="rtl">المبرم مع :</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ TITLE ============ -->
+        <div class="box">
+            <div class="doctitle">
+                ACTE D'HYPOTHEQUE<br/>
+                <span class="ar" dir="rtl">عقـــــد رهــــن عقــــــاري</span>
+            </div>
+        </div>
+        <!-- ============ PREAMBLE ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">A la sûreté et garantie du paiement des sommes dont l'Emprunteur est ou sera débiteur envers la Banque, en raison du contrat de crédit</td>
+                <td class="ar" dir="rtl">ضمــــــانــا لأداء المبالــــــغ التـــي يديــــــن بهــــــــا المقتــــــرض أو التـــــي سيكــــــون مدينـــــا بهـــــا تجـــــــاه البنـــــــــك، بمقتضى عقـــــد القـــــرض</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Mixed full-width lines -->
+        <table class="line pair tight">
+            <tbody>
+            <tr>
+                <td class="fl">en date du :&#160;</td>
+                <td class="mid b" th:text="${common.decisionDate} ? ${common.decisionDate} : ''"></td>
+                <td class="al ar" dir="rtl">بتاريخ</td>
+            </tr>
+            <tr>
+                <td class="fl">de la somme de&#160;</td>
+                <td class="mid b" th:text="${common.loanAmount}"></td>
+                <td class="al ar" dir="rtl">بمبلغ</td>
+            </tr>
+            <tr>
+                <td class="fl">au taux d'intérêt&#160;<span class="b" th:text="${common.rateType} ? ${common.rateType} : ''"></span>&#160;de&#160;</td>
+                <td class="mid b" th:text="${common.rate}"></td>
+                <td class="al ar" dir="rtl">بنسبة فائدة </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="line pair tight">
+            <tbody>
+            <tr>
+                <td class="fl">TVA en sus..............................................................................................................................</td>
+                <td class="mid"></td>
+                <td class="al ar b" dir="rtl">مع احتساب الضريبة على القيمة المضافة</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">l'Emprunteur, conformément aux dispositions du Dahir du 22 novembre 2011, consent au profit de la Banque, qui accepte par privilège et préférence à tous autres, une hypothèque de :</td>
+                <td class="ar" dir="rtl">يمنـــح المقتــــرض طبقـــــا لمقتضيـــات ظهيـــــر 22 نوفمبر 2011، لفائـــــدة البنـــك الــــذي يقبـــــل بالامتيــــــاز وبالأفضليـــــة علـــــى كـــل دائــــــن آخـــــر</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ RANGS LIST ============ -->
+        <table class="rang line" th:each="r : ${hy.rangs}">
+            <tbody>
+            <tr>
+                <td class="fl">-&#160;<span th:text="${r.rang == null || #strings.trim(r.rang) == '1'} ? '1er' : (${#strings.trim(r.rang)} + 'ème')">1er</span>&#160;rang&#160;à concurrence d'un montant de&#160;</td>
+                <td class="mid b" th:text="${r.amount}">850 000,00 DH</td>
+                <td class="al ar" dir="rtl">- رهنا رسميا من الدرجة</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ CAPITAL / AFFECTATION ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">
+                    <p>en capital outre les intérêts, commissions, frais et accessoires, sur le (ou les) immeuble(s) désigné(s) ci-après pour garantir tant le remboursement du montant du présent crédit, en capital ainsi que le paiement des intérêts d'une année et de l'année courante en vertu de l'article 168 du Dahir précité.</p>
+                    <p>Sont compris dans l'affectation hypothécaire, les biens immobiliers ci-après désignés, tels qu'ils existent, y compris toutes dépendances, toutes les constructions qui seront édifiées, tous droits y attachés, tous immeubles par destination en dépendant ou pouvant en dépendre et toutes améliorations et accroissements que l'Emprunteur pourrait faire.</p>
+                    <p>L'Emprunteur s'engage à maintenir les constructions en bon état et à effectuer toutes les réparations nécessaires à la conservation des immeubles, la Banque pourra à toute époque faire constater l'état des biens hypothéqués par les personnes de son choix aux frais de l'Emprunteur qui s'y oblige.</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>رأسمــــــالا بالإضافــــــة إلــــــى الفـــــوائــــــد، العمــــــــولات، المصـــاريــف والتـــوابـــــــع علــــــى مجمـــــــــوع العقــــــــار أو العقــــــارات المعينـــــــة فيمـــــا يلـــــي، مـــــن أجــــــل ضمــــان تســــديـــــد مبلــــغ رأسمــــال هـــــذا القــــــرض  بالإضافــــة إلــــى تســـديـــــد الفـــــوائـــــــد لسنــــــة واحــــدة وللسنــــــة الجاريــة طبقـــــا لمقتضيـــات المــادة 168 مـن الظهيــــر السالــف الــذكــر.</p>
+                    <p>ويدخـــــل ضمــــن التخصيــــص الرهنــــي، المـــلك أو الممتلكـــــات العقاريـــــة المعينـــــة أسفله، كمـا هـــي موجــــودة، بمــــا فيهــــا جميــــع المرافـــق وكـــل البنــاءات التـــي سيتــم تشييــدها، وكـل الحقــــوق المرتبطـــة بهــــا، وكــل العقـــارات التابعـــة لهـا بالتخصيــص أو التــي يمكــن أن تصبـــح تابعـــة لهـــا وكـــــذا جميــــع التحسينــــات والإضــافات التـــي يمكـــن للمقتـــرض أن يدخلهــــا عليهــــا.</p>
+                    <p>يلتــــــزم المقتــــــــرض بالمحافظـــــة علـــى البنـــأيـــات فـــي حـــالــة جيــــــدة وبالقيــــــام بكــــافـــــــة الإصـــلاحـــــات الضروريـــة للحفــــــــاظ علـــــــى العقــــــارات، حيــــــث يمكـــن للبنــــــك فــــــي أيــــــة لحظــــــة القيـــــام بمعاينــــــة حالـــــــة الأمــــــلاك المرهـــونــــة بواسطــــــة أشخــــــاص مــــــن اختيــــــاره علـــى نفقــــــة المقتـــرض الــــذي يلتــــــزم بـــــــذلك.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ INTERDICTIONS / DECLARATIONS ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">
+                    <p>L'Emprunteur s'interdit d'affecter l'(ou les) immeuble(s) hypothéqué(s) en faveur de la Banque à un usage commercial, de le rattacher à un fonds de commerce ou d'y constituer un fonds de commerce.</p>
+                    <p>L'Emprunteur s'interdit de donner en location l'(ou les) immeuble(s) hypothéqué(s) en faveur de la Banque sans accord préalable et écrit de cette dernière.<br/>
+                        En cas de location dûment autorisée par la Banque, l'Emprunteur déclare d'ores et déjà céder, déléguer et transporter au profit de la Banque tous loyers et revenus de l'(ou les) immeuble(s) grevé(s) d'hypothèque.</p>
+                    <p>En conséquence, il subroge la Banque dans tous ses droits et actions vis à vis de ses locataires, lesquels sont autorisés à se libérer de tous loyers directement entre les mains de la Banque par préférence et antériorité à tous autres créanciers et à lui-même sur simple quittance de celle-ci et hors la présence de l'Emprunteur.</p>
+                    <p>Néanmoins, notification de cette délégation et de cette subrogation ne sera faite aux locataires qu'en cas de défaut de paiement de toutes sommes dues et exigibles en capital, intérêts, commissions, frais et accessoires à quelque titre et pour quelque cause que ce soit ou en cas d'inexécution de l'une des clauses et conditions du présent contrat.</p>
+                    <p>L'Emprunteur déclare :<br/>
+                        - que les immeubles par destination dépendant de la (ou des) propriété(s) désignée(s) ci-après ne sont pas nantis au profit d'un autre créancier et il s'engage expressément à ne pas les nantir sans l'autorisation expresse et par écrit de la Banque,<br/>
+                        - qu'il n'existe sur la (ou les) propriété(s) hypothéquée(s) ni clause de résolution ou de rescision, ni de servitude, ni droits coutumiers musulmans, ni opposition, ni hypothèque, demande d'hypothèque conventionnelle ou forcée, ni prénotation, ni aucun droit de nature à porter atteinte à l'hypothèque ci-dessus consentie.</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>يمتنـــع المقتـــرض عـــن تخصيـــص العقــــار أو العقــــارات المرهونــــة رسميـــا لفـــائــــدة البنــــك للاستعمــــال التجــــاري، أو إلحـــاقهــــا بأصـــل تجـــــاري أو تأسيس أصــل تجــاري عليهــا، بـــدون المــوافقـــة المسبقــة والمكتــوبة مـــن البنـــك.</p>
+                    <p>يمتنــع المقتـــرض عــن منـــح العقـــار أو العقـــارات المرهــونــة رسميـــا لفائــدة البنــك علــى سبيـــل الكـــراء، بــــدون المـــوافقــة المسبقـــة والمكتوبـــة مـــن البنــــك.</p>
+                    <p>فــي حالـــة كــــراء مــرخـص بـــه كتابـــة مـــن طـــرف البنــــك، يصـــرح المقتـــرض، منــــــذ الآن، بتفـــويــت وإنابــــة و نقــل جميـــع أكريــــة ومداخيـــل العقـــار أو العقـــارات المثقلــــة بالرهـــون الرسميـــة، لفــائـــدة البنـــك.</p>
+                    <p>ونتيجــة لــذلك، فإن البنـــك يحـــل محلـــه فــي جميـــع حقوقـــه ودعـــاواه تجـــاه مكتريـــه، ويعتبـــر هــؤلاء المكتريـــن مخـــوليـــن صراحـــة بمقتـــضى هـــذا العقــــد، بــــأداء الأكريـــة مباشـــرة بيـــن يــــدي البنـــك بالأفضليـــة وبالأسبقيـــة علـــــى جميــــع الدائنيـــن الآخريــــن بــــل وبالأسبقيـــة عليـــه هـــو نفسـه بنـاء علـى مجرد وصل من هذا البنك وفي غياب المقترض.</p>
+                    <p>يصرح المقترض :<br/>
+                        - بأن البنايات التابعة بالتخصيص للملكية أو الأملاك المعينة بعده غير مرهونة لفائدة دائن آخر، ويتعهد صراحة بعدم رهنها بدون موافقة صريحة ومكتوبة من البنك؛<br/>
+                        - أنه لا يوجد على الملكية أو الأملاك المرهونة أي شرط فاسخ أو مبطل، ولا أي ارتفاقات، ولا أي حقوق عرفية إسلامية، كما لا يوجد أي تعرض أو رهن رسمي أو طلب رهن رسمي اتفاقي أو إجباري، ولا أي تقييد احتياطي، أو أي حق من شأنه أن يمس بالرهن الرسمي المنصوص عليه أعلاه.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ DESIGNATION DES TITRES ============ -->
+        <div class="desig">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="fr b">Désignation du (ou des) titre(s) :</td>
+                    <td class="ar b" dir="rtl" style="font-size: 10pt;">تعيين الرسم أو الرسوم العقارية :</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============ PROPERTIES LIST ============ -->
+        <div class="prop" th:each="p : ${hy.properties}">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="plab">Dénomination :</td>
+                    <td class="pval" th:text="${p.nomBien}">Résidence Exemple</td>
+                    <td class="parl" dir="rtl">التسمية :</td>
+                </tr>
+                <tr>
+                    <td class="plab">Numéro(s) du (ou des) titre(s) foncier(s) ou de la (ou des) réquisition(s) :</td>
+                    <td class="pval" th:text="${p.titreFoncierBien}">TF 12345/C</td>
+                    <td class="parl" dir="rtl">رقم الرسم أو الرسوم العقارية، أو مطلب (أو مطالب) التحفيظ:</td>
+                </tr>
+                <tr>
+                    <td class="plab">Situation :</td>
+                    <td class="pval" th:text="${p.villeBien}">Casablanca</td>
+                    <td class="parl" dir="rtl">الموقع :</td>
+                </tr>
+                <tr>
+                    <td class="plab">Superficie :</td>
+                    <td class="pval" th:text="${p.areaBien}">120 m²</td>
+                    <td class="parl" dir="rtl">المساحة :</td>
+                </tr>
+                <tr>
+                    <td class="plab">Description des constructions s'il y a lieu :</td>
+                    <td class="pval" th:text="${p.descriptionBien}">Appartement au 3ème étage</td>
+                    <td class="parl" dir="rtl">وصف البناءات عند الاقتضاء :</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============ REQUISITION AU CONSERVATEUR ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr">
+                    <p>Par les présentes, les parties soussignées requièrent de Monsieur le Conservateur de la propriété Foncière de bien vouloir :<br/>
+                        - Inscrire la présente hypothèque au profit de la Banque sur le (ou les) titre(s) foncier(s) ou la (ou les) réquisition(s) ci-après désigné(s) notamment, l'interdiction d'hypothéquer et d'aliéner sans l'accord préalable et écrit de la banque.<br/>
+                        - Délivrer au porteur de l'acte le certificat simple d'inscription hypothécaire</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>تلتمس الأطراف الموقعة على هذا العقد من السيد المحافظ على الملكية العقارية بأن يتفضل :<br/>
+                        - بتقييد هذا الرهن الرسمي لفائدة البنك على الرسم أو الرسوم العقارية، أو مطلب أو مطالب التحفيظ المعينة أسفله، خاصة منع الرهن الرسمي و التفويت دون الموافقة المسبقة والمكتوبة من البنك.<br/>
+                        - بتسليم، حامل هذا العقد، شهادة التقييد الرهني.</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ MAINLEVEE ============ -->
+        <table class="pair">
+            <tbody>
+            <tr>
+                <td class="fr b">Mainlevée :</td>
+                <td class="ar b" dir="rtl" style="font-size: 10pt;">رفع اليد عن الضمان:</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="pair tight">
+            <tbody>
+            <tr>
+                <td class="fr">
+                    <p>La mainlevée au titre de la présente garantie sera disponible à l'agence de l'Emprunteur dans les trente « 30 » jours ouvrables à compter du remboursement total du Crédit et acquittement des frais de mainlevées y afférents.<br/>
+                        L'Emprunteur devra prendre attache avec son agence pour les modalités de remise de ladite mainlevée.<br/>
+                        Les frais de mainlevée seront débités automatiquement par la Banque du compte de l'Emprunteur après remboursement total du Crédit, ce que ce dernier autorise sans contestations ni réserves.</p>
+                </td>
+                <td class="ar" dir="rtl">
+                    <p>رفع اليد عن هدا الضمان سيكون جاهزا في الوكالة البنكية للمقترض في غضون "30" يوم عمل من تاريخ التسديد الكامل لالتزاماته اتجاه البنك و كذا المصاريف المتعلقة برفع اليد.</p>
+                    <p>على المقترض أن يربط الاتصال بوكالته البنكية من أجل اطلاعه على الإجراءات المتعلقة بتسليم وثيقة رفع اليد.</p>
+                    <p>يبدي المقترض موافقته التامة بدون شرط أو قيد على الاقتطاع الآلي لمصاريف رفع اليد من حسابه فور التسديد الكامل للدين</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- ============ SIGNATURES ============ -->
+        <table class="sig line">
+            <tbody>
+            <tr>
+                <td class="fl">Fait à&#160;</td>
+                <td class="mid b" th:text="${common.signedIn}"></td>
+                <td class="al ar b" dir="rtl">حرر ب:</td>
+            </tr>
+            <tr>
+                <td class="fl">Le&#160;</td>
+                <td class="val" th:text="${common.decisionDate}"></td>
+                <td class="al ar b" dir="rtl">بتاريخ:</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="sigt">
+            <tbody>
+            <tr>
+                <td>L'EMPRUNTEUR<br/><span class="ar" dir="rtl">المقتـــــرض</span></td>
+                <td>LA BANQUE<br/><span class="ar" dir="rtl">البنــــــــك</span></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
