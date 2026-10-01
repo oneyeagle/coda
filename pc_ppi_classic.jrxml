@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Grey" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a1f690a3-5977-4467-85f8-6b0bcd5b7210">
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  --><jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Grey" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a1f690a3-5977-4467-85f8-6b0bcd5b7210">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -43,6 +42,7 @@
 		<field name="issuedCaution" class="java.lang.String"/>
 		<field name="natureCaution" class="java.lang.String"/>
 		<field name="representative" class="java.lang.String"/>
+		<field name="minorRepresentative" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="Bien" uuid="b0deb4af-783a-4f59-b98e-03b8a5783b62">
 		<queryString>
@@ -57,6 +57,12 @@
 			<![CDATA[]]>
 		</queryString>
 		<field name="_THIS" class="java.lang.String"/>
+		<variable name="ITEM_FONT" class="java.awt.Font">
+			<variableExpression><![CDATA[net.sf.jasperreports.engine.fonts.FontUtil.getInstance(net.sf.jasperreports.engine.DefaultJasperReportsContext.getInstance()).getAwtFontFromBundles("Times New Roman", java.awt.Font.BOLD, 11f, $P{REPORT_LOCALE}, true) != null ? net.sf.jasperreports.engine.fonts.FontUtil.getInstance(net.sf.jasperreports.engine.DefaultJasperReportsContext.getInstance()).getAwtFontFromBundles("Times New Roman", java.awt.Font.BOLD, 11f, $P{REPORT_LOCALE}, true) : new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 11)]]></variableExpression>
+		</variable>
+		<variable name="MULTI_LINE" class="java.lang.Boolean">
+			<variableExpression><![CDATA[$F{_THIS} != null && !$F{_THIS}.isEmpty() && new java.awt.font.TextLayout("- " + $F{_THIS}, $V{ITEM_FONT}, new java.awt.font.FontRenderContext(null, true, true)).getAdvance() > 549f]]></variableExpression>
+		</variable>
 	</subDataset>
 	<subDataset name="Reserve" uuid="09c527b9-b3d1-4a0f-b770-4d48aef64426">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
@@ -64,6 +70,12 @@
 			<![CDATA[]]>
 		</queryString>
 		<field name="_THIS" class="java.lang.String"/>
+		<variable name="ITEM_FONT" class="java.awt.Font">
+			<variableExpression><![CDATA[net.sf.jasperreports.engine.fonts.FontUtil.getInstance(net.sf.jasperreports.engine.DefaultJasperReportsContext.getInstance()).getAwtFontFromBundles("Times New Roman", java.awt.Font.BOLD, 11f, $P{REPORT_LOCALE}, true) != null ? net.sf.jasperreports.engine.fonts.FontUtil.getInstance(net.sf.jasperreports.engine.DefaultJasperReportsContext.getInstance()).getAwtFontFromBundles("Times New Roman", java.awt.Font.BOLD, 11f, $P{REPORT_LOCALE}, true) : new java.awt.Font("Times New Roman", java.awt.Font.BOLD, 11)]]></variableExpression>
+		</variable>
+		<variable name="MULTI_LINE" class="java.lang.Boolean">
+			<variableExpression><![CDATA[$F{_THIS} != null && !$F{_THIS}.isEmpty() && new java.awt.font.TextLayout("- " + $F{_THIS}, $V{ITEM_FONT}, new java.awt.font.FontRenderContext(null, true, true)).getAdvance() > 549f]]></variableExpression>
+		</variable>
 	</subDataset>
 	<parameter name="Emprunteur" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="Caution" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
@@ -669,7 +681,7 @@
 				</jr:list>
 			</componentElement>
 		</band>
-		<band height="116" splitType="Prevent">
+		<band height="117" splitType="Prevent">
 			<printWhenExpression><![CDATA[$F{cautionBeneficiaries} != null && !$F{cautionBeneficiaries}.isEmpty()]]></printWhenExpression>
 			<elementGroup>
 				<rectangle>
@@ -700,13 +712,13 @@
 				</textField>
 			</elementGroup>
 			<componentElement>
-				<reportElement positionType="Float" x="0" y="15" width="552" height="101" isRemoveLineWhenBlank="true" uuid="05186f22-5217-453b-beac-9c5c81006530"/>
+				<reportElement positionType="Float" x="0" y="15" width="552" height="102" isRemoveLineWhenBlank="true" uuid="05186f22-5217-453b-beac-9c5c81006530"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="Caution" uuid="1eb07885-f763-4128-bf3f-17372ea7e73a">
 						<dataSourceExpression><![CDATA[new
                             net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{cautionBeneficiaries})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:listContents height="101" width="552">
+					<jr:listContents height="102" width="552">
 						<elementGroup>
 							<rectangle>
 								<reportElement positionType="Float" stretchType="ElementGroupHeight" mode="Transparent" x="0" y="0" width="552" height="14" uuid="f0605f5e-117e-45a6-bfba-001351aada9b"/>
@@ -1007,15 +1019,25 @@
 						</elementGroup>
 						<elementGroup>
 							<rectangle>
-								<reportElement positionType="Float" stretchType="ElementGroupHeight" mode="Transparent" x="0" y="100" width="552" height="1" isRemoveLineWhenBlank="true" uuid="1479d58e-650f-43f5-87e5-460eb2ad6a17">
-									<printWhenExpression><![CDATA[$F{representative} != null && !$F{representative}.trim().isEmpty()]]></printWhenExpression>
+								<reportElement positionType="Float" stretchType="ElementGroupHeight" mode="Transparent" x="0" y="100" width="552" height="2" isRemoveLineWhenBlank="true" uuid="1479d58e-650f-43f5-87e5-460eb2ad6a17">
+									<printWhenExpression><![CDATA[($F{minorRepresentative} != null && !$F{minorRepresentative}.trim().isEmpty()) || ($F{representative} != null && !$F{representative}.trim().isEmpty())]]></printWhenExpression>
 								</reportElement>
 								<graphicElement>
 									<pen lineWidth="0.5"/>
 								</graphicElement>
 							</rectangle>
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="100" width="552" height="1" isRemoveLineWhenBlank="true" uuid="734ad4bf-d2c7-465f-9f77-56373199d5c2">
+								<reportElement positionType="Float" x="0" y="100" width="552" height="1" isRemoveLineWhenBlank="true" uuid="3e2c434d-16cc-4c63-9030-9f5849f6b859">
+									<printWhenExpression><![CDATA[$F{minorRepresentative} != null && !$F{minorRepresentative}.trim().isEmpty()]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Top">
+									<font fontName="Times New Roman" size="10"/>
+									<paragraph leftIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{minorRepresentative} == null ? "" : $F{minorRepresentative}]]></textFieldExpression>
+							</textField>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="101" width="552" height="1" isRemoveLineWhenBlank="true" uuid="734ad4bf-d2c7-465f-9f77-56373199d5c2">
 									<printWhenExpression><![CDATA[$F{representative} != null && !$F{representative}.trim().isEmpty()]]></printWhenExpression>
 								</reportElement>
 								<textElement verticalAlignment="Top">
@@ -3271,6 +3293,14 @@
 					<textFieldExpression><![CDATA["يتضمن هذا القرض أيضا الضمانات التالية: "]]></textFieldExpression>
 				</textField>
 			</elementGroup>
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ContainerBottom" mode="Transparent" x="0" y="36" width="552" height="20" uuid="e061f85d-29bc-46b1-b27b-d9dc4b691f41" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{warranties} != null && !$F{warranties}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
 			<componentElement>
 				<reportElement positionType="Float" x="0" y="36" width="552" height="20" isRemoveLineWhenBlank="true" uuid="a00e9616-4bb9-48c8-ba15-7e0d3caa3427">
 					<printWhenExpression><![CDATA[$F{warranties} != null && !$F{warranties}.isEmpty()]]></printWhenExpression>
@@ -3285,7 +3315,7 @@
 					<jr:listContents height="20" width="552">
 						<elementGroup>
 							<line>
-								<reportElement positionType="Float" x="15" y="12" width="537" height="1" forecolor="#C8C8C8" uuid="3167253c-b18e-4311-bf97-6cf0aa43049b">
+								<reportElement positionType="FixRelativeToTop" x="15" y="17" width="537" height="1" forecolor="#C8C8C8" uuid="3167253c-b18e-4311-bf97-6cf0aa43049b">
 									<property name="com.jaspersoft.studio.unit.y" value="px"/>
 									<property name="com.jaspersoft.studio.unit.x" value="px"/>
 									<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -3294,13 +3324,34 @@
 									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
 								</graphicElement>
 							</line>
+							<line>
+								<reportElement positionType="FixRelativeToBottom" x="15" y="17" width="537" height="1" forecolor="#C8C8C8" uuid="02ede940-c967-4410-9ce1-c633e552c8b3">
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<graphicElement>
+									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
+								</graphicElement>
+							</line>
+							<line>
+								<reportElement positionType="FixRelativeToBottom" x="15" y="4" width="537" height="1" forecolor="#C8C8C8" uuid="1b4efadf-e444-4638-98a0-be7ed1577045">
+									<property name="com.jaspersoft.studio.unit.y" value="px"/>
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<printWhenExpression><![CDATA[$V{MULTI_LINE}]]></printWhenExpression>
+								</reportElement>
+								<graphicElement>
+									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
+								</graphicElement>
+							</line>
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="2" width="552" height="16" isRemoveLineWhenBlank="true" uuid="7efcc4ea-c625-41e9-a2d3-5613ab78f881">
+								<reportElement positionType="Float" x="0" y="7" width="552" height="13" isRemoveLineWhenBlank="true" uuid="7efcc4ea-c625-41e9-a2d3-5613ab78f881">
 									<printWhenExpression><![CDATA[$F{_THIS} != null && !$F{_THIS}.isEmpty()]]></printWhenExpression>
 								</reportElement>
 								<textElement textAlignment="Left" verticalAlignment="Top">
 									<font fontName="Times New Roman" size="11" isBold="true"/>
-									<paragraph leftIndent="4"/>
+									<paragraph leftIndent="4" lineSpacing="Proportional" lineSpacingSize="1.03584"/>
 								</textElement>
 								<textFieldExpression><![CDATA["- "+$F{_THIS}]]></textFieldExpression>
 							</textField>
@@ -3356,6 +3407,14 @@
 					<textFieldExpression><![CDATA["وضع القرض رهن إشارة المقترض لن يتم إلا بعد بتحقيق الشروط التالية:"]]></textFieldExpression>
 				</textField>
 			</elementGroup>
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ContainerBottom" mode="Transparent" x="0" y="40" width="552" height="20" uuid="24d3a6b2-898f-4683-942f-0a22a05881e6" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{reserves} != null && !$F{reserves}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
 			<componentElement>
 				<reportElement positionType="Float" x="0" y="40" width="552" height="20" isRemoveLineWhenBlank="true" uuid="4e134176-7907-4f7a-bed6-c91fe826e3ca">
 					<printWhenExpression><![CDATA[$F{reserves} != null && !$F{reserves}.isEmpty()]]></printWhenExpression>
@@ -3369,16 +3428,8 @@
 					</datasetRun>
 					<jr:listContents height="20" width="552">
 						<elementGroup>
-							<rectangle>
-								<reportElement positionType="Float" stretchType="ElementGroupHeight" mode="Transparent" x="0" y="0" width="552" height="20" isRemoveLineWhenBlank="true" uuid="138ecb8b-ee74-43e3-9d4a-0096e72d0a18">
-									<printWhenExpression><![CDATA[$F{_THIS} != null && !$F{_THIS}.isEmpty()]]></printWhenExpression>
-								</reportElement>
-								<graphicElement>
-									<pen lineWidth="0.5"/>
-								</graphicElement>
-							</rectangle>
 							<line>
-								<reportElement positionType="Float" x="15" y="13" width="537" height="1" forecolor="#C8C8C8" uuid="cf34559a-3daf-4eb7-ae10-e2dc07863fb4">
+								<reportElement positionType="FixRelativeToTop" x="15" y="17" width="537" height="1" forecolor="#C8C8C8" uuid="cf34559a-3daf-4eb7-ae10-e2dc07863fb4">
 									<property name="com.jaspersoft.studio.unit.x" value="px"/>
 									<property name="com.jaspersoft.studio.unit.width" value="px"/>
 								</reportElement>
@@ -3386,13 +3437,32 @@
 									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
 								</graphicElement>
 							</line>
+							<line>
+								<reportElement positionType="FixRelativeToBottom" x="15" y="17" width="537" height="1" forecolor="#C8C8C8" uuid="32b616ad-48b2-4920-bc1d-9fdb7ba59eb6">
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								</reportElement>
+								<graphicElement>
+									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
+								</graphicElement>
+							</line>
+							<line>
+								<reportElement positionType="FixRelativeToBottom" x="15" y="4" width="537" height="1" forecolor="#C8C8C8" uuid="cb21eee7-9239-4226-9b40-736e3115a1a6">
+									<property name="com.jaspersoft.studio.unit.x" value="px"/>
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<printWhenExpression><![CDATA[$V{MULTI_LINE}]]></printWhenExpression>
+								</reportElement>
+								<graphicElement>
+									<pen lineWidth="1.0" lineStyle="Dotted" lineColor="#C8C8C8"/>
+								</graphicElement>
+							</line>
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="2" width="552" height="16" isRemoveLineWhenBlank="true" uuid="027cee8f-b3cd-4b3d-81b8-1c89bb306948">
+								<reportElement positionType="Float" x="0" y="7" width="552" height="13" isRemoveLineWhenBlank="true" uuid="027cee8f-b3cd-4b3d-81b8-1c89bb306948">
 									<printWhenExpression><![CDATA[$F{_THIS} != null && !$F{_THIS}.isEmpty()]]></printWhenExpression>
 								</reportElement>
 								<textElement textAlignment="Left" verticalAlignment="Top">
 									<font fontName="Times New Roman" size="11" isBold="true"/>
-									<paragraph leftIndent="4"/>
+									<paragraph leftIndent="4" lineSpacing="Proportional" lineSpacingSize="1.03584"/>
 								</textElement>
 								<textFieldExpression><![CDATA["- "+$F{_THIS}]]></textFieldExpression>
 							</textField>
